@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.authService.signIn(this.email, this.password)
       this.resetForm()
     } else {
-      this.authService.showError('Sorry, you cant enter here.')
+      this.authService.showError('Sorry, you account login or password is wrong.')
     }
 
   }

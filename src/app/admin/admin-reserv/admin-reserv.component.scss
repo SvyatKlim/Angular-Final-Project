@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+td,
+th {
+    width: 12.5%;
+}
+td {
+    padding: 20px 24px !important;
+}
+th {
+    padding: 10px 24px !important;
+}
+.product {
+    &__id {
+        width: 15%;
+    }
+    &__date {
+        width: 15%;
+    }
+    &__email {
+        width: 15%;
+    }
+    &__name {
+        width: 15%;
+    }
+    &__people {
+        width: 10%;
+    }
+    &__time {
+        width: 15%;
+    }
+    &__status {
+        width: 15%;
+    }
+}

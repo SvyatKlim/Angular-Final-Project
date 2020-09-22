@@ -14,6 +14,7 @@
   justify-content: center;
   &__reserv {
     display: flex;
+    padding: 100px 0 70px;
     &__img {
       img {
         object-fit: cover;
@@ -34,6 +35,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-width: 360px;
+    }
+    &__title {
+      h3 {
+        color: $title;
+        text-align: center;
+        @include font(36, $suranna, normal, 300);
+        span {
+          @include font(36, $montez, normal);
+          text-transform: none;
+          color: $hr;
+          display: block;
+          margin-bottom: 13px;
+        }
+      }
     }
   }
 }

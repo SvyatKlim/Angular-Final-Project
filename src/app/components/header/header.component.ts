@@ -86,7 +86,10 @@ export class HeaderComponent implements OnInit {
 
   private checkLogin(): void {
     const user = JSON.parse(localStorage.getItem('user'));
-    const admin = JSON.parse(localStorage.getItem('admin'))
+    // const admin = JSON.parse(localStorage.getItem('admin'))
+    if (!user.role) {
+      this.userLogined = false;
+    }
     if (user != 0 && user.role === 'user') {
       this.userLogined = true;
     } else {
