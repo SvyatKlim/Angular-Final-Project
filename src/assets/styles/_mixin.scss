@@ -1,0 +1,139 @@
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{$number} is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{$digits} is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{$digits} has a unit.';
+    @return $number;
+  }
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{$mode} is undefined keyword.';
+    @return $number;
+  }
+}
+//Mixin
+
+@mixin placeholder($opacity, $color) {
+  &::-webkit-input-placeholder {
+    opacity: $opacity;
+    color: $color;
+  }
+  &:-moz-placeholder {
+    opacity: $opacity;
+    color: $color;
+  }
+  &::-moz-placeholder {
+    opacity: $opacity;
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    opacity: $opacity;
+    color: $color;
+  }
+  &::-ms-input-placeholder {
+    opacity: $opacity;
+    color: $color;
+  }
+}
+@mixin button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+@mixin font($size, $ff: $suranna, $fontStyle: normal, $fw: 400) {
+  font-family: $ff;
+  font-style: $fontStyle;
+  font-weight: $fw;
+  font-size: ($size + px);
+}
+@mixin flex-position($flex, $justify, $align: center) {
+  display: $flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin transition($duration, $easing: $outQuad) {
+  transition: all $duration $easing;
+}
+@mixin fadeLeft($distance, $duration, $easing: $outQuad) {
+  transform: translate($distance, 0);
+  opacity: 0;
+  transition: all $duration $easing;
+}
+@mixin fadeUp($distance, $duration, $easing: $outQuad) {
+  transform: translate(0, $distance);
+  opacity: 0;
+  transition: all $duration $easing;
+}
+@mixin fade($duration, $easing: $outQuad) {
+  opacity: 0;
+  transition: all $duration $easing;
+}
+@mixin cancelAnimation {
+  visibility: visible;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+//fluid typography
+
+@mixin fluid-type($min-font-size: 17px, $max-font-size: 25px, $lower-range: 576px, $upper-range: 1920px) {
+  font-size: calc(
+    #{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} *
+      (
+        (100vw - #{$lower-range}) / #{(
+            ($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1))
+          )}
+      )
+  );
+
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range) {
+    font-size: $max-font-size;
+  }
+}
+@mixin checkbox-structure(
+  $width: 15px,
+  $height: 15px,
+  $top: -1px,
+  $left: "",
+  $border-color: "",
+  $background-color: ""
+) {
+  content: "";
+  position: absolute;
+  width: $width;
+  height: $height;
+  top: $top;
+  border-radius: 2px;
+
+  @if $border-color!= "" {
+    border: 1px solid $border-color;
+  }
+
+  @if $background-color!= "" {
+    background-color: $background-color;
+  }
+
+  transition: 0.2s;
+}

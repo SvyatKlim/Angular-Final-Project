@@ -1,0 +1,47 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/fonts";
+@import "../../../assets/styles/typography";
+
+.background {
+  background-image: url("../../../assets/images/admin/fdAdmin.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin__login {
+  background-color: rgba($color: #fff, $alpha: 0.7);
+  width: 400px;
+  height: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  &__title {
+    margin: 15px auto;
+  }
+  &__form {
+    border-top: 1px solid black;
+    padding-top: 15px;
+    width: 100%;
+    input {
+      padding-bottom: 5px;
+    }
+  }
+  &__btn {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+  }
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

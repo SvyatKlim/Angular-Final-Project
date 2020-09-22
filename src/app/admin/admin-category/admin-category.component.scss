@@ -1,0 +1,132 @@
+@import "../../../assets/styles/variables";
+
+.cat__container {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1600px;
+  table {
+    min-width: 800px;
+    width: 100%;
+    td {
+      padding: 20px 24px !important;
+    }
+    th {
+      padding: 10px 24px !important;
+    }
+    &__content {
+      font-size: 16px;
+      color: $matColor;
+    }
+  }
+  .cat__inputs {
+    min-width: 800px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    &-settings {
+      display: flex;
+      flex-direction: column;
+      width: 45%;
+    }
+    &-img {
+      height: 250px;
+      width: 45%;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: dashed 2px rgba(0, 0, 0, 0.2);
+      mat-progress-bar {
+        margin: 15px 0;
+      }
+    }
+    mat-form-field {
+      width: 100%;
+    }
+    .cat__button {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0 15px;
+      width: 100%;
+    }
+    &__catImg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        width: 80%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &-delete svg {
+        width: 40px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.cat__catImg-result {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+[type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+  & + label {
+    background: #f15d22;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Rubik", sans-serif;
+    font-size: inherit;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 1rem 50px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    &.btn-2 {
+      background-color: #673ab7;
+      border-radius: 50px;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        background-image: url("../../../assets//images/icons/cloud.svg");
+        height: 20px;
+        width: 20px;
+        right: 140%;
+        line-height: 3.3;
+        position: absolute;
+        top: 15px;
+        transition: all 0.3s;
+      }
+
+      &:hover {
+        background-color: #58319b;
+
+        &::before {
+          right: 75%;
+        }
+      }
+    }
+  }
+}

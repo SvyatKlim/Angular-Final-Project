@@ -1,0 +1,31 @@
+<div class="background"></div>
+<div class="prod__background">
+  <div class="prod__title">
+    <h3><span>The menu</span></h3>
+    <p>{{ category }}</p>
+    <div class="hr">
+      <span class="hr__left"></span>
+      <span class="hr__center"></span>
+      <span class="hr__right"></span>
+    </div>
+  </div>
+  <div class="prod__container container">
+    <div
+      class="prod__item"
+      *ngFor="let prod of products"
+      [routerLink]="['/delivery/' + prod.category, prod.id]"
+    >
+      <div class="prod__item__img">
+        <img [src]="prod.img" alt="Food img" />
+      </div>
+      <div class="prod__item__details">
+        <h3>{{ prod.name }}</h3>
+        <p>{{ prod.weight }}</p>
+        <p>{{ prod.price | currency }}</p>
+      </div>
+      <div class="prod__item__button">
+        <button type="button">Details</button>
+      </div>
+    </div>
+  </div>
+</div>

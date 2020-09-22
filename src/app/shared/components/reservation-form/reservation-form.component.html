@@ -1,0 +1,32 @@
+<div class="reservation__form__container">
+    <form>
+        <div class="reservation__form__input">
+            <input name="Name" class="otw-reservation-name" type="text" placeholder="Your name">
+        </div>
+        <div class="reservation__form__input">
+            <input name="Name" class="otw-reservation-email" type="text" placeholder="Your email">
+        </div>
+        <div class="reservation__form__input reservation__form__input__date">
+            <input type="text" value="17/09/2016" [(ngModel)]="dateValue" name="dateValue" placeholder="22.07.2020">
+            <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' (change)="onValueChange($event)">
+            </ejs-calendar>
+        </div>
+        <div class="reservation__form__select">
+
+            <select class="otw-reservation-time selectpicker" name="timing">
+                <option *ngFor="let hour of time" [value]="hour.name">{{hour.name}}</option>
+            </select>
+
+        </div>
+        <div class="reservation__form__select">
+
+            <select name="guestCount" class="otw-party-size-select selectpicker" [(ngModel)]="count">
+                <option *ngFor="let count of guestCount" [value]="count.name">{{count.name}}
+                </option>
+            </select>
+            <div class="reservation__form__btn">
+                <input type="submit" value="Find a Table">
+            </div>
+        </div>
+    </form>
+</div>

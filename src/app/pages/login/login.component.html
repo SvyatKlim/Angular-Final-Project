@@ -1,0 +1,112 @@
+<div class="login__container">
+    <div class="login" *ngIf="sectionLogin === true">
+        <h3 class="login__title h3">Login</h3>
+        <form class="login__form" name="login" #loginForm="ngForm" novalidate (ngSubmit)="login(loginForm)">
+            <div class="login__input">
+                <input placeholder="Email address" class="input-fields" [email]=true #emailInput="ngModel"
+                    [(ngModel)]="email" name="email" type="email" required
+                    [ngClass]="{'is-invalid': emailInput.invalid &&  (emailInput.touched || emailInput.dirty)}">
+                <div class="login____errors" *ngIf="emailInput.invalid ">
+                    <div class="login__error"
+                        *ngIf="emailInput.errors?.required &&  (emailInput.touched || emailInput.dirty)">
+                        Required field
+                    </div>
+                </div>
+            </div>
+            <div class="login__input">
+                <input type="password" placeholder="Password" #passwordInput="ngModel" [(ngModel)]="password"
+                    name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                    [ngClass]="{'is-invalid': passwordInput.invalid && (passwordInput.touched || passwordInput.dirty) }">
+                <div class="login____errors" *ngIf="passwordInput.invalid ">
+                    <div class="login__error"
+                        *ngIf="passwordInput.errors?.required &&  (passwordInput.touched || passwordInput.dirty)">
+                        Required field
+                    </div>
+                </div>
+            </div>
+            <div class="login__options">
+                <div class="login__options__checkbox ">
+                    <label>
+                        <div class="jq-checkbox" unselectable="on"
+                            style="user-select: none; display: inline-block; position: relative; overflow: hidden;"
+                            (change)="toggleVisibility($event)">
+                            <input type="checkbox" name="chkbox"
+                                style="position: absolute; z-index: -1; opacity: 0; margin: 0px; padding: 0px;">
+                            <div class="jq-checkbox__div" *ngIf="marked"></div>
+                        </div>Remember me
+                    </label>
+                </div>
+                <div class="login__options__lostPass">
+                    <a href="#" class="pull-right">Lost your password</a>
+                </div>
+            </div>
+            <div class="login__btn">
+                <button type="submit" name="submit" value="LOGIN" class="btn loginBtn">LOGIN</button>
+            </div>
+        </form>
+        <div class="divider-login">
+            <hr>
+            <span>Or</span>
+        </div>
+        <div class="login__regBtn">
+            <button type="button" class="btn regBtn" (click)="sectionLogin = false; sectionRegister = true">
+                Register</button></div>
+    </div>
+    <div class="reg" *ngIf="sectionRegister === true">
+        <h3 class="reg__title h3">Register</h3>
+        <form class="reg__form" name="register" #regForm="ngForm" novalidate (ngSubmit)="register(regForm)">
+            <div class="reg__input">
+                <input type="text" placeholder="First Name" #fName="ngModel" [(ngModel)]="firstName" name="firstName"
+                    required pattern="[a-zA-Z]{2,}"
+                    [ngClass]="{'is-invalid': fName.invalid  &&  (fName.touched || fName.dirty)}">
+                <div class="login____errors" *ngIf="fName.invalid">
+                    <div class="login__error" *ngIf="fName.errors?.required &&  (fName.touched || fName.dirty)">
+                        Required field
+                    </div>
+                </div>
+            </div>
+            <div class="reg__input">
+                <input type="text" placeholder="Last Name" #lName="ngModel" [(ngModel)]="lastName" name="lastName"
+                    required pattern="[a-zA-Z]{2,}"
+                    [ngClass]="{'is-invalid': lName.invalid &&  (lName.touched || lName.dirty)}">
+                <div class="login____errors" *ngIf="lName.invalid">
+                    <div class="login__error" *ngIf="lName.errors?.required &&  (lName.touched || lName.dirty)">
+                        Required field
+                    </div>
+                </div>
+            </div>
+            <div class="reg__input">
+                <input type="email" placeholder="alitfn58@gmail.com" #eName="ngModel" [(ngModel)]="emailName"
+                    name="emailName" required
+                    [ngClass]="{'is-invalid': eName.invalid &&  (eName.touched || eName.dirty)}">
+                <div class="login____errors" *ngIf="eName.invalid ">
+                    <div class="login__error" *ngIf="eName.errors?.required &&  (eName.touched || eName.dirty)">
+                        Required field
+                    </div>
+                </div>
+            </div>
+            <div class="reg__input">
+                <input type="password" placeholder="Password" #pass="ngModel" [(ngModel)]="passFirst" name="passFirst"
+                    required pattern=" ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+                    [ngClass]="{'is-invalid': pass.invalid  &&  (pass.touched || pass.dirty)}">
+                <div class="login____errors" *ngIf="pass.invalid ">
+                    <div class="login__error" *ngIf="pass.errors.required  &&  (pass.touched || pass.dirty)">
+                        Required field
+                    </div>
+                </div>
+            </div>
+            <p>By clicking on “Register Now” button you are accepting the <a>Terms &amp;
+                    Conditions</a></p>
+            <div class="reg__btn">
+                <input type="submit" name="submit" class="btn regBtn" value="RegIster now">
+            </div>
+        </form>
+        <div class="divider-login">
+            <hr>
+            <span>Or</span>
+        </div>
+        <div class="reg__logBtn">
+            <button type="button" class="btn loginBtn" (click)="sectionLogin = true; sectionRegister = false">
+                Login</button></div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+app/
+    components/
+        header
+        footer
+    pages/
+        home
+        about
+        menu => restaurant menu/   ( => це дропдаун) 
+             => delivery menu/
+                    soups
+                    salads
+                    main-dishes
+                    lunch-menus
+                    dinner-menus
+                    desserts
+                    beverages
+        product-page(Сама сторінка продукту)
+        reservations(бронювання столика)
+        gallery(тут все ясно)
+        catering(це теж сторінка без функціонала але хай буде)
+        contact(тут все ясно)
+        login(логінування буде тільки для юзерів)/registration (логінування та регестрація будуть поп апом)
+        fd-admin(це логінування адміна вводиться в адресну строку(url) як на wordpress)
+        basket(тут ще потрібно продумати)
+    shared/
+        interfaces/
+        models/
+        pipes/
+        services/
+        directives/
+        guards/
+    admin/
+        admin-category
+        admin-product
+        admin-order
+        admin-discount
+        admin-reservartion&catering
+    user/
+        user-profile
+        user-orders

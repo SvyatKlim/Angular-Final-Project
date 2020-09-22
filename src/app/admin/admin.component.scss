@@ -1,0 +1,51 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.cdk-overlay-pane {
+  width: 300px;
+  height: 300px;
+}
+
+mat-drawer {
+  width: 150px;
+  &-container {
+    height: 100%;
+  }
+  &-content {
+    padding: 20px;
+  }
+}

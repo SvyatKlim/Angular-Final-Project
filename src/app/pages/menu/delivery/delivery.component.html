@@ -1,0 +1,35 @@
+<div class="background"></div>
+<div class="dellivery__back">
+  <div class="dellivery__content container">
+    <div class="dellivery__title">
+      <h3><span>The menu</span></h3>
+      <h3>Welcome to Royal plate</h3>
+      <div class="hr">
+        <span class="hr__left"></span>
+        <span class="hr__center"></span>
+        <span class="hr__right"></span>
+      </div>
+    </div>
+    <div class="dellivery__text">
+      <p>
+        Keith Simons, chef de cousine in Royal plate has prepared some delicious
+        starters for every taste. Try some of our home made soups made from
+        fresh ingredients or some of our refreshing salads. Bon appetit!
+      </p>
+    </div>
+  </div>
+  <div class="dellivery__menu container">
+    <div
+      class="dellivery__menu__item"
+      *ngFor="let cat of categories"
+      [routerLink]="['/delivery/' + cat.nameEN]"
+    >
+      <div class="dellivery__menu__item__img">
+        <img [src]="cat.img" alt="" />
+      </div>
+      <h2 class="dellivery__menu__item__title">{{ cat.nameEN }}</h2>
+      <div class="hr"></div>
+      <p class="dellivery__menu__item__text">{{ cat.description }}</p>
+    </div>
+  </div>
+</div>

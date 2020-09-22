@@ -1,0 +1,95 @@
+<div class="cat__container">
+  <div class="cat__inputs">
+    <div class="cat__inputs-settings">
+      <mat-form-field class="example-form-field">
+        <mat-label>Name Category</mat-label>
+        <input matInput type="text" [(ngModel)]="name" />
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" [(ngModel)]="description" />
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="cat__inputs-img">
+      <div *ngIf="!imageStatus">
+        <input type="file" id="file" (change)="uploadFile($event)" required />
+        <label for="file" class="btn-2">upload</label>
+      </div>
+      <div class="cat__inputs__catImg" *ngIf="imageStatus">
+        <img [src]="image" alt="" />
+        <div class="cat__inputs__catImg-delete" *ngIf="imageStatus" (click)="openDialog()">
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <title>remove-delete-circle-glyph</title>
+            <path
+              d="M256,24C383.9,24,488,128.1,488,256S383.9,488,256,488,24.06,383.9,24.06,256,128.1,24,256,24ZM0,256C0,397.16,114.84,512,256,512S512,397.16,512,256,397.16,0,256,0,0,114.84,0,256Z"
+              fill="#5b5b5f" />
+            <polygon
+              points="382 172.72 339.29 130.01 256 213.29 172.72 130.01 130.01 172.72 213.29 256 130.01 339.28 172.72 382 256 298.71 339.29 381.99 382 339.28 298.71 256 382 172.72"
+              fill="#5b5b5f" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="cat__button">
+      <button mat-raised-button color="accent" (click)="addCategory()">
+        Create
+      </button>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th class="cat__content" mat-header-cell *matHeaderCellDef mat-sort-header>
+        ID
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th class="cat__content" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Name
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nameEN }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th class="cat__content" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Description
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.description }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="image">
+      <th class="cat__content" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Image
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <img class="cat__catImg-result" [src]="element.img" alt="" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th class="cat__content" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Delete
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <svg (click)="deleteCategory(element)" class="trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          fill="#dc3545" width="18px" height="18px">
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v10zM18 4h-2.5l-.71-.71c-.18-.18-.44-.29-.7-.29H9.91c-.26 0-.52.11-.7.29L8.5 4H6c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1z" />
+        </svg>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+</div>

@@ -1,0 +1,33 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/typography";
+@import "../../../../assets/styles/mixin";
+.background {
+  width: 100%;
+  height: 70vh;
+  background-image: url("../../../../assets/images/menu_back.jpg");
+  background-size: cover;
+}
+.rest {
+  &__content {
+    padding-top: 100px;
+  }
+  &__title {
+    position: relative;
+    margin-bottom: 50px;
+    text-align: center;
+    span {
+      font-family: "Montez", cursive;
+      text-transform: none;
+    }
+  }
+  &__custom__hr {
+    margin: 15px auto 0 auto;
+  }
+  &__text {
+    padding-bottom: 15px;
+    font-family: "Montserrat-UltraLight", Arial, sans-serif;
+    line-height: 25px;
+    text-align: center;
+  }
+}

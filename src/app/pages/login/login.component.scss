@@ -1,0 +1,126 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/fonts";
+@import "../../../assets/styles/typography";
+@import "../../../assets/styles/mixin";
+@import "../../../assets/styles/form";
+
+.login {
+    padding: 30px 15px;
+    width: 100%;
+    &__options {
+        display: flex;
+        justify-content: space-between;
+        line-height: 26px;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    &__btn,
+    &__regBtn {
+        padding: 0 30px;
+    }
+    &__error {
+        color: #e62625;
+        font-weight: 600;
+        margin-left: 30px;
+        margin-top: -15px;
+        margin-bottom: 10px;
+    }
+    &__container {
+        width: 400px;
+    }
+}
+.btn.loginBtn {
+    background-color: $hoverDarkBtn;
+    width: 100%;
+    font-size: 18px;
+    color: #ffffff;
+    margin: 15px 0 15px 0;
+    &:hover {
+        background-color: $darkBtn;
+    }
+}
+.btn.regBtn {
+    background-color: $product;
+    width: 100%;
+    font-size: 18px;
+    color: #ffffff;
+    margin: 15px 0 0 0;
+    &:hover {
+        background-color: $hr;
+    }
+}
+.reg {
+    padding: 30px 15px;
+    &__btn,
+    &__logBtn {
+        padding: 0 30px;
+    }
+}
+h3.h3 {
+    text-transform: none;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.divider-login {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+
+    hr {
+        border-top: 1.5px solid #cccccc;
+    }
+    span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding: 0 24px;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+    }
+}
+label {
+    color: #20202f;
+    font-weight: normal;
+
+    .jq-checkbox {
+        top: -1px;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        margin: 0 15px 0 0;
+        border: 2px solid #f4f2ed;
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s;
+        &:hover {
+            border-color: #ece8df;
+        }
+        input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            margin: 0px;
+            padding: 0px;
+        }
+        &__div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            &:before {
+                @include checkbox-structure($width: 8px, $height: 11px);
+                position: absolute;
+                top: -8px;
+                left: -3px;
+                border-top: 2px solid transparent;
+                border-left: 2px solid transparent;
+                border-right: 2px solid #e4b95b;
+                border-bottom: 2px solid #e4b95b;
+                -webkit-transform: rotate(36deg);
+                -ms-transform: rotate(36deg);
+                transform: rotate(36deg);
+                animation: fade-in 0.5s;
+            }
+        }
+    }
+}

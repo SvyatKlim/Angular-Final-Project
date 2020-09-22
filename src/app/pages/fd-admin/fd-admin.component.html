@@ -1,0 +1,26 @@
+<div class="background container">
+  <div class="admin__login">
+    <h4 class="admin__login__title">Welcome</h4>
+    <div class="admin__login__form">
+      <form class="example-form" (ngSubmit)="signIn()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder=" There must be a email ..." #adminLogin='ngModel' [(ngModel)]="email" required
+            name="email" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder=" There must be a password ..." #adminPassword='ngModel'
+            [(ngModel)]="password" required name="password" />
+        </mat-form-field>
+        <div class="admin__login__btn">
+          <button [disabled]="adminLogin.invalid || adminPassword.invalid" mat-flat-button color="primary"
+            type="submit">
+            Primary
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Montez";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Montez-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat Ultra Light", Arial, sans-serif;
+  font-style: normal;
+  src: url("../fonts/MontserratUltraLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Suranna", serif;
+  font-style: normal;
+  src: url("../fonts/Suranna-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/quicksand/Quicksand-Medium.eot");
+  src: local("Quicksand Medium"), local("Quicksand-Medium"),
+    url("../fonts/quicksand/Quicksand-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/quicksand/Quicksand-Medium.woff2") format("woff2"),
+    url("../fonts/quicksand/Quicksand-Medium.woff") format("woff"),
+    url("../fonts/quicksand/Quicksand-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/quicksand/Quicksand-Light.eot");
+  src: local("Quicksand Light"), local("Quicksand-Light"),
+    url("../fonts/quicksand/Quicksand-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/quicksand/Quicksand-Light.woff2") format("woff2"),
+    url("../fonts/quicksand/Quicksand-Light.woff") format("woff"),
+    url("../fonts/quicksand/Quicksand-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/quicksand/Quicksand-Regular.eot");
+  src: local("Quicksand Regular"), local("Quicksand-Regular"),
+    url("../fonts/quicksand/Quicksand-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/quicksand/Quicksand-Regular.woff2") format("woff2"),
+    url("../fonts/quicksand/Quicksand-Regular.woff") format("woff"),
+    url("../fonts/quicksand/Quicksand-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/quicksand/Quicksand-Bold.eot");
+  src: local("Quicksand Bold"), local("Quicksand-Bold"),
+    url("../fonts/quicksand/Quicksand-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/quicksand/Quicksand-Bold.woff2") format("woff2"),
+    url("../fonts/quicksand/Quicksand-Bold.woff") format("woff"),
+    url("../fonts/quicksand/Quicksand-Bold.eot") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

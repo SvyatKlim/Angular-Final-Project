@@ -1,0 +1,37 @@
+@import "../../../assets/styles/variables";
+.productCountWrapper {
+  display: inline-block;
+  width: auto;
+  position: relative;
+  max-width: 170px;
+  text-align: center;
+  color: #372727;
+  input[type="number"] {
+    height: 50px;
+    width: 100%;
+    border: 2px solid #e5e5ee;
+    border-radius: 80px;
+    padding: 0 30px;
+    outline: none;
+    text-align: center;
+    color: #372727;
+    margin: 0px;
+  }
+}
+.lessProduct,
+.moreProduct {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  svg {
+    transition: all 0.2s;
+  }
+  &:hover svg {
+    fill: $product;
+  }
+}
+.moreProduct {
+  right: 15px;
+  left: auto;
+}

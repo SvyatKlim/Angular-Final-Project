@@ -1,0 +1,223 @@
+<div class="background"></div>
+<div class="basket__container">
+  <div class="container">
+    <div class="basket__progress">
+      <ul class="basket__progress__bar">
+        <li class="active">Shopping Cart</li>
+        <li [ngClass]="{'active': checkout === true || orderComplete === true}">Checkout</li>
+        <li [ngClass]="{'active': orderComplete === true}">Order Complete</li>
+      </ul>
+    </div>
+    <div class="basket__order" *ngIf="order">
+      <div class="basket__order__table" *ngIf="basketLength">
+        <table class="basket__product">
+          <thead>
+            <tr>
+              <th>PRODUCT</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+              <th>TOTAL</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of basket">
+              <td>
+                <div class="basket__product__img">
+                  <img [src]="order.img" alt="" />
+                </div>
+                <div class="basket__product__title">
+                  <span>{{ order.name }}</span>
+                </div>
+              </td>
+              <td>
+                <strong>${{ order.price }}</strong>
+              </td>
+              <td>
+                <app-counter [product]="order" (changeCount)="detectChangeCount($event)"></app-counter>
+              </td>
+              <td>
+                <span class="basket__product__price">
+                  ${{ order.price * order.count }}</span>
+              </td>
+              <td class="basket__product__close">
+                <i class="icon__cancel" (click)="openDialog(order)"><svg height="20px" viewBox="0 0 365.696 365.696"
+                    width="20px" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+                  </svg></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="basket__order__total">
+          <div class="basket__order__total-cupon">
+            <input type="text" name="txt" placeholder="Cupon Code">
+            <a class="btn">Apply Coupon</a>
+          </div>
+          <div class="basket__order__total-price">
+            <h5>TOTAL: <span>{{totalPrice | currency}}</span></h5>
+          </div>
+          <a class="btn basket__order__total__checkout" (click)="toCheckout()"> TO CHECKOUT</a>
+        </div>
+      </div>
+      <div class="basket__attention" *ngIf="!basketLength">
+        <h3>Sorry, your shopping cart is empty.</h3>
+        <a class="basket__attention-view" [routerLink]="['/menu/delivery']">VIEW
+          MENU</a>
+      </div>
+    </div>
+
+    <form class="basket__checkout" *ngIf="checkout === true" #orderForm="ngForm" novalidate
+      (ngSubmit)="addOrder(orderForm)">
+      <div class="basket__checkout__left basket__checkout__container">
+        <div class="basket__checkout__title">
+          <h5>Billing Details</h5>
+        </div>
+        <div class="basket__checkout__fName">
+          <input #name="ngModel" [(ngModel)]="userFirstName" name="userFirstName" type="text" placeholder="First Name"
+            required pattern="[a-zA-Z]{2,}" [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}">
+          <div class="basket__checkout__errors" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div class="basket__checkout__error" *ngIf="name.errors.required">
+              Required field
+            </div>
+            <div class="basket__checkout__error" *ngIf="name.errors.pattern">
+              Wrong name
+            </div>
+          </div>
+        </div>
+
+        <div class="basket__checkout__lName">
+          <input type="text" [(ngModel)]="userLastName" name="userLastName" placeholder="Last Name" #lastName="ngModel"
+            required [ngClass]="{'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched)}"
+            pattern="[a-zA-Z]{2,}">
+          <div class="basket__checkout__errors" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+            <div class="basket__checkout__error" *ngIf="lastName.errors.required">
+              Required field
+            </div>
+            <div class="basket__checkout__error" *ngIf="lastName.errors.pattern">
+              Wrong name
+            </div>
+          </div>
+
+        </div>
+
+        <div class="basket__checkout__email">
+          <input type="email" [(ngModel)]="userEmail" name="userEmail" #email="ngModel" placeholder="Email" required
+            [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          <div class="basket__checkout__errors" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div class="basket__checkout__error" *ngIf="email.errors.required">
+              Required field
+            </div>
+            <div class="basket__checkout__error" *ngIf="email.errors.pattern">
+              Wrong email
+            </div>
+          </div>
+        </div>
+
+        <div class="basket__checkout__phone">
+          <input type="text" [(ngModel)]="userPhone" name="userPhone" #phone="ngModel"
+            placeholder="Phone: +(123) 456-78-90" minlength="12" required
+            [ngClass]="{'is-invalid': phone.invalid && (phone.dirty || phone.touched)}"
+            pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$">
+          <div class="basket__checkout__errors" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+            <div class="basket__checkout__error" *ngIf="phone.errors.required">
+              Required field
+            </div>
+            <div class="basket__checkout__error" *ngIf="phone.errors.pattern">
+              Wrong phone
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="basket__checkout__adress">
+          <div class="basket__checkout__adress__group">
+            <input type="text" name="userCity" placeholder="City" minlength="3" [(ngModel)]="userCity" #city="ngModel"
+              [ngClass]="{'is-invalid': city.invalid && (city.dirty || city.touched)}" required>
+            <div class="basket__checkout__errors" *ngIf="city.invalid && (city.dirty || city.touched)">
+              <div class="basket__checkout__error" *ngIf="city.errors.required">
+                Required field
+              </div>
+            </div>
+          </div>
+          <div class="basket__checkout__adress__group"></div>
+          <input type="text" name="userAddress" placeholder="Adress" minlength="12" [(ngModel)]="userAddress"
+            #adress="ngModel" [ngClass]="{'is-invalid': adress.invalid && (adress.dirty || adress.touched)}" required>
+          <div class="basket__checkout__errors" *ngIf="adress.invalid && (adress.dirty || adress.touched)">
+            <div class="basket__checkout__error" *ngIf="adress.errors.required">
+              Required field
+            </div>
+          </div>
+        </div>
+
+
+        <div class="basket__checkout__notes">
+          <textarea [(ngModel)]="userComment" name="userComment" maxlength="256" cols="30" rows="10"
+            placeholder="Order Notes"></textarea>
+        </div>
+        <div class="basket__checkout__btn">
+          <button class="btn btnBack" (click)="order = true ;checkout = false">BACK TO CART</button>
+        </div>
+      </div>
+
+
+
+      <div class="basket__checkout__right basket__checkout__container">
+        <div class="basket__checkout__details">
+          <h5>YOUR ORDER</h5>
+          <div class="basket__checkout__products__title">
+            <h6>PRODUCT</h6> <span>TOTAL</span>
+          </div>
+          <div class="basket__checkout__products">
+            <p *ngFor="let item of basket"><span>{{ item.name}}</span> <span>x {{item.count}}
+              </span><small>${{item.price * item.count}}</small></p>
+          </div>
+          <div class="basket__checkout__shipping">
+            <h6>SHIPPING </h6> <span>Free Shipping</span>
+          </div>
+          <div class="basket__checkout__total">
+            <h6>ORDER TOTAL </h6> <span class="price-big">${{totalPrice}}</span>
+          </div>
+        </div>
+        <div class="basket__checkout__payment">
+          <h5>PAYMENT METHODS</h5>
+          <div class="basket__checkout__payment-mode radioBtn">
+            <input type="radio" id="radio01" name="demo02" checked [(ngModel)]="payment" /><label for="radio01">
+              Cash on Delivery </label></div>
+          <div class=" basket__checkout__payment-mode radioBtn">
+            <input type="radio" id="radio02" name="demo02" /><label for="radio02">
+              PayPal <span>( In Development )</span></label>
+            <div class="basket__checkout__payment__payPal"> <a href="#"><img
+                  src="../../../assets/images/other/paycart.png" alt=""></a><a href="https://www.paypal.com/ua/home"
+                target="_blank">What is PayPal?</a></div>
+          </div>
+          <div class="basket__checkout__terms">
+            <div class="checkbox-group">
+              <input id="checkbox" type="checkbox" *ngIf="orderForm.invalid" (change)="toggleVisibility($event)"
+                disabled />
+              <input id="checkbox" type="checkbox" *ngIf="orderForm.valid" (change)="toggleVisibility($event)">
+              <label for="checkbox">I’ve read and accept the terms &amp; conditions *</label>
+              <div class="basket__checkout__terms__error" *ngIf="orderForm.valid && marked === false">
+                Must be checked
+              </div>
+            </div>
+          </div>
+          <div class="basket__checkout__btn">
+            <button class="btn" type="submit" [disabled]="marked === false">PROCEED
+              TO PAYMENT</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="basket__complete" *ngIf="orderComplete"> <img src="../../../assets/images/other/complete-sign.png"
+        alt="">
+      <p>Thank you for ordering in our restaurant.</p>
+      <div>
+        <button [routerLink]="[ '/home']" class="btn">Go To Main Page</button></div>
+    </div>
+  </div>
+</div>
