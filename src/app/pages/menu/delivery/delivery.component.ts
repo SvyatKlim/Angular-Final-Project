@@ -17,7 +17,8 @@ export class DeliveryComponent implements OnInit {
   products: Array<IProduct>;
   btnActive: boolean = false;
   btnCatActive: string;
-
+  search: boolean = false;
+  searchInput: string = '';
   ngOnInit(): void {
     this.getFireCloudCategories();
     this.getFireCloudProducts()

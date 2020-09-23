@@ -18,23 +18,34 @@
       </p>
     </div>
   </div>
-  <div class="dellivery__search container">
-    <input type="text" placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword">
+  <!-- <div class="dellivery__search__template" *ngIf="!searchedKeyword">
+    <input class="dellivery__input" type="text" placeholder="Enter Keyword for filter result"
+      [(ngModel)]="searchedKeyword">
+  </div> -->
+  <div class=" dellivery__search dellivery__search__style container">
+    <input class="dellivery__input" type="text" placeholder="Enter Keyword for filter result"
+      [(ngModel)]="searchedKeyword">
     <div class="dellivery__search__category">
-      <!-- <a class="dellivery__search__category__btn" *ngFor="let item of categories" >{{item.nameEN}}</a>-->
+      <a class="dellivery__search__category__btn" *ngFor="let item of categories">{{item.nameEN}}</a>
     </div>
-<div class="dellivery__search__products">
-      <div class="dellivery__search__products__item" *ngFor="let product of products | filter:searchedKeyword">
+    <div class="dellivery__search__products">
+      <div class="dellivery__search__products__item" *ngFor="let product of products | filter:searchedKeyword"
+        [routerLink]="['/delivery/' + product.category, product.id]">
         <div class="dellivery__search__products__item__img"><img [src]="product.img" alt=""></div>
         <div class="dellivery__search__products__item__title">
           <p>{{product.name | titlecase}}</p>
         </div>
-        <div class="dellivery__search__products__item__ingridients">
-          Ingridients:
-          <span>{{product.ingridients}}</span>
+        <div class="dellivery__search__products__item__flip">
+          <p>{{product.name | titlecase}}</p>
+          <div class="dellivery__search__products__item__ingridients" *ngIf="product.vegetarian">
+            Vegetarian
+          </div>
+          <div class="dellivery__search__products__item__ingridients">
+            Ingridients: <br>
+            <span>{{product.ingridients}}</span>
+          </div>
         </div>
-        <div class="dellivery__search__products__item__ingridients" *ngIf="product.vegetarian">
-        </div>
+
       </div>
     </div>
   </div>
