@@ -18,12 +18,33 @@
       </p>
     </div>
   </div>
+  <div class="dellivery__search container">
+    <input type="text" placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword">
+    <div class="dellivery__search__category">
+      <!-- <a class="dellivery__search__category__btn" *ngFor="let item of categories" >{{item.nameEN}}</a>-->
+    </div>
+<div class="dellivery__search__products">
+      <div class="dellivery__search__products__item" *ngFor="let product of products | filter:searchedKeyword">
+        <div class="dellivery__search__products__item__img"><img [src]="product.img" alt=""></div>
+        <div class="dellivery__search__products__item__title">
+          <p>{{product.name | titlecase}}</p>
+        </div>
+        <div class="dellivery__search__products__item__ingridients">
+          Ingridients:
+          <span>{{product.ingridients}}</span>
+        </div>
+        <div class="dellivery__search__products__item__ingridients" *ngIf="product.vegetarian">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Menu Categories -->
+
   <div class="dellivery__menu container">
-    <div
-      class="dellivery__menu__item"
-      *ngFor="let cat of categories"
-      [routerLink]="['/delivery/' + cat.nameEN]"
-    >
+    <div class="dellivery__menu__item" *ngFor="let cat of categories" [routerLink]="['/delivery/' + cat.nameEN]">
       <div class="dellivery__menu__item__img">
         <img [src]="cat.img" alt="" />
       </div>

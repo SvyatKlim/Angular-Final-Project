@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -37,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReservationFormComponent } from './shared/components/reservation-form/reservation-form.component';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +77,8 @@ import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
     ReactiveFormsModule,
     MatDialogModule,
     ToastrModule.forRoot(),
-    CalendarModule
+    CalendarModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

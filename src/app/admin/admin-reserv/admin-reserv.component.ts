@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, } from '@angular/core';
 import { IReserv } from '../../shared/interfaces/reservation.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -17,11 +17,19 @@ export class AdminReservComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'date', 'email', 'name', 'people', 'time', 'status']
   reservArr: IReserv[] = [];
+  modeselect: string;
+  status: Array<object> = [
+    { value: '0', viewValue: 'booked' },
+    { value: '1', viewValue: 'in processing' },
+    { value: '2', viewValue: 'canceled' },
+    { value: '3', viewValue: 'done' }
+  ];
   constructor(private fireStorag: AngularFireStorage,
-    public dialog: MatDialog, private reservService: ReservationService) { }
+    public dialog: MatDialog, private reservService: ReservationService,) { }
 
   ngOnInit(): void {
     this.adminFireCloudReserv()
+
   }
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -71,10 +79,21 @@ export class AdminReservComponent implements OnInit {
     this.reservService.getFireCloudReserv().subscribe((collection) => {
       this.reservArr = collection.map((document) => {
         const data = document.payload.doc.data() as IReserv;
-        const id = document.payload.doc.id;
-        return { id, ...data };
+        const dataID = document.payload.doc.id;
+        return { dataID, ...data };
       });
       this.dataSource.data = this.reservArr
     });
+  }
+  changeSelected(eventValue: string, reservOrder: IReserv): void {
+    this.modeselect = eventValue
+    this.updateStatusReserv(reservOrder, this.modeselect)
+  }
+  updateStatusReserv(order: IReserv, newValue: string): void {
+    this.reservService
+      .updateFireCloudReserv(order, newValue)
+      .then((message) => console.log(message))
+      .catch((err) => console.log(err));
+    console.log(order)
   }
 }

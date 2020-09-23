@@ -12,7 +12,7 @@ export class FdAdminComponent implements OnInit {
   constructor(private AuthService: AuthService) { }
 
   signIn(): void {
-    this.AuthService.signIn(this.email, this.password)
+    this.AuthService.signInAdmin(this.email, this.password)
   }
 
   ngOnInit(): void { }

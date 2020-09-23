@@ -119,6 +119,34 @@
             </div>
             <div class="profile__content__details" *ngIf="reservLink">
                 <h4>My Reservation:</h4>
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100">
+                                <table class="profile__reservation__table">
+                                    <thead>
+                                        <tr class="table100-head">
+                                            <th class="column1">Date</th>
+                                            <th class="column2">Email</th>
+                                            <th class="column3">People</th>
+                                            <th class="column4">Time</th>
+                                            <th class="column5">Progress</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let reserv of userReserv">
+                                            <td class="column1">{{reserv.date}}</td>
+                                            <td class="column2">{{reserv.email}}</td>
+                                            <td class="column3">{{reserv.people}}</td>
+                                            <td class="column4">{{reserv.time}}</td>
+                                            <td class="column5">{{reserv.progress}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

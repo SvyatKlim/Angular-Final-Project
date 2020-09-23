@@ -28,14 +28,11 @@ export class LoginComponent implements OnInit {
     this.marked = e.target.checked;
   }
   login(): void {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      this.authService.signIn(this.email, this.password)
-      this.resetForm()
-    } else {
-      this.authService.showError('Sorry, you account login or password is wrong.')
+    if (this.email != '' && this.password != '') {
+      this.authService.signInUser(this.email, this.password)
+      this.resetForm();
     }
-
+    else { this.authService.showError('Sorry, you account login or password is wrong.') }
   }
   register(): void {
     this.authService.signUp(this.emailName, this.passFirst, this.firstName, this.lastName)

@@ -116,4 +116,10 @@
             text-decoration: none;
         }
     }
+    &__reservation__table {
+        td,
+        th {
+            width: 20%;
+        }
+    }
 }

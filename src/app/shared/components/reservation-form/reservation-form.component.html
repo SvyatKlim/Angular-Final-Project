@@ -1,5 +1,5 @@
 <div class="reservation__form__container">
-    <form (ngSubmit)="addReserv(reservForm)" #reservForm="ngForm">
+    <form #reservForm="ngForm" (ngSubmit)="addReserv()">
         <div class="reservation__form__input">
             <input name="Name" class="otw-reservation-name" type="text" placeholder="Your name" [(ngModel)]="name"
                 #nameInput="ngModel" required pattern="[a-zA-Z]{2,}"

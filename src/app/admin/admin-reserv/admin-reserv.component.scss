@@ -10,8 +10,11 @@ td,
 th {
     width: 12.5%;
 }
-td {
+td.static {
     padding: 20px 24px !important;
+}
+td.select {
+    padding: 20px 15px 0 !important;
 }
 th {
     padding: 10px 24px !important;

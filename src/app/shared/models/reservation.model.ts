@@ -1,8 +1,8 @@
 import { IReserv } from '../interfaces/reservation.interface';
 export class Reservation implements IReserv {
     constructor(
-        public userID: string,
         public dataID: string,
+        public userID: string,
         public name: string,
         public email: string,
         public date: string,

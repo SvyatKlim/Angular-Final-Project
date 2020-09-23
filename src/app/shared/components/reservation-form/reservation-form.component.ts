@@ -67,6 +67,7 @@ export class ReservationFormComponent implements OnInit {
     } else {
       this.loginedUserId = 'guest'
     }
+    console.log(localStorage.getItem('user'))
   }
   onValueChange(args: any): void {
     this.dateValue = args.value.toLocaleDateString();
@@ -83,8 +84,8 @@ export class ReservationFormComponent implements OnInit {
   }
   addReserv(): void {
     const reserv = new Reservation(
-      this.loginedUserId,
       this.dataId,
+      this.loginedUserId,
       this.name,
       this.email,
       this.dateValue,
@@ -96,8 +97,8 @@ export class ReservationFormComponent implements OnInit {
       delete reserv.dataID;
       this.reservSerice
         .postFireCloudReserv({ ...reserv })
-        .then((message) => console.log(message))
-        .catch((err) => console.log(err));
+        .then(() => this.reservSerice.showSuccess())
+        .catch((err) => this.reservSerice.showError(err));
     }
     this.resetForm();
     console.log(reserv)

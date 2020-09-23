@@ -20,7 +20,7 @@ export class AuthService {
     this.toastr.error(`Error: ${error}`);
   }
 
-  signIn(email: string, password: string): void {
+  signInAdmin(email: string, password: string): void {
     this.afAuth.signInWithEmailAndPassword(email, password)
       .then(user => {
         this.afFirestore.collection('users').ref.where('id', '==', user.user.uid).onSnapshot(
@@ -32,12 +32,8 @@ export class AuthService {
                 this.router.navigateByUrl('/admin');
                 this.userStatusChanges.next('admin');
                 this.showSuccess('admin')
-              }
-              else if (this.currentUser.role === 'user') {
-                localStorage.setItem('user', JSON.stringify(this.currentUser));
-                this.router.navigateByUrl('/profile');
-                this.userStatusChanges.next('/profile');
-                this.showSuccess(' Welcome to our restaurant !')
+              } else {
+                this.showError('You are not an Admin, run a puppy !!!!')
               }
             });
           }
@@ -45,6 +41,29 @@ export class AuthService {
       })
       .catch(err => this.showError(err.message));
   }
+  signInUser(email: string, password: string): void {
+    this.afAuth.signInWithEmailAndPassword(email, password)
+      .then(user => {
+        this.afFirestore.collection('users').ref.where('id', '==', user.user.uid).onSnapshot(
+          snap => {
+            snap.forEach(userRef => {
+              this.currentUser = userRef.data();
+              if (this.currentUser.role === 'user') {
+                localStorage.setItem('user', JSON.stringify(this.currentUser));
+                this.router.navigateByUrl('/profile');
+                this.userStatusChanges.next('/profile');
+                this.showSuccess(' Welcome to our restaurant !')
+              }
+              else {
+                this.showError('This Account was not found, please register an account')
+              }
+            });
+          }
+        );
+      })
+      .catch(err => this.showError(err.message));
+  }
+
   signOut(): void {
     this.afAuth.signOut().then(() => {
       localStorage.removeItem('admin');
