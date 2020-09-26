@@ -37,6 +37,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ReservationFormComponent } from './shared/components/reservation-form/reservation-form.component';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxParallaxModule } from '@yoozly/ngx-parallax';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ToastrModule.forRoot(),
     CalendarModule,
     Ng2SearchPipeModule,
+    NgxParallaxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

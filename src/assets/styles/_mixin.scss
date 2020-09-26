@@ -1,3 +1,4 @@
+$outQuad: 'ease-in-out';
 @function decimal-round($number, $digits: 0, $mode: round) {
   $n: 1;
   // $number must be a number
@@ -80,7 +81,7 @@
 }
 @mixin fadeUp($distance, $duration, $easing: $outQuad) {
   transform: translate(0, $distance);
-  opacity: 0;
+  opacity: 1;
   transition: all $duration $easing;
 }
 @mixin fade($duration, $easing: $outQuad) {

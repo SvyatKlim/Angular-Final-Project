@@ -6,6 +6,13 @@
 @import "assets/styles/mixin";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~ngx-toastr/toastr";
+@import "~@angular/material/theming";
+* {
+  $custom-typography: mat-typography-config(
+    $font-family: '"Montserrat","Suranna", sans-serif;',
+  );
+  @include mat-core($custom-typography);
+}
 ::-webkit-scrollbar {
   width: 5px;
   background: lightgray;
@@ -32,14 +39,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: "Quicksand", sans-serif;
-}
+
 .cdk-global-overlay-wrapper {
   justify-content: center;
 }
@@ -92,7 +92,57 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.divider {
+  width: 29.5em;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  font-size: 10.4844px;
+  line-height: 16.076px;
+  position: relative;
+  &-svg {
+    display: inline-block;
+    width: 3em;
+    height: 4em;
+  }
+  .hr-double.left:before {
+    position: absolute;
+    content: "";
+    width: 10em;
+    height: 1px;
+    left: 2em;
+    top: 1.8em;
+    background-color: $colorLink;
+  }
+  .hr-double.left:after {
+    position: absolute;
+    content: "";
+    width: 12em;
+    height: 1px;
+    top: 2.2em;
+    left: 0;
+    background-color: $colorLink;
+  }
+  .hr-double.right:after {
+    position: absolute;
+    content: "";
+    width: 12em;
+    height: 1px;
+    top: 2.2em;
+    right: 0;
+    background-color: $colorLink;
+  }
+  .hr-double.right:before {
+    position: absolute;
+    content: "";
+    width: 10em;
+    height: 1px;
+    right: 2em;
+    top: 1.8em;
+    background-color: $colorLink;
+  }
 }
 
 @media screen and (max-width: 1300px) {
