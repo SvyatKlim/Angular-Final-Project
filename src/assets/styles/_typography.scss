@@ -1,3 +1,5 @@
+@import "../styles/variables";
+@import "../styles/mixin";
 p,
 a {
   color: #777777;
@@ -40,6 +42,22 @@ h4 {
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
   font-size: 26px;
+  span {
+    color: $hr;
+    @include font(36, $montez);
+    text-transform: none;
+  }
+}
+.h2 {
+  line-height: 44px;
+  @include font(44, $suranna);
+  text-align: center;
+  color: #fff;
+  span {
+    color: #fcda9a;
+    @include font(50.3, $montez);
+    text-transform: none;
+  }
 }
 h5,
 h6 {
@@ -146,26 +164,4 @@ blockquote + p {
   padding-bottom: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
-a.more-details {
-  font-family: "Suranna", serif;
-  text-transform: uppercase;
-  font-size: 21px;
-  border-bottom: 1px solid;
-  color: #161d27;
-  display: inline-block;
-  padding-bottom: 3px;
-  margin-top: 10px;
-
-  -webkit-transition: all 0.2s ease 0s;
-  -moz-transition: all 0.2s ease 0s;
-  -o-transition: all 0.2s ease 0s;
-  -ms-transition: all 0.2s ease 0s;
-  transition: all 0.2s ease 0s;
-}
-a.more-details .fa {
-  position: relative;
-  top: -2px;
-  margin-left: 7px;
-  font-size: 14px;
 }

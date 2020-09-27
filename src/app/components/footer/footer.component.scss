@@ -1,10 +1,154 @@
-// .footer_wrapper {
-//   position: relative;
-//   background-color: #0b0e13;
-//   background-image: url(../../../assets/images/footer/footer_l.png),
-//     url(../../../assets/images/footer/footer_r.png);
-//   background-position: left 60px, right 60px;
-//   background-repeat: no-repeat;
-//   width: 100%;
-//   padding-top: 65px;
-// }
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/typography";
+.footer__wrapper {
+    position: relative;
+    background-color: #0b0e13;
+    background-image: url(../../../assets/images/footer/footer_l.png), url(../../../assets/images/footer/footer_r.png);
+    background-position: left 60px, right 60px;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-top: 65px;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .footer__center {
+            width: 33.3%;
+            margin-bottom: 30px;
+            a {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 25px;
+            }
+            &__info {
+                width: 80%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 0 0 50px;
+            }
+            &__links {
+                margin-bottom: 20px;
+                margin-top: 30px;
+                align-items: center;
+                display: flex;
+            }
+            &__link {
+                padding: 0;
+                margin: 0;
+                margin-left: 10px;
+                display: flex;
+                justify-content: space-between;
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+                    border-radius: 100%;
+                    line-height: 39px;
+                    background-color: #1d2026;
+                    margin-right: 10px;
+                    transition: all 0.3s;
+                    &:hover {
+                        background-color: #2b2f35;
+                        svg {
+                            fill: $colorLink;
+                        }
+                    }
+                    svg {
+                        fill: #fff;
+                    }
+                }
+            }
+            ul.contact-info-list {
+                text-align: center;
+                li {
+                    color: #acb8c4;
+                    font-size: 14px;
+                    margin: 2px 0;
+                    span {
+                        color: #fcda9a;
+                    }
+                }
+            }
+        }
+    }
+}
+.newsletter .email {
+    background-color: #1d2026;
+    border: none;
+    width: 265px;
+    line-height: 37px;
+    height: 40px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #acb8c4;
+    border-radius: 0;
+    &:focus {
+        background-color: #2b2f35;
+        outline: none;
+    }
+}
+.newsletter .submit {
+    margin-left: 10px;
+    padding: 11px 60px;
+    color: #0b0e13;
+    font-family: "Montserrat", Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    font-weight: 600;
+    transition: all 0.2s ease 0s;
+    background-color: $colorLink;
+    &:hover {
+        background-color: $hr;
+        outline: none;
+    }
+}
+.copyright {
+    position: relative;
+    background-color: #0b0e13;
+    border-top: 1px solid #161d27;
+    padding: 10px 0;
+    &__container {
+        width: 1170px;
+        margin: 0 auto;
+        padding: 0 50px;
+        display: flex;
+        justify-content: space-between;
+        p {
+            color: #7f848a;
+            padding-bottom: 0;
+            padding-top: 15px;
+            font-size: 13px;
+            line-height: 13px;
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            a {
+                font-size: 13px;
+                color: #7f848a;
+                text-transform: uppercase;
+                transition: all 0.4s ease 0s;
+                text-decoration: none;
+                padding: 9px 5px;
+                &:hover {
+                    color: $colorLink;
+                    transition: all 0.4s ease 0s;
+                }
+            }
+        }
+    }
+    &__right {
+        width: 40%;
+        display: flex;
+        align-items: center;
+    }
+}

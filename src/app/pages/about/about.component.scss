@@ -1,6 +1,189 @@
+@import "../../../assets/styles/typography";
+@import "../../../assets/styles/mixin";
+@import "../../../assets/styles/variables";
+@import "~swiper/swiper-bundle.min.css";
 .background {
   width: 100%;
-  height: 75vh;
+  height: 70vh;
   background-image: url("../../../assets/images/about_back.jpg");
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about {
+  &__content {
+    padding: 100px 0 0;
+    .container {
+      padding-bottom: 100px;
+    }
+  }
+  &__since {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 50px;
+    &__img {
+      width: 49%;
+      display: flex;
+      justify-content: center;
+    }
+    &__text {
+      width: 49%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__blockquote {
+      width: 70%;
+      margin: 20px auto;
+      text-align: center;
+      p {
+        color: $hr;
+        @include font(36, $suranna);
+        line-height: 42px;
+        padding: 0;
+      }
+      span {
+        font-size: 14px;
+        color: #161d27;
+        text-transform: uppercase;
+      }
+    }
+  }
+  &__text {
+    font-size: 16px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  &__approach {
+    margin-top: 100px;
+    &__text {
+      width: 55%;
+    }
+    &__img {
+      width: 45%;
+    }
+  }
+  &__banner {
+    &__place,
+    &__staff,
+    &__testemonials {
+      width: 100%;
+      height: 80vh;
+      background-image: url("../../../assets/images/reserv_back.jpg");
+      background-size: cover;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      &__content {
+        width: 100%;
+      }
+    }
+    &__staff {
+      background-image: url("../../../assets/images/about/bkg-img7.jpg");
+    }
+    &__testemonials {
+      background-image: url("../../../assets/images/about/bkg-img20.jpg");
+      &__container {
+        width: 1170px;
+        margin: 0 auto;
+        background-color: #161d27;
+        padding: 40px 0 30px;
+        margin-top: 15px;
+      }
+      h4 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+      p {
+        color: #ccd4dc;
+        font-size: 14px;
+        padding: 0 140px 0;
+        line-height: 22px;
+        text-align: center;
+        &.testimonial-author {
+          color: #fcda9a;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+  &__restaurant {
+    padding-top: 100px;
+    &__container {
+      padding: 0 100px;
+    }
+    &__img {
+      width: 50;
+      display: flex;
+      justify-content: center;
+    }
+    &__content {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__staff {
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    &__member {
+      width: 30%;
+      figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        figcaption {
+          padding-top: 15px;
+          width: 80%;
+          margin: 0 auto;
+          .hr {
+            margin: 5px 0 20px;
+          }
+          p {
+            @include font(17, $montserratUltra);
+            padding-bottom: 0;
+            color: #959595;
+          }
+        }
+      }
+      &:nth-child(2) {
+        margin: 0 40px;
+      }
+    }
+  }
+}
+a.more-details {
+  @include font(21, $suranna, normal);
+  color: #161d27;
+  &:hover {
+    color: $hr;
+    svg {
+      fill: $hr;
+    }
+  }
+}
+h3.h3 {
+  @include font(36, $montserratUltra);
+  color: #161d27;
+  margin-top: 0;
+  text-align: center;
+}
+.swiper-wrapper {
+  padding-bottom: 30px;
+}
+.swiper-pagination.swiper-pagination-testemonials {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  bottom: 0px !important;
 }

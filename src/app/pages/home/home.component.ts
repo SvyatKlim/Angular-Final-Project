@@ -1,8 +1,9 @@
 import { HostListener, AfterContentInit } from '@angular/core';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
-import { Renderer2 } from '@angular/core';
-import Parallax from 'parallax-js'
+import Parallax from 'parallax-js';
+import AOS from 'aos';
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ import Parallax from 'parallax-js'
 })
 export class HomeComponent implements OnInit, AfterContentInit {
   load_completed = false;
-  constructor(private renderer: Renderer2) { }
+  constructor() { }
   ngAfterContentInit(): void {
     const scene = document.getElementById('scene');
     const scene2 = document.getElementById('scene2');
@@ -41,9 +42,26 @@ export class HomeComponent implements OnInit, AfterContentInit {
       relativeInput: true,
       hoverOnly: true
     });
+    this.load_completed = true
   }
   ngOnInit(): void {
+    AOS.init()
     this.load_completed = true;
   }
+  config: SwiperOptions = {
+    pagination: {
+      el: '.swiper-pagination-home',
+      type: 'bullets',
+      clickable: true
+    },
+    autoHeight: true,
+    allowTouchMove: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true
+    },
+    slidesPerView: 1,
+    loop: true
+  };
 
 }

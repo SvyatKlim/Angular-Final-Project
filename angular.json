@@ -29,7 +29,8 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/swiper/swiper.scss"
             ],
             "scripts": [
               "./node_modules/parallax-js/dist/parallax.min.js"
@@ -96,6 +97,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "./node_modules/aos/dist/aos.css",
               "src/styles.scss"
             ],
             "scripts": []

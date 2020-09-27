@@ -37,7 +37,21 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ReservationFormComponent } from './shared/components/reservation-form/reservation-form.component';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { NgxParallaxModule } from '@yoozly/ngx-parallax';
+import {
+  SwiperModule, SwiperConfigInterface,
+  SWIPER_CONFIG,
+} from 'ngx-swiper-wrapper';
+import { ScrollToTopComponent } from './shared/components/scroll-to-top/scroll-to-top.component';
+import { LocationsComponent } from './shared/components/locations/locations.component';
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  observer: true,
+  direction: 'horizontal',
+  threshold: 50,
+  spaceBetween: 5,
+  slidesPerView: 1,
+  centeredSlides: true
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +77,8 @@ import { NgxParallaxModule } from '@yoozly/ngx-parallax';
     BasketDialogComponent,
     ProfileComponent,
     ReservationFormComponent,
+    ScrollToTopComponent,
+    LocationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,9 +96,12 @@ import { NgxParallaxModule } from '@yoozly/ngx-parallax';
     ToastrModule.forRoot(),
     CalendarModule,
     Ng2SearchPipeModule,
-    NgxParallaxModule,
+    SwiperModule,
   ],
-  providers: [],
+  providers: [{
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG
+  }],
   bootstrap: [AppComponent],
   entryComponents: [BasketDialogComponent, LoginComponent],
 })
