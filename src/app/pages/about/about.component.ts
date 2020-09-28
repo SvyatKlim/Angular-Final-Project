@@ -8,6 +8,7 @@ import { SwiperOptions } from 'swiper';
 })
 export class AboutComponent implements OnInit {
   load_completed: boolean = false
+  formHorizontal: boolean = true
   constructor() { }
 
   ngOnInit(): void {

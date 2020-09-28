@@ -8,7 +8,8 @@ export class Reservation implements IReserv {
         public date: string,
         public time: string,
         public people: string,
-        public progress: string) {
+        public progress: string,
+        public directions?: string) {
 
     }
 }

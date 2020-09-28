@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ReservationService } from '../../services/reservation.service';
 import { IReserv } from '../../interfaces/reservation.interface';
 import { Reservation } from '../../models/reservation.model';
-
+import AOS from 'aos';
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
   styleUrls: ['./reservation-form.component.scss']
 })
 export class ReservationFormComponent implements OnInit {
+  @Input() statusForm: boolean;
   public minDate: Date = new Date("09/21/2020");
   public maxDate: Date = new Date("12/31/2020");
   public value: Date = new Date("09/22/2020");
@@ -21,13 +22,18 @@ export class ReservationFormComponent implements OnInit {
   timeSelected: string;
   guestCount: Array<object>;
   time: Array<object>;
+  place: Array<object>;
   loginedUserId: string;
   dataId: string;
   editStatus: boolean = false;
   progress: string = 'booked';
+  formHorizon: boolean = false;
+  directions: string;
   constructor(private fireStorag: AngularFireStorage, private reservSerice: ReservationService) { }
 
   ngOnInit(): void {
+    AOS.init()
+    console.log(this.statusForm)
     this.guestCount = [
       { id: 0, name: '1 person' },
       { id: 1, name: '2 people' },
@@ -56,6 +62,11 @@ export class ReservationFormComponent implements OnInit {
       { id: 7, name: '10:00 pm' },
       { id: 8, name: '10:30 pm' },
     ];
+    this.place = [
+      { id: 0, name: 'London East' },
+      { id: 1, name: 'London Center' },
+      { id: 2, name: 'Londin West' },
+    ]
     this.getLoginedUser()
   }
   private getLoginedUser(): void {
@@ -67,7 +78,6 @@ export class ReservationFormComponent implements OnInit {
     } else {
       this.loginedUserId = 'guest'
     }
-    console.log(localStorage.getItem('user'))
   }
   onValueChange(args: any): void {
     this.dateValue = args.value.toLocaleDateString();
@@ -75,9 +85,13 @@ export class ReservationFormComponent implements OnInit {
   onTimeSelected(event: Event): void {
     this.customFunction(event, 'time')
   }
+  onPlaceSelected(event: Event): void {
+    this.customFunction(event, 'place')
+  }
   customFunction(val: any, detail: string): void {
     if (detail === 'time') { this.timeSelected = val }
-    if (detail === 'count') { this.count = val };
+    if (detail === 'count') { this.count = val }
+    if (detail === 'place') { this.directions = val };
   }
   countSelected(event: Event): void {
     this.customFunction(event, 'count')
@@ -103,11 +117,42 @@ export class ReservationFormComponent implements OnInit {
     this.resetForm();
     console.log(reserv)
   }
+  addReservHorizontal(): void {
+    const reserv = new Reservation(
+      this.dataId,
+      this.loginedUserId,
+      this.name,
+      this.email,
+      this.dateValue,
+      this.timeSelected,
+      this.count,
+      this.progress,
+      this.directions
+    )
+    if (!this.editStatus) {
+      delete reserv.dataID;
+      this.reservSerice
+        .postFireCloudReserv({ ...reserv })
+        .then(() => this.reservSerice.showSuccess())
+        .catch((err) => this.reservSerice.showError(err));
+    }
+    this.resetForm();
+    console.log(reserv)
+  }
   private resetForm(): void {
-    this.name = '',
-      this.email = '',
-      this.dateValue = '',
-      this.timeSelected = '',
-      this.count = ''
+    if (this.formHorizon) {
+      this.name = '';
+      this.email = '';
+      this.dateValue = '';
+      this.timeSelected = '';
+      this.count = '';
+      this.directions = '';
+    } else {
+      this.name = '';
+      this.email = '';
+      this.dateValue = '';
+      this.timeSelected = '';
+      this.count = '';
+    }
   }
 }

@@ -161,6 +161,26 @@
       }
     }
   }
+  &__reservation {
+    &__form {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 100px;
+      &__title {
+        flex-wrap: wrap;
+        text-align: center;
+        h3.h3 {
+          @include font(36, $suranna);
+          span {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
 }
 a.more-details {
   @include font(21, $suranna, normal);

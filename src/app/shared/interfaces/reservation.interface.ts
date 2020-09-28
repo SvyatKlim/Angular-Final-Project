@@ -1,5 +1,5 @@
 export interface IReserv {
-    dataID:string
+    dataID: string
     userID: string;
     name: string;
     email: string;
@@ -7,4 +7,5 @@ export interface IReserv {
     time: string;
     people: string;
     progress: string;
+    directions?: string;
 }

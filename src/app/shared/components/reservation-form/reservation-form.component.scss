@@ -20,6 +20,9 @@
         transition: cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     &__input {
+        &__horizontal {
+            width: calc(33.3% - 40px);
+        }
         &__calendar {
             position: relative;
             &__date {
@@ -39,6 +42,12 @@
     }
     &__btn {
         width: 100%;
+        &.horizontalBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
         .btn {
             font-family: "Quicksand", sans-serif;
             text-transform: uppercase;
@@ -62,6 +71,9 @@
                 text-decoration: none;
                 background-color: $hr;
             }
+            &.horizontal {
+                width: calc(33.3% - 40px);
+            }
         }
     }
     &__error {
@@ -70,6 +82,12 @@
         margin-left: 9px;
         margin-top: 5px;
     }
+}
+.formHorizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 input,
 select {

@@ -1,0 +1,63 @@
+@import "../../../../assets/styles/typography";
+@import "../../../../assets/styles/mixin";
+@import "../../../../assets/styles/variables";
+.locations {
+    padding: 100px 0 50px;
+    &__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .divider {
+        .left,
+        .right {
+            &:before,
+            &:after {
+                background-color: $hr;
+            }
+        }
+    }
+    .h2 {
+        color: $title;
+        font-size: 40px;
+        span {
+            color: $hr;
+        }
+    }
+    .hr {
+        justify-content: start;
+    }
+    &__content {
+        padding: 0 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    &__item {
+        width: 33.3%;
+        display: flex;
+        justify-content: center;
+        &__title {
+            margin-bottom: 30px;
+        }
+        ul {
+            margin-bottom: 25px;
+            li {
+                font-size: 14px;
+                margin-bottom: 5px;
+                color: #777777;
+            }
+        }
+        .more-details {
+            @include font(21, $montserratUltra);
+            color: $title;
+            &:hover {
+                color: $hr;
+                svg {
+                    fill: $hr;
+                }
+            }
+        }
+    }
+}

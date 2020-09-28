@@ -305,4 +305,19 @@
             </div>
         </div>
     </div>
+    <div class="about__reservation">
+        <app-locations></app-locations>
+        <div class="about__reservation__form container">
+            <div class="about__reservation__form__title">
+                <h3 class="h3"><span>Reservation</span>
+                    Book your table</h3>
+                <div class="hr">
+                    <span class="hr__left"></span>
+                    <span class="hr__center"></span>
+                    <span class="hr__right"></span>
+                </div>
+            </div>
+            <app-reservation-form [statusForm]="formHorizontal"></app-reservation-form>
+        </div>
+    </div>
 </div>

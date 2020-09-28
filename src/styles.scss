@@ -197,8 +197,13 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  &-center {
+    justify-content: center;
+  }
 }
-
+ul.custom__content__list {
+  margin-top: 15px;
+}
 ul.custom__content__list li {
   @include font(17, $montserratUltra, normal);
   display: inline-block;
