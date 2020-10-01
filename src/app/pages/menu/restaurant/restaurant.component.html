@@ -1,5 +1,5 @@
 <div class="background">
-  <div class="rest__title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="600">
+  <div class="rest__title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
     <h2 class="h2"><span>Delicious Cousine</span></h2>
     <h2 class="h2">Discover the menu</h2>
   </div>
@@ -378,7 +378,7 @@
 </div>
 <div class="rest__banner__special ">
   <div class="container">
-    <div class="home__banner__catering__content" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="600">
+    <div class="home__banner__catering__content" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
       <h2 class="h2"><span>Wine List</span></h2>
       <h2 class="h2">FINEST WINE SELECTION</h2>
 
@@ -667,8 +667,21 @@
   </div>
 </div>
 <div class="rest__reserv">
-  <div class="rest__reserv__form container"><button type="button" class="rest__reserv__form__btn "><span>Download wine
-        list</span></button>
+  <div class="rest__reserv__form container"><button type="button" class="rest__reserv__form__btn "
+      (click)="viewReserv()"><span>Book a
+        Table</span></button>
+  </div>
+  <div class="rest__reserv__form__banner">
+    <div class="rest__reserv__form__app" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="650"
+      *ngIf="reservBtn">
+      <div _ngcontent-gso-c5="" class="rest__title">
+        <h3 _ngcontent-gso-c5="" class="h3"><span _ngcontent-gso-c5="">Reservation</span></h3>
+        <h3 _ngcontent-gso-c5="">BOOK YOUR TABLE</h3>
+        <div _ngcontent-gso-c5="" class="hr"><span _ngcontent-gso-c5="" class="hr__left"></span><span
+            _ngcontent-gso-c5="" class="hr__center"></span><span _ngcontent-gso-c5="" class="hr__right"></span></div>
+      </div>
+      <app-reservation-form></app-reservation-form>
+    </div>
   </div>
 
 </div>

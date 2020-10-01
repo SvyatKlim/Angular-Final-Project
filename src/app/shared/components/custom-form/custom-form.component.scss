@@ -1,0 +1,107 @@
+@import "../../../../assets/styles/typography";
+@import "../../../../assets/styles/mixin";
+@import "../../../../assets/styles/variables";
+
+.form__custom {
+    .fieldset {
+        display: flex;
+        justify-content: space-between;
+    }
+    span {
+        position: relative;
+        display: block;
+    }
+    input {
+        margin-bottom: 10px;
+    }
+    &__text,
+    &__textarea {
+        background-color: #fff;
+        padding: 5px 5px 5px 15px;
+        position: relative;
+        color: #777;
+        margin: 0;
+        font-weight: 300;
+        appearance: none;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: text;
+        &:focus {
+            border-color: $hr;
+            outline-color: $hr;
+        }
+        &.is-error {
+            border: 1px solid #dc3545;
+            padding-right: calc(1.5em + 0.75rem);
+            background-image: url("../../../../assets/images/icons/error.svg");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+            &:focus {
+                outline-color: #dc3545;
+            }
+        }
+    }
+    &__textarea {
+        height: 148px;
+        width: 100%;
+        padding: 5px 5px 5px 15px;
+    }
+    &__message {
+        width: 100%;
+    }
+    &__email,
+    &__name,
+    &__phone {
+        width: 32.5%;
+        &.contact {
+            width: 49.5%;
+        }
+    }
+    &__text {
+        min-height: 30px;
+        height: 37px;
+        width: 100%;
+    }
+    &__btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        .btn {
+            width: calc(24.3% - 40px);
+            font-family: "Quicksand", sans-serif;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 12px 0;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: none;
+            font-size: 14px;
+            transition: all 0.5s ease 0s;
+            font-weight: 600;
+            background-color: #161d27;
+            margin-top: 10px;
+            color: white;
+            &:hover,
+            &:active,
+            &:focus {
+                outline: none;
+                text-decoration: none;
+                background-color: $hr;
+            }
+        }
+    }
+    &__error {
+        color: #e62625;
+        font-weight: 600;
+        margin-left: 9px;
+        margin-top: 5px;
+    }
+    textarea {
+        resize: none;
+    }
+}

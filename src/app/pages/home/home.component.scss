@@ -56,7 +56,7 @@
     }
   }
   &__info {
-    padding-top: 80px;
+    padding: 80px 0;
     width: 100%;
     height: 90vh;
     background-image: url("../../../assets/images/bkg-img1.jpg");
@@ -465,5 +465,118 @@
       position: absolute;
       width: 500px;
     }
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .intro {
+    &__title {
+      h2 {
+        font-size: 48px;
+      }
+    }
+    &.container {
+      max-width: 1400px;
+    }
+    &__left {
+      &__main {
+        img {
+          max-height: 657px;
+          left: -19%;
+          margin-top: 57px;
+        }
+      }
+      &__img {
+        &-1 {
+          top: 49% !important;
+          left: 17% !important;
+        }
+        &-2 {
+          top: 6% !important;
+          left: 15% !important;
+        }
+        &-3 {
+          bottom: 22% !important;
+          left: 14% !important;
+        }
+        &-4 {
+          bottom: 13% !important;
+          left: 11% !important;
+        }
+        &-5 {
+          width: 13%;
+          top: 25% !important;
+          left: 14% !important;
+        }
+        img {
+          width: 80%;
+        }
+      }
+    }
+    &__right {
+      &__main {
+        img {
+          width: 16%;
+          right: 1% !important;
+          top: 2% !important;
+        }
+      }
+      &__img {
+        img {
+          width: 72%;
+        }
+        &-1 {
+          right: 12% !important;
+          top: 10% !important;
+        }
+        &-2 {
+          top: 46% !important;
+          right: 10% !important;
+        }
+        &-3 {
+          img {
+            width: 70%;
+          }
+          right: 12% !important;
+          top: 6% !important;
+        }
+        &-4 {
+          top: 40% !important;
+          right: 10% !important;
+        }
+      }
+    }
+  }
+  .home {
+    &__info {
+      height: auto;
+      &__container {
+        padding: 0 50px;
+      }
+      &__left,
+      &__right {
+        padding-top: 40px;
+        display: flex;
+        justify-content: center;
+        img {
+          width: 80%;
+          object-fit: contain;
+        }
+      }
+      &__center {
+        padding: 70px 60px;
+        width: 536px;
+        height: auto;
+        border-width: 14px;
+      }
+    }
+    &__catering {
+      .container {
+        padding: 0 50px;
+      }
+    }
+  }
+  .swiper-container .swiper-pagination-home {
+    bottom: -7px;
   }
 }

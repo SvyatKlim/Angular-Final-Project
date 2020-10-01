@@ -1,6 +1,127 @@
+@import "../../../assets/styles/typography";
+@import "../../../assets/styles/mixin";
+@import "../../../assets/styles/variables";
 .background {
   width: 100%;
   height: 70vh;
   background-image: url("../../../assets/images/catering_back.jpg");
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.catering {
+  &__intro {
+    padding: 100px 0 50px;
+    &__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h3.h3 {
+      @include font(36);
+      color: #161d27;
+      margin-top: 0;
+      text-align: center;
+      span {
+        display: block;
+      }
+    }
+    &__list {
+      width: 50%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      ul.custom__content__list li {
+        font-size: 15px;
+      }
+    }
+    p {
+      width: 50%;
+      text-align: center;
+      font-size: 15px;
+    }
+  }
+  &__banner {
+    width: 100%;
+    height: 80vh;
+    background-image: url("../../../assets/images/reserv_back.jpg");
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    &__content {
+      width: 100%;
+    }
+    &__event {
+      background-image: url("../../../assets/images/catering/bkg-img18.jpg");
+      position: relative;
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 8px;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        background: url("../../../assets/images/catering/border-decor.png") bottom left repeat-x;
+        background-size: contain;
+      }
+    }
+  }
+  &__service {
+    padding-top: 100px;
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      text-align: center;
+      margin-bottom: 100px;
+      &__img {
+        width: 49%;
+        display: flex;
+        justify-content: center;
+      }
+      &__content {
+        width: 49%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h3 {
+          font-size: 32px;
+        }
+      }
+      &__title {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &__event {
+    &__slider {
+      width: 1200px;
+      margin: 0 auto 40px;
+      .swiper-pagination {
+        margin: 30px 0 0;
+        justify-content: center;
+      }
+    }
+    &__reserv {
+      padding: 50px 0;
+      div:first-child {
+        margin-bottom: 60px;
+      }
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+  &__slider__item {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 100%;
+    }
+  }
 }

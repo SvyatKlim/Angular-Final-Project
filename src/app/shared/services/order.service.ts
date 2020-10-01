@@ -29,7 +29,7 @@ export class OrderService {
       localProducts.push(product);
     }
     localStorage.setItem('myOrder', JSON.stringify(localProducts));
-    this.basket.next('Хто щось добавив в кошик');
+    this.basket.next('Added Product');
   }
 
   getFireCloudOrder(): Observable<DocumentChangeAction<unknown>[]> {

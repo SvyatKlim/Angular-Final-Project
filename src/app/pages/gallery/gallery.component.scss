@@ -1,6 +1,113 @@
+@import "../../../assets/styles/typography";
+@import "../../../assets/styles/mixin";
+@import "../../../assets/styles/variables";
 .background {
   width: 100%;
   height: 70vh;
   background-image: url("../../../assets/images/gallery_back.jpg");
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery {
+  padding: 100px 0 0;
+  &__filters {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
+    ul {
+      display: inline-flex;
+      justify-content: space-between;
+      width: 270px;
+      li {
+        @include font(19, $montserratUltra);
+        transition: all 0.4s;
+        font-weight: 500;
+        cursor: pointer;
+        &:before {
+          top: 10px;
+          left: 3px;
+        }
+        &:hover {
+          a {
+            color: $hr;
+            border-bottom: 1px solid $hr;
+          }
+        }
+        a {
+          padding-bottom: 5px;
+          border-bottom: 1px solid transparent;
+        }
+      }
+    }
+  }
+  &__content {
+    width: 100%;
+  }
+  &__reserv {
+    &__form {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 100px;
+      &__title {
+        flex-wrap: wrap;
+        text-align: center;
+        h3.h3 {
+          @include font(36, $suranna);
+          span {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+ngx-masonry {
+  margin: 0 auto;
+}
+
+.masonry-item {
+  background-color: #f1f1f1;
+  background-size: cover;
+  width: calc(25%);
+  cursor: pointer;
+  &:hover .masonry-item-back {
+    opacity: 1;
+  }
+  &-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(22, 29, 39, 0.7);
+    transition: all 0.2s ease 0s;
+    .zoom {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 0;
+      margin-left: -25px;
+      transform: translate(0, 50%);
+      transition: all 0.2s ease 0s;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+  }
 }

@@ -1,0 +1,48 @@
+<div class="form__custom" *ngIf="!statusForm">
+    <form class="container__large" #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
+        <div class="fieldset">
+            <span class="form__custom__name">
+                <input type="text" class="form__custom__text" id="contact-name" placeholder="Your name...">
+            </span>
+            <span class="form__custom__email">
+                <input type="email" name="email" class="form__custom__text" id="contact-email" placeholder="Email...">
+            </span>
+            <span class="form__custom__phone">
+                <input type="text" class="form__custom__text" id="contact-phone" placeholder="Phone...">
+            </span>
+        </div>
+
+        <div class="fieldset">
+            <span class="form__custom__message">
+                <textarea rows="8" class="form__custom__textarea" id="contact-message"
+                    placeholder="Message..."></textarea>
+            </span>
+        </div>
+        <div class="form__custom__btn">
+            <input type="submit" class="btn" value="Send"></div>
+    </form>
+</div>
+
+<div class="form__custom" *ngIf="statusForm">
+    <form class="container__large" #cateringForm="ngForm" (ngSubmit)="addContact(cateringForm)">
+        <div class="fieldset">
+            <span class="form__custom__name contact">
+                <input type="text" class="form__custom__text" id="contact-name" placeholder="Your name..."
+                    [(ngModel)]="contactName">
+            </span>
+            <span class="form__custom__email contact">
+                <input type="email" name="email" class="form__custom__text" id="contact-email" placeholder="Email..."
+                    [(ngModel)]="contactEmail">
+            </span>
+        </div>
+
+        <div class="fieldset">
+            <span class="form__custom__message">
+                <textarea rows="8" class="form__custom__textarea" id="contact-message" placeholder="Message..."
+                    [(ngModel)]="contactMessage"></textarea>
+            </span>
+        </div>
+        <div class="form__custom__btn">
+            <input type="submit" class="btn" value="Send"></div>
+    </form>
+</div>

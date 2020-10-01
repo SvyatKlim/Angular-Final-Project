@@ -50,7 +50,7 @@
             }
         }
         .more-details {
-            @include font(21, $montserratUltra);
+            @include font(21, $suranna);
             color: $title;
             &:hover {
                 color: $hr;

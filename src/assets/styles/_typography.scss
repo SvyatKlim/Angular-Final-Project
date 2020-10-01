@@ -7,9 +7,10 @@ a {
 p,
 a,
 span {
-  font-family: "Montserrat-UltraLight", Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   line-height: 25px;
   color: #777777;
+  font-size: 16px;
 }
 p {
   padding-bottom: 15px;
@@ -21,6 +22,7 @@ a {
   -ms-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
   text-decoration: none;
+  cursor: pointer;
 }
 a:hover {
   text-decoration: none;
@@ -40,8 +42,7 @@ h4 {
   line-height: normal;
   margin: 0 0 16px 0;
   font-weight: 700;
-  font-family: "Quicksand", sans-serif;
-  font-size: 26px;
+  @include font(26, $suranna);
   span {
     color: $hr;
     @include font(36, $montez);
@@ -61,7 +62,7 @@ h4 {
 }
 h5,
 h6 {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Suranna", Arial, sans-serif;
   color: #161d27;
   margin-top: 0;
   margin-bottom: 0;
@@ -164,4 +165,21 @@ blockquote + p {
   padding-bottom: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+a.more-details {
+  @include font(21, $suranna);
+  color: #161d27;
+  text-transform: uppercase;
+  border-bottom: 1px solid $hr;
+  display: inline-block;
+  padding-bottom: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    color: $hr;
+    svg {
+      fill: $hr;
+    }
+  }
 }

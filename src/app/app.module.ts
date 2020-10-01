@@ -43,6 +43,10 @@ import {
 } from 'ngx-swiper-wrapper';
 import { ScrollToTopComponent } from './shared/components/scroll-to-top/scroll-to-top.component';
 import { LocationsComponent } from './shared/components/locations/locations.component';
+import { CustomFormComponent } from './shared/components/custom-form/custom-form.component';
+import { IvyGalleryModule } from 'angular-gallery';
+import { NgxMasonryModule } from 'ngx-masonry';
+
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   observer: true,
   direction: 'horizontal',
@@ -79,6 +83,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ReservationFormComponent,
     ScrollToTopComponent,
     LocationsComponent,
+    CustomFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +102,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CalendarModule,
     Ng2SearchPipeModule,
     SwiperModule,
+    IvyGalleryModule,
+    NgxMasonryModule
   ],
   providers: [{
     provide: SWIPER_CONFIG,

@@ -1,5 +1,5 @@
-<div class="reservation__form__container" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="600">
-    <form #reservForm="ngForm" (ngSubmit)="addReserv()" *ngIf="!statusForm">
+<div class="reservation__form__container container" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
+    <form #reservForm="ngForm" (ngSubmit)="addReserv(reservForm)" *ngIf="!statusForm">
         <div class="reservation__form__input">
             <input name="Name" class="otw-reservation-name" type="text" placeholder="Your name" [(ngModel)]="name"
                 #nameInput="ngModel" required pattern="[a-zA-Z]{2,}"
@@ -100,7 +100,8 @@
                 (ngModelChange)="countSelected($event)" #peopleInput="ngModel" required
                 [ngClass]="{'is-error': peopleInput.invalid && (peopleInput.dirty || peopleInput.touched)}">
                 <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="count === ''">Select an
+                <option class="dropdown-item" disabled selected value="undefined" *ngIf="count.name === '' ">
+                    Select an
                     Option</option>
                 <option *ngFor="let count of guestCount" [value]="count.name">{{count.name}}
                 </option>
@@ -227,7 +228,8 @@
                 (ngModelChange)="countSelected($event)" #peopleInput="ngModel" required
                 [ngClass]="{'is-error': peopleInput.invalid && (peopleInput.dirty || peopleInput.touched)}">
                 <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="count === ''">Select an
+                <option class="dropdown-item" disabled selected value="undefined" *ngIf="count.name === '' ">
+                    Select an
                     Option</option>
                 <option *ngFor="let count of guestCount" [value]="count.name">{{count.name}}
                 </option>
@@ -275,7 +277,7 @@
             </div>
         </div>
         <div class="reservation__form__btn horizontalBtn">
-            <button type="submit" class="btn horizontal" value="Find a Table" [disabled]="reservForm.invalid">Find a
+            <button type="submit" class="btn horizontal" value="Find a Table" [disabled]="reservForm.invalid"> Find a
                 Table</button>
         </div>
 

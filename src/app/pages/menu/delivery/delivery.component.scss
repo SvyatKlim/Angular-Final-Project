@@ -9,12 +9,11 @@
   background-size: cover;
 }
 .dellivery {
-  &__back {
-    background-image: url("../../../../assets/images/bkg-img1.jpg");
-    background-size: cover;
-  }
   &__content {
     padding-top: 100px;
+  }
+  &__back.container {
+    padding: 0 100px;
   }
   &__title {
     position: relative;
@@ -106,9 +105,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 30px;
     &__style {
-      box-shadow: 0px 0px 29px -12px rgba(0, 0, 0, 0.76);
       border-radius: 8px;
     }
     &__category {
@@ -148,8 +146,8 @@
         flex-direction: column;
         justify-content: space-between;
         transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
-        border-radius: 16px;
+        box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.1);
+        border-radius: 0;
         overflow: hidden;
         position: relative;
         cursor: pointer;
@@ -206,9 +204,10 @@
           transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
           padding: 0.5em 1em;
           text-align: center;
-        }
-        p {
-          font-size: 24px;
+          p {
+            @include font(32, $suranna);
+            color: $title;
+          }
         }
         &__img {
           height: 80%;
@@ -252,6 +251,8 @@
           span {
             margin: 10px 0;
             @include font(18, $quicksand);
+            color: #fff;
+            opacity: 0.9;
           }
         }
       }
@@ -268,10 +269,14 @@
 input.dellivery__input {
   width: 60%;
   border: 2px solid transparent;
-  border-radius: 80px;
+  border-radius: 5px;
   padding: 15px 30px;
   margin: 40px auto 10px;
   outline: none;
   color: #636375;
-  box-shadow: 0px 0px 29px -12px rgba(0, 0, 0, 0.76);
+  box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.15);
+  &:hover,
+  &:focus {
+    box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.3);
+  }
 }

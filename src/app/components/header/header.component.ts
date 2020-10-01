@@ -1,16 +1,14 @@
 import {
   Component,
   OnInit,
-  ViewChild,
-  ElementRef,
   HostListener,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { IProduct } from '../../shared/interfaces/product.interface';
 import { OrderService } from '../../shared/services/order.service';
 import { LoginComponent } from '../../pages/login/login.component';
 import { AuthService } from '../../shared/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +23,35 @@ export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   basket: Array<IProduct>;
   userLogined: boolean = false;
-  constructor(private router: Router, private orderService: OrderService, private elRef: ElementRef, public dialog: MatDialog, private authService: AuthService) { }
+  isShow: boolean;
+  topPosToStartShowing = 100;
+  breakpoint: boolean = false;
+  constructor(private orderService: OrderService, public dialog: MatDialog, private authService: AuthService) { }
+
+  @HostListener('window:scroll')
+  checkScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (document.body.clientWidth > 1199) {
+      this.breakpoint = false
+    } else {
+      this.breakpoint = true
+    }
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  }
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+
+
   ngOnInit(): void {
     this.checkBasket();
     this.getlocalProducts();
@@ -41,16 +67,7 @@ export class HeaderComponent implements OnInit {
   openBasket(): void {
     this.baskedChecked = true;
   }
-  @HostListener('window:scroll', ['$event'])
-  handleScroll() {
-    const windowScroll = window.pageYOffset;
-    // console.log(windowScroll);
-    if (windowScroll > 100) {
-      this.sticky = true;
-    } else {
-      this.sticky = false;
-    }
-  }
+
   private checkBasket(): void {
     this.orderService.basket.subscribe((data) => {
       this.getlocalProducts();
@@ -63,18 +80,15 @@ export class HeaderComponent implements OnInit {
         return total + product.price * product.count;
       }, 0);
       this.totalCount = +this.basket.reduce((total, product) => {
-        console.log(total + +product.count)
         return total + +product.count;
       }, 0);
+    } else {
+      this.totalCount = 0
     }
   }
 
-  openDialog() {
-    this.dialog.open(LoginComponent, {
-      data: {
-        animal: 'panda'
-      }
-    });
+  openDialog(): void {
+    this.dialog.open(LoginComponent);
   }
   private updateCheckLogin(): void {
     this.authService.userStatusChanges.subscribe(
@@ -86,14 +100,29 @@ export class HeaderComponent implements OnInit {
 
   private checkLogin(): void {
     const user = JSON.parse(localStorage.getItem('user'));
-    // const admin = JSON.parse(localStorage.getItem('admin'))
-    if (!user.role) {
-      this.userLogined = false;
-    }
-    if (user != 0 && user.role === 'user') {
-      this.userLogined = true;
+    if (user) {
+      if (!user.role) {
+        this.userLogined = false;
+      }
+      if (user != 0 && user.role === 'user') {
+        this.userLogined = true;
+      } else {
+        this.userLogined = false;
+      }
     } else {
       this.userLogined = false;
     }
+
   }
+  deleteProdBasket(product: IProduct): void {
+    const index = this.basket.findIndex(prod => prod.dataID === product.dataID);
+    this.basket.splice(index, 1);
+    this.updateBasket();
+  }
+  private updateBasket(): void {
+    localStorage.setItem('myOrder', JSON.stringify(this.basket));
+    this.getlocalProducts();
+    this.orderService.basket.next('go');
+  }
+
 }

@@ -1,4 +1,9 @@
-<div class="background"></div>
+<div class="background">
+  <div class="about__title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
+    <h2 class="h2"><span>Order</span></h2>
+    <h2 class="h2">SHOP CART</h2>
+  </div>
+</div>
 <div class="basket__container">
   <div class="container">
     <div class="basket__progress">
@@ -196,17 +201,17 @@
           </div>
           <div class="basket__checkout__terms">
             <div class="checkbox-group">
-              <input id="checkbox" type="checkbox" *ngIf="orderForm.invalid" (change)="toggleVisibility($event)"
-                disabled />
-              <input id="checkbox" type="checkbox" *ngIf="orderForm.valid" (change)="toggleVisibility($event)">
+              <input id="checkbox" type="checkbox" (change)="toggleVisibility($event)">
               <label for="checkbox">I’ve read and accept the terms &amp; conditions *</label>
-              <div class="basket__checkout__terms__error" *ngIf="orderForm.valid && marked === false">
+              <div class="basket__checkout__terms__error" *ngIf="marked === false">
                 Must be checked
               </div>
             </div>
           </div>
           <div class="basket__checkout__btn">
-            <button class="btn" type="submit" [disabled]="marked === false">PROCEED
+            <button class="btn" type="submit" disabled *ngIf="orderForm.invalid || !marked">PROCEED
+              TO PAYMENT</button>
+            <button class="btn" type="submit" *ngIf="orderForm.valid && marked === true">PROCEED
               TO PAYMENT</button>
           </div>
         </div>

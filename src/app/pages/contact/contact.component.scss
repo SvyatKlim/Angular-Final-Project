@@ -1,6 +1,46 @@
+@import "../../../assets/styles/typography";
+@import "../../../assets/styles/mixin";
+@import "../../../assets/styles/variables";
 .background {
   width: 100%;
   height: 70vh;
   background-image: url("../../../assets/images/contact_back.jpg");
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact {
+  &__intro {
+    padding: 100px 0;
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__sub {
+      margin: 0;
+    }
+    &__phone {
+      font-size: 24px;
+      font-weight: 400;
+      color: #161d27;
+      margin-top: 30px;
+      margin-bottom: 25px;
+      span {
+        color: #b48c80;
+        font-size: 24px;
+      }
+    }
+  }
+  &__banner {
+    width: 100%;
+    height: 60vh;
+    background-image: url("../../../assets/images/reserv_back.jpg");
+    background-size: cover;
+    overflow: hidden;
+  }
+  &__reserv {
+    padding-bottom: 50px;
+  }
 }

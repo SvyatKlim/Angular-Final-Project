@@ -50,10 +50,10 @@ const routes: Routes = [
   { path: 'catering', component: CateringComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'fd-admin', component: FdAdminComponent },
-  { path: 'profile', component: ProfileComponent, canActivate:[ProfileGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
   {
     path: 'admin',
-    component: AdminComponent,canActivate: [AuthGuard],
+    component: AdminComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: AdminCategoryComponent },
       { path: 'admin-category', component: AdminCategoryComponent },
@@ -69,4 +69,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -7,11 +7,13 @@ import AOS from 'aos';
   styleUrls: ['./restaurant.component.scss']
 })
 export class RestaurantComponent implements OnInit {
-
+  reservBtn: boolean = false
   constructor() { }
-
   ngOnInit(): void {
     AOS.init()
+  }
+  viewReserv(): void {
+    this.reservBtn = !this.reservBtn
   }
 
 }

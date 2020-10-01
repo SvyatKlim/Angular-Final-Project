@@ -1,1 +1,60 @@
-<div class="background"></div>
+<div class="background">
+    <div class="about__title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
+        <h2 class="h2"><span>Our story</span></h2>
+        <h2 class="h2">About Royal Plate</h2>
+    </div>
+</div>
+<div class="gallery">
+    <div class="gallery__title">
+        <div class="gallery__reserv__form__title">
+            <h3 class="h3"><span>Exquisite ambient</span>
+                RESTAURANT GALLERY</h3>
+            <div class="hr">
+                <span class="hr__left"></span>
+                <span class="hr__center"></span>
+                <span class="hr__right"></span>
+            </div>
+        </div>
+    </div>
+    <div class="gallery__filters container ">
+        <ul class="custom__content__list">
+            <li class="filter"><a (click)="filter('all')">All</a></li>
+            <li class="filter"><a (click)="filter('in')">Indoor</a></li>
+            <li class="filter"><a (click)="filter('out')">Outdoor</a></li>
+        </ul>
+    </div>
+
+    <div class="gallery__content">
+        <ngx-masonry [options]="masonryOptions" [updateLayout]="updateMasonryLayout" style="width: 100%">
+            <div ngxMasonryItem class="masonry-item" *ngFor="let item of portfolioItems; let i = index">
+                <img [src]="item.path" alt="">
+                <div class="masonry-item-back" (click)="showGallery(i)">
+                    <div class="zoom">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px"
+                            height="17px" viewBox="0 0 17 17" version="1.1">
+                            <g id="surface1">
+                                <path style=" stroke:none;fill:#fff"
+                                    d="M 16.765625 14.699219 L 13.457031 11.390625 C 13.308594 11.238281 13.105469 11.15625 12.894531 11.15625 L 12.351562 11.15625 C 13.269531 9.984375 13.8125 8.511719 13.8125 6.90625 C 13.8125 3.089844 10.722656 0 6.90625 0 C 3.089844 0 0 3.089844 0 6.90625 C 0 10.722656 3.089844 13.8125 6.90625 13.8125 C 8.511719 13.8125 9.984375 13.269531 11.15625 12.351562 L 11.15625 12.894531 C 11.15625 13.105469 11.238281 13.308594 11.390625 13.457031 L 14.699219 16.765625 C 15.011719 17.078125 15.515625 17.078125 15.824219 16.765625 L 16.765625 15.828125 C 17.078125 15.515625 17.078125 15.011719 16.765625 14.699219 Z M 6.90625 11.15625 C 4.558594 11.15625 2.65625 9.257812 2.65625 6.90625 C 2.65625 4.558594 4.554688 2.65625 6.90625 2.65625 C 9.253906 2.65625 11.15625 4.554688 11.15625 6.90625 C 11.15625 9.253906 9.257812 11.15625 6.90625 11.15625 Z M 6.90625 11.15625 " />
+                            </g>
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+        </ngx-masonry>
+    </div>
+    <div class="gallery__reserv">
+        <div class="gallery__reserv__form">
+            <div class="gallery__reserv__form__title">
+                <h3 class="h3"><span>Reservation</span>
+                    Book your table</h3>
+                <div class="hr">
+                    <span class="hr__left"></span>
+                    <span class="hr__center"></span>
+                    <span class="hr__right"></span>
+                </div>
+            </div>
+            <app-reservation-form [statusForm]="formHorizontal"></app-reservation-form>
+        </div>
+    </div>
+</div>

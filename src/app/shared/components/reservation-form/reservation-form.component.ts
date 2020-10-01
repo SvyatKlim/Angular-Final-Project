@@ -5,6 +5,9 @@ import { ReservationService } from '../../services/reservation.service';
 import { IReserv } from '../../interfaces/reservation.interface';
 import { Reservation } from '../../models/reservation.model';
 import AOS from 'aos';
+import {
+  NgForm
+} from '@angular/forms';
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
@@ -16,7 +19,7 @@ export class ReservationFormComponent implements OnInit {
   public maxDate: Date = new Date("12/31/2020");
   public value: Date = new Date("09/22/2020");
   dateValue: string;
-  count: string;
+  count: string = 'Select an Option';
   name: string;
   email: string
   timeSelected: string;
@@ -28,7 +31,7 @@ export class ReservationFormComponent implements OnInit {
   editStatus: boolean = false;
   progress: string = 'booked';
   formHorizon: boolean = false;
-  directions: string;
+  directions: string = 'London East';
   constructor(private fireStorag: AngularFireStorage, private reservSerice: ReservationService) { }
 
   ngOnInit(): void {
@@ -74,6 +77,8 @@ export class ReservationFormComponent implements OnInit {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) {
         this.loginedUserId = user.id
+      } else {
+        this.loginedUserId = 'guest'
       }
     } else {
       this.loginedUserId = 'guest'
@@ -96,7 +101,7 @@ export class ReservationFormComponent implements OnInit {
   countSelected(event: Event): void {
     this.customFunction(event, 'count')
   }
-  addReserv(): void {
+  addReserv(form: NgForm): void {
     const reserv = new Reservation(
       this.dataId,
       this.loginedUserId,
@@ -105,10 +110,12 @@ export class ReservationFormComponent implements OnInit {
       this.dateValue,
       this.timeSelected,
       this.count,
-      this.progress
+      this.progress,
+      this.directions
     )
     if (!this.editStatus) {
       delete reserv.dataID;
+      delete reserv.directions;
       this.reservSerice
         .postFireCloudReserv({ ...reserv })
         .then(() => this.reservSerice.showSuccess())
@@ -116,6 +123,7 @@ export class ReservationFormComponent implements OnInit {
     }
     this.resetForm();
     console.log(reserv)
+    form.resetForm()
   }
   addReservHorizontal(): void {
     const reserv = new Reservation(
@@ -144,15 +152,15 @@ export class ReservationFormComponent implements OnInit {
       this.name = '';
       this.email = '';
       this.dateValue = '';
-      this.timeSelected = '';
-      this.count = '';
-      this.directions = '';
+      this.timeSelected = 'Select an option';
+      this.count = 'Select an option';
+      this.directions = 'Choose directions...';
     } else {
       this.name = '';
       this.email = '';
       this.dateValue = '';
-      this.timeSelected = '';
-      this.count = '';
+      this.timeSelected = 'Select an option';
+      this.count = 'Select an option';
     }
   }
 }

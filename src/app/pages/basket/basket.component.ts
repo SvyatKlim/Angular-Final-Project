@@ -5,6 +5,7 @@ import { OrderService } from '../../shared/services/order.service';
 import { Order } from '../../shared/models/order.models';
 import { MatDialog } from '@angular/material/dialog';
 import { BasketDialogComponent } from '../../shared/components/basket-dialog/basket-dialog.component';
+import AOS from 'aos';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
@@ -40,7 +41,7 @@ export class BasketComponent implements OnInit {
     this.checkBasket();
     this.getlocalProducts();
     this.getLoginedUser()
-    console.log(this.loginedUserId);
+    AOS.init()
   }
   toggleVisibility(e) {
     console.log(e.target.checked)
@@ -72,7 +73,7 @@ export class BasketComponent implements OnInit {
   private updateBasket(): void {
     localStorage.setItem('myOrder', JSON.stringify(this.basket));
     this.getTotal();
-    this.orderService.basket.next('віфвіф');
+    this.orderService.basket.next('go');
   }
   detectChangeCount(status: boolean): void {
     if (status) {
