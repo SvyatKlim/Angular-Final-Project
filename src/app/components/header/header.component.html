@@ -1,4 +1,4 @@
-<header class="header" #stickyMenu [ngClass]="breakpoint === false ? 'sticky' : ''">
+<header class="header" #stickyMenu [class.sticky]="sticky" *ngIf="!breakpoint">
   <div class="nav container">
     <div class="nav__logo">
       <img src="../assets/images/logo.png" alt="logotype" [routerLink]="['/home']" routerLinkActive="active"
@@ -78,7 +78,7 @@
     </div>
   </div>
 </header>
-<!-- <header class="header" *ngIf="breakpoint">
+<header class="header" #stickyMenu *ngIf="breakpoint">
   <div class="nav__mobile">
     <div class="container d-flex">
       <div class="nav__logo">
@@ -129,24 +129,22 @@
           </div>
         </div>
         <div class="nav__menu">
-          <div class="nav__menu__icon">
+          <div class="nav__menu__icon" (click)="isShowMenu()" [ngClass]=" showMenu ? 'active__menu' : '' ">
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <div class="nav__menu__dropdown">
+          <p>Menu</p>
+          <div class="nav__menu__dropdown" [ngClass]=" showMenu ? 'active__dropdown' : '' ">
             <ul>
               <li>
                 <a class="aboutLink" [routerLink]="['/about']" routerLinkActive="active" (click)="gotoTop()">About</a>
               </li>
               <li>
-                <a class="menu__link" (mouseover)="openSelect()">Menu</a>
-                <div class="menu__select" *ngIf="menuChecked === true" (mouseleave)="closeSelect()">
-                  <a [routerLink]="['/menu/restaurant']" routerLinkActive="active" #rla="routerLinkActive"
-                    (click)="gotoTop()">
-                    Restaurant menu</a>
-                  <a [routerLink]="['/menu/delivery']" routerLinkActive="active" (click)="gotoTop()">Online order</a>
-                </div>
+                <a [routerLink]="['/menu/restaurant']" routerLinkActive="active" #rla="routerLinkActive"
+                  (click)="gotoTop()">
+                  Restaurant menu</a></li>
+              <li><a [routerLink]="['/menu/delivery']" routerLinkActive="active" (click)="gotoTop()">Online order</a>
               </li>
               <li>
                 <a [routerLink]="['/reservations']" routerLinkActive="active" (click)="gotoTop()">Reservations</a>
@@ -170,4 +168,4 @@
       </div>
     </div>
   </div>
-</header> -->
+</header>

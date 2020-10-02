@@ -2,7 +2,6 @@
 @import "assets/styles/reset.scss";
 @import "assets/styles/variables";
 @import "assets/styles/fonts";
-@import "assets/styles/typography";
 @import "assets/styles/mixin";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~ngx-toastr/toastr";
@@ -218,11 +217,47 @@ body {
     justify-content: center;
   }
 }
+.bread__crumbs {
+  position: absolute;
+  left: 11%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  cursor: pointer;
+  a {
+    transition: 0.4s ease-in;
+    &:hover {
+      span {
+        color: $darkBtn;
+      }
+      svg {
+        fill: $darkBtn;
+      }
+    }
+  }
+  span.bread {
+    padding-left: 45px;
+    color: $hr;
+    @include font(24, $suranna);
+    transition: 0.4s ease-in;
+  }
+  svg {
+    transform: rotate(270deg);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    fill: $hr;
+    transition: 0.4s ease-in;
+  }
+}
+
 ul.custom__content__list {
   margin-top: 15px;
 }
 ul.custom__content__list li {
-  @include font(17, $montserratUltra, normal);
+  @include font(17, "Montserrat", normal);
   display: inline-block;
   margin: 0 5px;
   padding-left: 14px;
@@ -275,8 +310,11 @@ p.custom__content__text {
 }
 @media screen and (max-width: 1200px) {
   .container {
-    max-width: 910px;
+    max-width: 970px;
     padding: 0 15px;
+  }
+  ul.custom__content__list li {
+    font-size: 14px;
   }
 }
 @media screen and (max-width: 1019px) {

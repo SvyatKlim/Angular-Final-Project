@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { ProductService } from '../../../shared/services/product.service';
-import { IProduct } from '../../../shared/interfaces/product.interface';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-delivery',
@@ -11,17 +11,10 @@ import { IProduct } from '../../../shared/interfaces/product.interface';
 })
 export class DeliveryComponent implements OnInit {
   categories: Array<ICategory>;
-  constructor(private catService: CategoryService,
-    private prodService: ProductService) { }
-  searchedKeyword: string;
-  products: Array<IProduct>;
-  btnActive: boolean = false;
-  btnCatActive: string;
-  search: boolean = false;
-  searchInput: string = '';
+  constructor(private catService: CategoryService) { }
   ngOnInit(): void {
     this.getFireCloudCategories();
-    this.getFireCloudProducts()
+    AOS.init()
   }
   private getFireCloudCategories(): void {
     this.catService.getFireCloudCategory().subscribe((collection) => {
@@ -32,15 +25,4 @@ export class DeliveryComponent implements OnInit {
       });
     });
   }
-  private getFireCloudProducts(): void {
-    this.prodService.getFireCloudProduct().subscribe((collection) => {
-      this.products = collection.map((document) => {
-        const data = document.payload.doc.data() as IProduct;
-        const id = document.payload.doc.id;
-        return { id, ...data };
-      });
-      console.log(this.products)
-    });
-  }
-
 }

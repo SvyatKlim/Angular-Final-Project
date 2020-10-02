@@ -23,40 +23,27 @@ export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   basket: Array<IProduct>;
   userLogined: boolean = false;
-  isShow: boolean;
   topPosToStartShowing = 100;
   breakpoint: boolean = false;
+  showMenu: boolean = false;
   constructor(private orderService: OrderService, public dialog: MatDialog, private authService: AuthService) { }
 
-  @HostListener('window:scroll')
-  checkScroll() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (document.body.clientWidth > 1199) {
-      this.breakpoint = false
-    } else {
-      this.breakpoint = true
-    }
-    if (scrollPosition >= this.topPosToStartShowing) {
-      this.isShow = true;
-    } else {
-      this.isShow = false;
-    }
-  }
   gotoTop() {
     window.scroll({
       top: 0,
       left: 0,
       behavior: 'smooth'
     });
+    this.showMenu = false
   }
-
-
 
   ngOnInit(): void {
     this.checkBasket();
     this.getlocalProducts();
     this.checkLogin();
     this.updateCheckLogin()
+    this.handleScroll()
+    console.log(this.breakpoint)
   }
   openSelect(): void {
     this.menuChecked = !this.menuChecked;
@@ -67,7 +54,24 @@ export class HeaderComponent implements OnInit {
   openBasket(): void {
     this.baskedChecked = true;
   }
+  @HostListener('window:scroll', ['$event'])
+  handleScroll() {
+    const windowScroll = window.pageYOffset;
 
+    console.log(document.body.clientWidth)
+    if (document.body.clientWidth > 1199) {
+      this.breakpoint = false
+    } if (document.body.clientWidth < 1200) {
+      this.breakpoint = true
+      this.sticky = true;
+    }
+    if (windowScroll > 100) {
+      this.sticky = true;
+    }
+    else {
+      this.sticky = false;
+    }
+  }
   private checkBasket(): void {
     this.orderService.basket.subscribe((data) => {
       this.getlocalProducts();
@@ -82,8 +86,6 @@ export class HeaderComponent implements OnInit {
       this.totalCount = +this.basket.reduce((total, product) => {
         return total + +product.count;
       }, 0);
-    } else {
-      this.totalCount = 0
     }
   }
 
@@ -124,5 +126,7 @@ export class HeaderComponent implements OnInit {
     this.getlocalProducts();
     this.orderService.basket.next('go');
   }
-
+  isShowMenu(): void {
+    this.showMenu = !this.showMenu
+  }
 }

@@ -7,13 +7,16 @@
   height: 70vh;
   background-image: url("../../../../assets/images/order_back.jpg");
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dellivery {
   &__content {
     padding-top: 100px;
   }
   &__back.container {
-    padding: 0 100px;
+    padding: 0 100px 100px;
   }
   &__title {
     position: relative;
@@ -47,11 +50,10 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 50px auto 0;
+    margin: 30px auto 0;
     width: 100%;
-    padding: 30px 50px;
-    // background-color: #eeeff2;
-    box-shadow: 0px 0px 29px -12px rgba(0, 0, 0, 0.76);
+    padding: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
     border-radius: 8px;
     &__item {
       display: flex;
@@ -69,8 +71,7 @@
         overflow: hidden;
       }
       &:hover {
-        //
-        box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.15); // close
+        box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.15);
         transform: translateY(5px);
         cursor: pointer;
       }
@@ -78,7 +79,6 @@
         outline: none;
       }
       &-:active {
-        //
         box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
       }
       &:hover img {
@@ -100,183 +100,5 @@
         text-align: center;
       }
     }
-  }
-  &__search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    &__style {
-      border-radius: 8px;
-    }
-    &__category {
-      margin-top: 30px;
-      display: inline-block;
-      width: auto;
-      border-radius: 30px;
-      box-shadow: 0 0 20px 0 #dddcd9;
-      a {
-        display: inline-block;
-        width: auto;
-        text-align: center;
-        outline: none;
-        padding: 13px 36px;
-        line-height: 26px;
-        font-size: 16px;
-        text-transform: uppercase;
-        &.current {
-          background: #20202f;
-          color: #ffffff;
-        }
-      }
-    }
-    &__products {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 30px 0;
-      width: 100%;
-
-      &__item {
-        width: calc(33% - 37px);
-        margin: 0 20px;
-        height: 340px;
-        background-color: #ffffff;
-        margin-bottom: 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.1);
-        border-radius: 0;
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-        &:after {
-          content: "";
-          position: absolute;
-          opacity: 0;
-          height: 100%;
-          width: 100%;
-          background-image: linear-gradient(
-            to bottom,
-            hsla(0, 0, 0, 0) 0%,
-            hsla(0, 0, 0, 0.219) 11.7%,
-            hsla(0, 0, 0, 0.224) 22.1%,
-            hsla(0, 0, 0, 0.312) 31.2%,
-            hsla(0, 0, 0, 0.393) 39.4%,
-            hsla(0, 0, 0, 0.462) 46.6%,
-            hsla(0, 0, 0, 0.531) 53.1%,
-            hsla(0, 0, 0, 0.589) 58.9%,
-            hsla(0, 0, 0, 0.643) 64.3%,
-            hsla(0, 0, 0, 0.693) 69.3%,
-            hsla(0, 0, 0, 0.741) 74.1%,
-            hsla(0, 0, 0, 0.781) 78.8%,
-            hsla(0, 0, 0, 0.79) 83.6%,
-            hsla(0, 0, 0, 0.81) 88.7%,
-            hsla(0, 0, 0, 0.88) 94.1%,
-            hsla(0, 0, 0, 0.9) 100%
-          );
-          transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-        &:hover {
-          &:after {
-            opacity: 1;
-          }
-          .dellivery__search__products__item__flip {
-            opacity: 1;
-          }
-          .dellivery__search__products__item__img {
-            height: 100%;
-          }
-        }
-        &:hover &__title {
-          height: 0em;
-          padding: 0px 1em;
-        }
-        &__title {
-          height: 4em;
-          width: 24em;
-          color: $hr;
-          position: absolute;
-          bottom: 0em;
-          -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          padding: 0.5em 1em;
-          text-align: center;
-          p {
-            @include font(32, $suranna);
-            color: $title;
-          }
-        }
-        &__img {
-          height: 80%;
-          width: 100%;
-          position: absolute;
-          top: 0px;
-          -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          }
-        }
-        &__flip {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: absolute;
-          opacity: 0;
-          width: 80%;
-          bottom: 0;
-          left: 50%;
-          transform: translate(-50%, 0%);
-          transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-          color: #383848;
-          z-index: 20;
-          padding-bottom: 30px;
-          color: $colorLink;
-          p {
-            @include font(24, $suranna);
-            color: $colorLink;
-            margin: 0;
-          }
-        }
-        &__ingridients {
-          @include font(20, $quicksand);
-          margin: 10px 0;
-          span {
-            margin: 10px 0;
-            @include font(18, $quicksand);
-            color: #fff;
-            opacity: 0.9;
-          }
-        }
-      }
-    }
-    &__template {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 0 0 30px;
-    }
-  }
-}
-
-input.dellivery__input {
-  width: 60%;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  padding: 15px 30px;
-  margin: 40px auto 10px;
-  outline: none;
-  color: #636375;
-  box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.15);
-  &:hover,
-  &:focus {
-    box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.3);
   }
 }

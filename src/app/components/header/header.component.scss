@@ -1,4 +1,5 @@
 @import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixin";
 .header {
   display: flex;
   justify-content: center;
@@ -300,6 +301,8 @@ a.menu__link {
       justify-content: space-between;
       width: 40%;
       position: relative;
+      align-items: flex-end;
+      padding: 15px 0;
     }
     &__logo {
       width: 100px;
@@ -310,25 +313,123 @@ a.menu__link {
       align-items: center;
       position: relative;
       cursor: pointer;
+      &__icon {
+        margin-left: 5px;
+        width: 27px;
+        height: 27px;
+        &.active__menu {
+          span:nth-child(1) {
+            transform: rotate(45deg);
+            bottom: -8px;
+            right: -1px;
+          }
+
+          span:nth-child(2) {
+            width: 0;
+            opacity: 0;
+          }
+
+          span:nth-child(3) {
+            transform: rotate(-45deg);
+            bottom: -14px;
+          }
+        }
+      }
+      p {
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        padding-left: 30px;
+        @include font(24, $suranna);
+      }
       &__dropdown {
         position: absolute;
-        top: 50px;
+        top: 40px;
         left: -35px;
         width: 280px;
         background-color: rgba(0, 0, 0, 0.9);
         padding: 20px 0 20px 40px;
+        margin-bottom: 3px;
+        transform: translate(100%, 0);
+        transition: 0.5s ease-out;
+        &.active__dropdown {
+          transform: translate(-5%, 0);
+        }
+        li {
+          margin-bottom: 3px;
+        }
+        a {
+          border: none;
+          @include font(16, $montserratUltra);
+          font-weight: 300;
+          color: #fff;
+          margin: 0 4px;
+          padding-bottom: 1px;
+          line-height: 25px;
+          transition: all 0.3s ease 0s;
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+          text-decoration: none;
+          position: relative;
+          border-bottom: 1px solid transparent;
+          &.active {
+            color: #fcda9a;
+            border-color: #fcda9a;
+            &:before {
+              opacity: 1;
+              left: -15px;
+            }
+            &:hover:before {
+              opacity: 1;
+              transform: none;
+            }
+          }
+          &:hover {
+            color: #fcda9a;
+            border-color: #fcda9a;
+            &:before {
+              opacity: 1;
+              transform: translate(-10px);
+            }
+          }
+          &:before {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            opacity: 0;
+            top: 6px;
+            left: -5px;
+            transition: all 0.3s ease 0s;
+            background-color: #fcda9a;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+          }
+        }
       }
       span {
         display: block;
-        width: 33px;
+        width: 23px;
         height: 2px;
-        margin-bottom: 5px;
+        // margin-bottom: 4px;
         position: relative;
         background: #fff;
         z-index: 1;
         transform-origin: 4px 0px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           opacity 0.55s ease;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &:nth-child(1) {
+          bottom: -7px;
+        }
+        &:nth-child(2) {
+          bottom: -11px;
+        }
+        &:nth-child(3) {
+          bottom: -15px;
+        }
       }
     }
   }

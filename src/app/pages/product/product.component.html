@@ -1,5 +1,19 @@
-<div class="background"></div>
-<div class="prod__background">
+<div class="background">
+  <div class="background__title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
+    <h2 class="h2"><span>Delicious Cousine</span></h2>
+    <h2 class="h2">Discover the menu</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="bread__crumbs">
+    <a [routerLink]="['/menu/delivery']"><svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" width="24pt" height="24pt" viewBox="0 0 24 24" version="1.1">
+        <g id="surface1">
+          <path style=""
+            d="M 12.835938 0.242188 C 12.675781 -0.0820312 12.148438 -0.0820312 11.984375 0.242188 C 10.605469 2.757812 9.347656 5.316406 8.617188 8.074219 C 8.535156 8.480469 8.984375 8.886719 9.347656 8.640625 C 10.160156 8.074219 10.847656 7.382812 11.457031 6.574219 C 11.296875 12.253906 10.523438 18.136719 11.863281 23.734375 C 11.945312 24.140625 12.632812 24.0625 12.59375 23.65625 C 11.863281 17.851562 12.429688 12.089844 12.511719 6.289062 C 13.203125 6.898438 13.890625 7.507812 14.542969 8.113281 C 14.824219 8.398438 15.433594 8.238281 15.394531 7.75 C 15.070312 5.070312 14.175781 2.554688 12.835938 0.242188 Z M 12.390625 5.070312 C 12.148438 4.707031 11.457031 4.789062 11.457031 5.355469 C 11.457031 5.394531 11.457031 5.4375 11.457031 5.4375 C 10.96875 5.925781 10.523438 6.410156 9.996094 6.898438 C 10.644531 5.03125 11.457031 3.285156 12.390625 1.542969 C 13.203125 3.125 13.8125 4.746094 14.136719 6.492188 C 13.6875 6.085938 13.203125 5.679688 12.753906 5.234375 C 12.675781 5.070312 12.511719 5.03125 12.390625 5.070312 Z M 12.390625 5.070312 " />
+        </g>
+      </svg><span class="bread">Back to Menu</span></a>
+  </div>
   <div class="prod__title">
     <h3><span>The menu</span></h3>
     <p>{{ category }}</p>
@@ -8,23 +22,39 @@
       <span class="hr__center"></span>
       <span class="hr__right"></span>
     </div>
+    <div class="product__text">
+      <p>
+        Keith Simons, chef de cousine in Royal plate has prepared some delicious
+        starters for every taste. Try some of our home made soups made from
+        fresh ingredients or some of our refreshing salads. Bon appetit!
+      </p>
+    </div>
   </div>
-  <div class="prod__container container">
-    <div
-      class="prod__item"
-      *ngFor="let prod of products"
-      [routerLink]="['/delivery/' + prod.category, prod.id]"
-    >
-      <div class="prod__item__img">
-        <img [src]="prod.img" alt="Food img" />
-      </div>
-      <div class="prod__item__details">
-        <h3>{{ prod.name }}</h3>
-        <p>{{ prod.weight }}</p>
-        <p>{{ prod.price | currency }}</p>
-      </div>
-      <div class="prod__item__button">
-        <button type="button">Details</button>
+  <div class="prod__container ">
+    <input class="product__input" type="text" placeholder="Enter Keyword for filter result"
+      [(ngModel)]="searchedKeyword">
+    <div class=" product__search product__search__style container">
+      <div class="product__search__prods">
+        <div class="product__search__prods__item" *ngFor="let prod of products | filter:searchedKeyword"
+          [routerLink]="['/delivery/' + prod.category, prod.id]">
+          <div class="product__search__prods__item__img"><img [src]="prod.img" alt="">
+          </div>
+          <div class="product__search__prods__item__title">
+            <p>{{prod.name | titlecase}}</p>
+            <div class="product__search__prods__item__info"> <span>{{ prod.weight }}</span>
+              <span>{{ prod.price | currency }}</span></div>
+          </div>
+          <div class="product__search__prods__item__flip">
+            <p>{{prod.name | titlecase}}</p>
+            <div class="product__search__prods__item__ingridients" *ngIf="prod.vegetarian === true">
+              Vegetarian
+            </div>
+            <div class="product__search__prods__item__ingridients">
+              Ingridients: <br>
+              <span>{{prod.ingridients}}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

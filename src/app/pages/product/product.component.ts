@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { IProduct } from '../../shared/interfaces/product.interface';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-product',
@@ -11,10 +13,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ProductComponent implements OnInit {
   products: Array<any> = [];
   category: string;
+  searchedKeyword: string;
+  search: boolean = false;
+  searchInput: string = '';
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
-    private firecloud: AngularFirestore
+    private firecloud: AngularFirestore,
+    private prodService: ProductService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -24,7 +30,9 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    AOS.init()
+  }
 
   private getFireCloudProducts(categoryName: string = 'deserts'): void {
     this.products = [];
@@ -38,6 +46,7 @@ export class ProductComponent implements OnInit {
           this.products.push({ id, ...data });
         });
         this.category = categoryName;
+        console.log(this.category)
       });
   }
 }

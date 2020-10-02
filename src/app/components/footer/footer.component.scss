@@ -152,3 +152,19 @@
         align-items: center;
     }
 }
+@media screen and (max-width: 1200px) {
+    .copyright__container {
+        width: 100%;
+    }
+    .copyright__right {
+        width: 50%;
+    }
+    .footer__wrapper .container .footer__center__info {
+        width: 100%;
+        padding: 0;
+        .contact-info-list li:nth-child(2) {
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+}
