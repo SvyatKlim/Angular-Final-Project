@@ -47,10 +47,10 @@
       <div class="details__content__order">
         <div class="details__content__price">
           <div class="details__content-bold">Price:</div>
-          <span> {{ product?.price * product?.count | currency }}</span>
+          <span> {{ product?.price * countNum | currency }}</span>
         </div>
         <div class="details__content__add">
-          <app-counter [product]="product"></app-counter>
+          <app-counter [count]="countNum" (changeCount)="getCount($event)"></app-counter>
           <a class="filter-btn btn-large" (click)="addToBasket(product)"><svg height="20px"
               viewBox="-96 -27 859 859.3115" width="20px" xmlns="http://www.w3.org/2000/svg">
               <path

@@ -39,7 +39,7 @@
                 <strong>${{ order.price }}</strong>
               </td>
               <td>
-                <app-counter [product]="order" (changeCount)="detectChangeCount($event)"></app-counter>
+                <app-counter [count]="order.count" (changeCount)="detectChangeCount($event,order.dataID)"></app-counter>
               </td>
               <td>
                 <span class="basket__product__price">

@@ -90,6 +90,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openDialog(): void {
+    this.showMenu = false
     this.dialog.open(LoginComponent);
   }
   private updateCheckLogin(): void {

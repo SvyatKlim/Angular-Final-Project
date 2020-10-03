@@ -110,6 +110,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     useValue: DEFAULT_SWIPER_CONFIG
   }],
   bootstrap: [AppComponent],
-  entryComponents: [BasketDialogComponent, LoginComponent],
+  entryComponents: [BasketDialogComponent, LoginComponent,  CounterComponent,],
 })
 export class AppModule { }

@@ -120,6 +120,11 @@ select {
     }
 }
 
-@media screen and (max-width: 1600px){
-    
+@media screen and (max-width: 1200px) {
+    .reservation__form__input__horizontal {
+        width: calc(33% - 15px);
+    }
+    .reservation__form__btn.horizontalBtn{
+        margin-top: 10px;
+    }
 }

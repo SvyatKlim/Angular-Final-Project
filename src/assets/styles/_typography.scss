@@ -1,6 +1,5 @@
 @import "../styles/variables";
 @import "../styles/mixin";
-
 p,
 a,
 span {
@@ -135,7 +134,7 @@ a.more-details {
   }
   p {
     font-size: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 0;
     line-height: 20px;
   }
   .pt-100 {

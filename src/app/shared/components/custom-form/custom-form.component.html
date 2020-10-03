@@ -1,5 +1,5 @@
 <div class="form__custom" *ngIf="!statusForm">
-    <form class="container__large" #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
+    <form class="container__large container" #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
         <div class="fieldset">
             <span class="form__custom__name">
                 <input type="text" class="form__custom__text" id="contact-name" placeholder="Your name...">
@@ -24,7 +24,7 @@
 </div>
 
 <div class="form__custom" *ngIf="statusForm">
-    <form class="container__large" #cateringForm="ngForm" (ngSubmit)="addContact(cateringForm)">
+    <form class="container__large container" #cateringForm="ngForm" (ngSubmit)="addContact(cateringForm)">
         <div class="fieldset">
             <span class="form__custom__name contact">
                 <input type="text" class="form__custom__text" id="contact-name" placeholder="Your name..."

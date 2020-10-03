@@ -102,3 +102,23 @@
     }
   }
 }
+@media screen and (max-width: 1200px) {
+  .dellivery__menu {
+    padding: 35px 30px;
+    &__item {
+      width: calc(33% - 15px);
+      .hr {
+        display: none;
+      }
+      h2 {
+        margin: 10px 0 0;
+      }
+    }
+  }
+  .dellivery__content container {
+    padding-top: 80px;
+  }
+  .dellivery__back.container {
+    padding: 0 0 80px;
+  }
+}

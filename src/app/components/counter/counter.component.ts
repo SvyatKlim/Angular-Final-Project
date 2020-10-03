@@ -7,23 +7,24 @@ import { IProduct } from '../../shared/interfaces/product.interface';
   styleUrls: ['./counter.component.scss'],
 })
 export class CounterComponent implements OnInit {
-  @Input() product: IProduct;
-  @Output() changeCount = new EventEmitter<boolean>();
+  @Input() count: number;
+  @Output() changeCount = new EventEmitter<number>();
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
 
   productCount(status: boolean): void {
     if (status) {
-      this.product.count++;
+      this.count++;
     }
     else {
-      if (this.product.count > 1) {
-        this.product.count--;
+      if (this.count > 1) {
+        this.count--;
       }
     }
-    this.changeCount.emit(true);
+    this.changeCount.emit(this.count);
   }
 
 }

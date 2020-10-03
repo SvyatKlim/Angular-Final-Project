@@ -207,3 +207,27 @@
     }
   }
 }
+
+@media screen and (max-width: 1600px) {
+  .details__content__add a {
+    padding: 14px 40px;
+    font-size: 15px;
+    height: auto;
+    min-width: unset;
+    line-height: 1.2;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .details__container {
+    padding: 50px 0 80px;
+  }
+  .details__content__add a {
+    padding: 14px 20px;
+  }
+  .details__content__vegetarian {
+    margin: 20px 0 10px;
+  }
+  .details__content__description {
+    font-size: 15px;
+  }
+}

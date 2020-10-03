@@ -227,7 +227,7 @@
         }
         &__title {
           height: 8em;
-          width: 24em;
+          width: 100%;
           color: $hr;
           position: absolute;
           bottom: 0em;
@@ -311,5 +311,18 @@ input.product__input {
   &:hover,
   &:focus {
     box-shadow: 0px 2px 8px 1px rgba(117, 117, 117, 0.3);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .prod__title .product__text p {
+    font-size: 15px;
+  }
+  .product__search__prods {
+    padding: 30px 15px;
+    &__item {
+      width: 32%;
+      margin: 0 5px 10px;
+    }
   }
 }

@@ -13,6 +13,7 @@ import AOS from 'aos';
 export class ProductDetailsComponent implements OnInit {
   product: any;
   category: string;
+  countNum: number
   constructor(
     private toastr: ToastrService,
     private ordersService: OrderService,
@@ -35,14 +36,18 @@ export class ProductDetailsComponent implements OnInit {
         const data = document.data();
         const dataID = document.id;
         this.product = { dataID, ...data };
+        this.countNum = data.count
       });
   }
   addToBasket(product: IProduct): void {
+    this.product.count = this.countNum;
     this.ordersService.addBasket(product);
-    this.product.count = 1;
     this.showSuccess()
   }
   showSuccess(): any {
     this.toastr.success(`Product has been added!`);
+  }
+  getCount(counterNum: number): void {
+    this.countNum = counterNum
   }
 }

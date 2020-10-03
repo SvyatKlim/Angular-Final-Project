@@ -6,6 +6,7 @@ import { Order } from '../../shared/models/order.models';
 import { MatDialog } from '@angular/material/dialog';
 import { BasketDialogComponent } from '../../shared/components/basket-dialog/basket-dialog.component';
 import AOS from 'aos';
+import { count } from 'rxjs-compat/operator/count';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
@@ -35,6 +36,7 @@ export class BasketComponent implements OnInit {
   submitted = false;
   marked = false;
   loginedUserId: string = 'none';
+  countProduct: number;
   constructor(private orderService: OrderService, public dialog: MatDialog,) { }
 
   ngOnInit(): void {
@@ -51,6 +53,15 @@ export class BasketComponent implements OnInit {
     this.orderService.basket.subscribe(() => {
       this.getlocalProducts();
     });
+  }
+  detectChangeCount(counterNumb: number, id: string): void {
+    this.basket = JSON.parse(localStorage.getItem('myOrder'));
+    this.basket.forEach(item => {
+      if (item.dataID === id) {
+        item.count = counterNumb
+      }
+    })
+    this.updateBasket()
   }
   private getlocalProducts(): void {
     if (localStorage.getItem('myOrder')) {
@@ -70,15 +81,11 @@ export class BasketComponent implements OnInit {
     this.order = false;
     this.checkout = true;
   }
+
   private updateBasket(): void {
     localStorage.setItem('myOrder', JSON.stringify(this.basket));
     this.getTotal();
     this.orderService.basket.next('go');
-  }
-  detectChangeCount(status: boolean): void {
-    if (status) {
-      this.updateBasket()
-    }
   }
   openDialog(product: IProduct): void {
     const dialogRef = this.dialog.open(BasketDialogComponent, {

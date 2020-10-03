@@ -32,17 +32,19 @@ export class HomeComponent implements OnInit, AfterContentInit {
   load_completed = false;
   constructor() { }
   ngAfterContentInit(): void {
-    const scene = document.getElementById('scene');
-    const scene2 = document.getElementById('scene2');
-    const parallaxInstance = new Parallax(scene, {
-      relativeInput: true,
-      hoverOnly: true
-    });
-    const parallaxInstance2 = new Parallax(scene2, {
-      relativeInput: true,
-      hoverOnly: true
-    });
-    this.load_completed = true
+    if (document.body.clientWidth > 768) {
+      const scene = document.getElementById('scene');
+      const scene2 = document.getElementById('scene2');
+      const parallaxInstance = new Parallax(scene, {
+        relativeInput: true,
+        hoverOnly: true
+      });
+      const parallaxInstance2 = new Parallax(scene2, {
+        relativeInput: true,
+        hoverOnly: true
+      });
+      this.load_completed = true
+    }
   }
   ngOnInit(): void {
     AOS.init()
