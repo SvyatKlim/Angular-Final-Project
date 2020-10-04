@@ -44,3 +44,8 @@
     padding-bottom: 50px;
   }
 }
+@media screen and (max-width: 1200px) {
+  .contact__banner {
+    height: 50vh;
+  }
+}

@@ -66,3 +66,109 @@
         padding: 0;
     }
 }
+@media screen and (max-width: 1024px) {
+    .locations {
+        &.container {
+            padding: 80px 15px 40px;
+        }
+        &__title {
+            margin-bottom: 30px;
+            .h2 {
+                font-size: 34px;
+                margin-bottom: 0px;
+                span {
+                    font-size: 44.3px;
+                }
+            }
+            .divider {
+                width: 38%;
+                svg {
+                    width: 26px;
+                    margin-top: 5px;
+                }
+                .hr-double.left {
+                    &:before {
+                        width: 60px;
+                        top: 21px;
+                        left: 23%;
+                    }
+                    &:after {
+                        width: 90px;
+                        top: 26px;
+                        left: 13%;
+                    }
+                }
+                .hr-double.right {
+                    &:before {
+                        width: 60px;
+                        top: 21px;
+                        right: 23%;
+                    }
+                    &:after {
+                        width: 90px;
+                        top: 26px;
+                        right: 13%;
+                    }
+                }
+            }
+        }
+        &__content {
+            padding: 0 10px;
+            a.more-details {
+                font-size: 18px;
+            }
+        }
+        &__item {
+            &__title {
+                margin-bottom: 18px;
+            }
+            ul {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .locations__content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .locations__item {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+        .hr {
+            display: none;
+        }
+        &__center {
+            display: flex;
+            flex-wrap: wrap;
+            h5 {
+                width: 100%;
+                font-size: 16px;
+                text-align: center;
+            }
+        }
+        &__title {
+            width: 100%;
+        }
+        &__list {
+            &-1 {
+                width: 100%;
+            }
+            &-2 {
+                width: 100%;
+                text-align: center;
+            }
+            &-3 {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        &__link {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

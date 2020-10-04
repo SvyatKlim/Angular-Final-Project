@@ -211,7 +211,7 @@ h3.h3 {
   display: flex;
   justify-content: center;
   width: 100%;
-  bottom: 0px !important;
+  bottom: 0px;
 }
 @media screen and (max-width: 1920px) {
   .about__banner__testemonials__container {
@@ -281,5 +281,133 @@ h3.h3 {
   }
   .swiper-pagination.swiper-pagination-testemonials {
     margin-top: 0;
+  }
+  .about__banner__place,
+  .about__banner__staff,
+  .about__banner__testemonials {
+    height: 70vh;
+  }
+  .about__banner__place__content .divider {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .background {
+    height: 60vh;
+  }
+  .about__banner__place,
+  .about__banner__staff,
+  .about__banner__testemonials {
+    height: 60vh;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  img {
+    object-fit: cover;
+  }
+  .about__since__blockquote p {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .about__approach__img {
+    align-items: flex-end;
+    img {
+      object-fit: contain;
+    }
+  }
+  .about__restaurant__img {
+    padding-top: 6%;
+  }
+  .about__restaurant__indoor,
+  .about__restaurant__outdoor {
+    padding: 0 15px;
+  }
+  .about__banner__place__content {
+    h2 {
+      width: 90%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+  .about__staff {
+    padding: 0 25px;
+  }
+  .about__banner__testemonials__container {
+    width: 80%;
+    padding: 20px 0 20px;
+    p {
+      padding: 0 30px;
+      &.testimonial-author {
+        margin: 0;
+      }
+    }
+    .swiper-pagination.swiper-pagination-testemonials {
+      bottom: 10px;
+    }
+  }
+  .about__reservation__form__title {
+    h3.h3 {
+      font-size: 32px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .about__since {
+    display: flex;
+    flex-wrap: wrap;
+    &__img {
+      width: 80%;
+      margin: 0 auto 20px;
+    }
+    &__text {
+      width: 100%;
+    }
+  }
+  .about__restaurant__indoor,
+  .about__restaurant__outdoor {
+    flex-wrap: wrap;
+  }
+  .about__restaurant {
+    &__img {
+      width: 80%;
+      margin: 0 auto 20px;
+    }
+    &__content {
+      width: 100%;
+    }
+  }
+  .about__staff {
+    .container {
+      flex-wrap: wrap;
+      padding: 60px 0;
+    }
+    &__member {
+      width: 100%;
+      margin: 0 0 20px;
+      &:nth-child(2) {
+        margin: 0 0 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .about__approach {
+    margin-top: 10px;
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__text {
+      width: 100%;
+      order: 2;
+    }
+    &__img {
+      width: 80%;
+      margin: 0 auto;
+      order: 1;
+    }
   }
 }

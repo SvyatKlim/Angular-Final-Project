@@ -35,3 +35,8 @@
   right: 15px;
   left: auto;
 }
+@media screen and (max-width: 414px) {
+  .productCountWrapper {
+    margin-bottom: 20px;
+  }
+}

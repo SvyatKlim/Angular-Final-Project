@@ -325,4 +325,25 @@ input.product__input {
       margin: 0 5px 10px;
     }
   }
+  .prod__title p {
+    font-size: 32px;
+  }
+  .prod__title .product__text p {
+    padding-bottom: 0px;
+  }
+  .bread__crumbs {
+    left: 6%;
+  }
+  input.product__input {
+    margin: 0px auto -7px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .product__search__prods {
+    padding: 30px 0px;
+  }
+  .product__search__prods__item {
+    width: calc(50% - 20px);
+    margin: 0 10px 20px;
+  }
 }

@@ -125,3 +125,21 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .catering__banner,
+  .catering__banner__content {
+    height: 70vh;
+  }
+  .catering__banner__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .catering__banner,
+  .catering__banner__content {
+    height: 60vh;
+  }
+}

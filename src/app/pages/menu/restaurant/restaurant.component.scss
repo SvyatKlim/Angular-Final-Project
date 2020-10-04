@@ -246,3 +246,70 @@
     max-width: 800px;
   }
 }
+@media screen and (max-width: 1200px) {
+  .rest__banner__special,
+  .reserv__form__banner {
+    height: 70vh;
+  }
+  .rest__content {
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .rest__banner__special,
+  .reserv__form__banner {
+    height: 60vh;
+  }
+  .rest__banner__special {
+    margin-top: 60px;
+  }
+  .rest__title {
+    margin-bottom: 25px;
+  }
+  .rest__menu {
+    &__category {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    &__container {
+      padding: 0 15px;
+    }
+    &__center {
+      margin-top: 0;
+      .rest__title {
+        margin-bottom: 10px;
+      }
+      &__img img {
+        max-width: 630px;
+      }
+    }
+    &__desserts {
+      width: 100%;
+    }
+  }
+  .rest__beverages {
+    margin: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 5px 0 32px;
+    &__item {
+      width: 100%;
+      &:first-child {
+        margin-bottom: 40px;
+      }
+    }
+    &__title {
+      margin-bottom: 15px;
+    }
+  }
+  .rest__reserv__form__app .rest__title {
+    margin-bottom: 0px;
+    h3 {
+      font-size: 28px;
+      span {
+        font-size: 32px;
+      }
+    }
+  }
+}

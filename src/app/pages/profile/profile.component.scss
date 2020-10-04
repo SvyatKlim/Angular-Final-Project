@@ -9,6 +9,9 @@
     background-image: url("../../../assets/images/profile.jpg");
     background-size: cover;
     background-position: left center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .profile {
     display: flex;

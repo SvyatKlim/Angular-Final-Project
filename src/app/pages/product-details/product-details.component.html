@@ -44,11 +44,11 @@
         <div class="details__content-bold">Weight:</div>
         <span> {{ product?.weight }}</span>
       </div>
+      <div class="details__content__price">
+        <div class="details__content-bold">Price:</div>
+        <span> {{ product?.price * countNum | currency }}</span>
+      </div>
       <div class="details__content__order">
-        <div class="details__content__price">
-          <div class="details__content-bold">Price:</div>
-          <span> {{ product?.price * countNum | currency }}</span>
-        </div>
         <div class="details__content__add">
           <app-counter [count]="countNum" (changeCount)="getCount($event)"></app-counter>
           <a class="filter-btn btn-large" (click)="addToBasket(product)"><svg height="20px"

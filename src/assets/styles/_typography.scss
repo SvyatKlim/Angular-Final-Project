@@ -141,3 +141,27 @@ a.more-details {
     padding-top: 0;
   }
 }
+@media screen and (max-width: 1024px) {
+  .h2 {
+    font-size: 36px;
+  }
+  h3 {
+    font-size: 32px;
+  }
+  .h3 {
+    margin: 0 0 5px 0;
+  }
+  h4 {
+    font-size: 22px;
+  }
+  .hr {
+    margin: 6px auto;
+  }
+  a.more-details {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  h3.h3 {
+    font-size: 32px;
+  }
+}

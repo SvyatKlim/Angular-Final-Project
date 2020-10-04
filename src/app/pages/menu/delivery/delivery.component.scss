@@ -122,3 +122,11 @@
     padding: 0 0 80px;
   }
 }
+@media screen and (max-width: 1200px) {
+  .dellivery__content {
+    padding-top: 60px;
+  }
+  .dellivery__menu__item {
+    width: calc(50% - 15px);
+  }
+}

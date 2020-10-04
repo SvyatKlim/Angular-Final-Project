@@ -227,7 +227,7 @@ body {
   padding-top: 5px;
   cursor: pointer;
   a {
-    transition: 0.4s ease-in;
+    transition: 0.3s ease-in;
     &:hover {
       span {
         color: $darkBtn;
@@ -318,6 +318,7 @@ p.custom__content__text {
   }
   .divider {
     width: 100%;
+    max-width: 316px;
   }
   .divider .hr-double {
     &.left:before {
@@ -344,8 +345,13 @@ p.custom__content__text {
   .divider-svg svg {
     width: 34px;
   }
+  .about__banner__testemonials__container {
+    max-width: 870px;
+    width: 100%;
+    padding: 20px 0;
+  }
 }
-@media screen and (max-width: 1019px) {
+@media screen and (max-width: 1024px) {
   .container {
     max-width: 800px;
     padding: 0 15px;
@@ -377,6 +383,24 @@ p.custom__content__text {
   }
   .divider-svg svg {
     width: 34px;
+  }
+  p.custom__content__text {
+    padding: 0px 12px;
+  }
+  ul.custom__content__list {
+    margin-bottom: 10px;
+  }
+  ul.custom__content__list li {
+    margin-bottom: 0;
+  }
+  .bread__crumbs {
+    span.bread {
+      font-size: 20px;
+      padding-left: 32px;
+    }
+    svg {
+      width: 20pt;
+    }
   }
 }
 @media screen and (max-width: 768px) {

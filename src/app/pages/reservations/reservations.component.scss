@@ -89,3 +89,13 @@
     }
   }
 }
+@media screen and (max-width: 1200px) {
+  .reservation__banner {
+    height: 70vh;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .reservation__banner {
+    height: 60vh;
+  }
+}

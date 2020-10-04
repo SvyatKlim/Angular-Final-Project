@@ -124,7 +124,15 @@ select {
     .reservation__form__input__horizontal {
         width: calc(33% - 15px);
     }
-    .reservation__form__btn.horizontalBtn{
+    .reservation__form__btn.horizontalBtn {
         margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .reservation__form__error {
+        margin-top: 2px;
+        font-size: 12px;
+        margin-bottom: -10px;
     }
 }

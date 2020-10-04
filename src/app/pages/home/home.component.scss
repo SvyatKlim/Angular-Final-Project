@@ -256,6 +256,9 @@
         width: 50%;
         display: flex;
         justify-content: center;
+        img {
+          object-fit: cover;
+        }
       }
       &__title {
         margin-bottom: 25px;
@@ -755,9 +758,18 @@
         padding: 0 15px;
       }
     }
+    &__banner__cusine,
+    &__banner__catering,
+    &__banner__visit {
+      height: 70vh;
+    }
+  }
+  .home__catering__slide__content p {
+    padding: 0 15px;
   }
 }
-@media screen and (max-width: 1019px) {
+
+@media screen and (max-width: 1024px) {
   .background {
     height: 65vh;
     background-size: auto 100%;
@@ -874,6 +886,26 @@
       }
     }
   }
+  .home__catering {
+    padding: 40px 0 60px;
+    h3 {
+      font-size: 32px;
+    }
+  }
+  .home__catering__slide__img {
+    width: 48%;
+    margin-top: 13%;
+  }
+
+  .home__catering__slide__content {
+    width: 52%;
+    ul li {
+      font-size: 14px;
+    }
+  }
+  .home__info__center {
+    padding: 30px 35px;
+  }
 }
 @media screen and (max-width: 768px) {
   .background {
@@ -916,6 +948,25 @@
       }
     }
   }
+  .home__cusine {
+    padding: 60px 20px;
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+    &__gallery {
+      width: 100%;
+      padding: 0;
+      margin: 0 auto 40px;
+    }
+  }
+  .home__reserv__form {
+    margin: 0 auto;
+  }
+  .home__reserv__img {
+    display: none;
+  }
 }
 @media screen and (max-width: 600px) {
   .intro__title {
@@ -947,6 +998,34 @@
   }
   .intro__right__main img {
     width: 18%;
+  }
+  .home__info {
+    padding: 60px 0;
+  }
+  .home__info__center {
+    width: 100%;
+  }
+  .home__info__container {
+    padding: 0 20px;
+  }
+  .home__info__left,
+  .home__info__right {
+    display: none;
+  }
+  .home__catering__slide__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .home__catering__slide__img {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .home__catering__slide__content {
+    width: 100%;
+  }
+  .swiper-container .swiper-pagination {
+    margin: 20px auto 0;
+    justify-content: center;
   }
 }
 @media screen and (max-width: 480px) {
