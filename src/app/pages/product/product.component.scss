@@ -347,3 +347,36 @@ input.product__input {
     margin: 0 10px 20px;
   }
 }
+@media screen and (max-width: 768px) {
+  input.product__input {
+    width: 90%;
+  }
+  .bread__crumbs {
+    left: 10%;
+  }
+  .product__search__prods__item__title {
+    height: auto;
+    p {
+      font-size: 24px;
+    }
+  }
+  .product__search__prods__item__info {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    span {
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .bread__crumbs {
+    left: 5%;
+  }
+}
+@media screen and (max-width: 568px) {
+  .product__search__prods__item {
+    width: 100%;
+  }
+}

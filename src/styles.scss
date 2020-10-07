@@ -352,6 +352,9 @@ p.custom__content__text {
   }
 }
 @media screen and (max-width: 1024px) {
+  .background {
+    max-height: 700px;
+  }
   .container {
     max-width: 800px;
     padding: 0 15px;
@@ -404,8 +407,26 @@ p.custom__content__text {
   }
 }
 @media screen and (max-width: 768px) {
+  .background {
+    max-height: 600px;
+  }
   .container {
     max-width: 650px;
+  }
+  .bread__crumbs {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid $hr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span.bread {
+      display: none;
+    }
+    svg {
+      position: relative;
+    }
   }
 }
 @media screen and (max-width: 600px) {
