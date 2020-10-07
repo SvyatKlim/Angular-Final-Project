@@ -256,9 +256,13 @@
   }
 }
 @media screen and (max-width: 1024px) {
+  .background {
+    max-height: 700px;
+  }
   .rest__banner__special,
   .reserv__form__banner {
     height: 60vh;
+    max-height: 600px;
   }
   .rest__banner__special {
     margin-top: 60px;
@@ -288,7 +292,7 @@
     }
   }
   .rest__beverages {
-    margin: 60px 0;
+    margin: 60px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -311,5 +315,104 @@
         font-size: 32px;
       }
     }
+  }
+  .rest__reserv__form__banner {
+    max-height: 600px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .rest__menu__center__img img {
+    max-width: 530px;
+  }
+  .rest__beverages {
+    padding: 0 0 0 20px;
+  }
+}
+@media screen and (max-width: 568px) {
+  .rest__content {
+    padding-top: 40px;
+  }
+  .rest__menu__item {
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &__thumbnail {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    &-description {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+    &-price {
+      width: 80%;
+      margin: 0 auto;
+      p {
+        border-top: none;
+        padding: 10px 0 20px;
+      }
+    }
+  }
+  .rest__menu__center {
+    .rest__menu__category:last-child .rest__menu__item:last-child .rest__menu__item-price p {
+      border: none;
+    }
+    &__img {
+      margin-top: -60px;
+      img {
+        max-width: 380px;
+        margin-top: 20px;
+      }
+    }
+  }
+  .rest__menu__sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rest__menu__container .hr {
+    justify-content: center;
+  }
+  .rest__menu__category {
+    margin-bottom: 30px;
+  }
+  .rest__banner__special {
+    margin-top: 10px;
+  }
+  .rest__beverages {
+    width: 100%;
+    padding: 0 20px 0 15px;
+    &__title {
+      text-align: center;
+      .hr {
+        justify-content: center;
+      }
+    }
+    &__subtitle {
+      text-align: center;
+      margin: 10px 0;
+    }
+    &__list__description p {
+      padding: 0;
+      line-height: 18px;
+    }
+    &__list__second p {
+      margin-bottom: 0;
+    }
+  }
+}
+@media screen and (max-width: 414) {
+  .rest__reserv__form__banner {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .rest__menu__center__img img {
+    max-width: 300px;
   }
 }
