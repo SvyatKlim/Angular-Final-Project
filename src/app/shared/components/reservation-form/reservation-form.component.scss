@@ -136,3 +136,9 @@ select {
         margin-bottom: -10px;
     }
 }
+@media screen and (max-width: 414px) {
+    .reservation__form__container {
+        min-width: unset;
+        padding: 0 5px;
+    }
+}

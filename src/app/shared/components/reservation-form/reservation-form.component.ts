@@ -35,6 +35,7 @@ export class ReservationFormComponent implements OnInit {
   constructor(private fireStorag: AngularFireStorage, private reservSerice: ReservationService) { }
 
   ngOnInit(): void {
+    this.getDeviceWidth();
     AOS.init()
     console.log(this.statusForm)
     this.guestCount = [
@@ -146,6 +147,12 @@ export class ReservationFormComponent implements OnInit {
     }
     this.resetForm();
     console.log(reserv)
+  }
+  getDeviceWidth(): void {
+    const width = document.body.clientWidth;
+    if (width < 568) {
+      this.statusForm = false
+    }
   }
   private resetForm(): void {
     if (this.formHorizon) {

@@ -165,3 +165,21 @@ a.more-details {
     font-size: 32px;
   }
 }
+@media screen and (max-width: 568px) {
+  h2,
+  .h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    span {
+      font-size: 40.3px;
+    }
+  }
+  h3,
+  .h3 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  p {
+    font-size: 14px;
+  }
+}

@@ -478,7 +478,7 @@ a.menu__link {
 @media screen and (max-width: 568px) {
   .nav__basket {
     position: absolute;
-    right: 0;
+    right: 15px;
     &__list {
       min-width: 275px;
       padding: 15px;
@@ -489,6 +489,9 @@ a.menu__link {
         left: -240px;
       }
     }
+  }
+  .nav__left {
+    padding: 15px;
   }
   .nav__menu__dropdown {
     left: 50px;

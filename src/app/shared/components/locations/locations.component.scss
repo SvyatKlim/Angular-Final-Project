@@ -133,6 +133,9 @@
         display: flex;
         flex-wrap: wrap;
     }
+    .locations__title .divider {
+        width: 280px;
+    }
     .locations__item {
         width: 100%;
         text-align: center;
@@ -169,6 +172,39 @@
             width: 100%;
             display: flex;
             justify-content: center;
+        }
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .locations__title .divider {
+        height: 50px;
+        width: 210px;
+        .hr-double {
+            &.left:before {
+                width: 56px;
+                left: 33px;
+                top: 17px;
+            }
+            &.left:after {
+                width: 70px;
+                top: 22px;
+                left: 19px;
+            }
+            &.right:before {
+                width: 56px;
+                right: 33px;
+                top: 17px;
+            }
+            &.right:after {
+                width: 70px;
+                top: 22px;
+                right: 19px;
+            }
+        }
+        .divider-svg svg {
+            width: 28px;
+            margin-top: 0px;
         }
     }
 }

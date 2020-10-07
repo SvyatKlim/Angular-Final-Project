@@ -294,11 +294,13 @@ h3.h3 {
 @media screen and (max-width: 1024px) {
   .background {
     height: 60vh;
+    max-height: 600px;
   }
   .about__banner__place,
   .about__banner__staff,
   .about__banner__testemonials {
     height: 60vh;
+    max-height: 600px;
   }
   ul {
     display: flex;
@@ -391,6 +393,11 @@ h3.h3 {
         margin: 0 0 20px;
       }
     }
+  }
+}
+@media screen and (max-width: 600px) {
+  .about__banner__place__content .divider {
+    width: 210px;
   }
 }
 @media screen and (max-width: 568px) {

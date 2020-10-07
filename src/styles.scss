@@ -411,27 +411,28 @@ p.custom__content__text {
 @media screen and (max-width: 600px) {
   .divider {
     height: 50px;
+    width: 208px;
   }
   .divider .hr-double {
     &.left:before {
-      width: 4em;
-      left: 61px;
-      top: 16px;
+      width: 56px;
+      left: 33px;
+      top: 17px;
     }
     &.left:after {
-      width: 6em;
-      top: 23px;
-      left: 28px;
+      width: 70px;
+      top: 22px;
+      left: 19px;
     }
     &.right:before {
-      width: 4em;
-      right: 61px;
-      top: 16px;
+      width: 56px;
+      right: 33px;
+      top: 17px;
     }
     &.right:after {
-      width: 6em;
-      top: 23px;
-      right: 28px;
+      width: 70px;
+      top: 22px;
+      right: 19px;
     }
   }
   .divider-svg svg {

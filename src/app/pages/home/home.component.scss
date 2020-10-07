@@ -776,12 +776,15 @@
     overflow: hidden;
     background-position: bottom;
     background-attachment: scroll;
+    min-height: 540px;
+    max-height: 600px;
   }
   .home {
     &__banner__cusine,
     &__banner__catering,
     &__banner__visit {
       height: 60vh;
+      max-height: 600px;
     }
   }
   .intro {
@@ -1027,6 +1030,11 @@
     margin: 20px auto 0;
     justify-content: center;
   }
+  .home__info__center p,
+  .home__catering__slide__content p,
+  .home__catering__slide__content ul li {
+    font-size: 14px;
+  }
 }
 @media screen and (max-width: 480px) {
   .intro__left__main img,
@@ -1035,5 +1043,9 @@
   }
   .intro__title {
     width: 90%;
+  }
+  .home__reserv__form {
+    width: 100%;
+    min-width: unset;
   }
 }
