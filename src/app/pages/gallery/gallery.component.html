@@ -26,7 +26,7 @@
 
     <div class="gallery__content">
         <ngx-masonry [options]="masonryOptions" [updateLayout]="updateMasonryLayout" style="width: 100%">
-            <div ngxMasonryItem class="masonry-item" *ngFor="let item of portfolioItems; let i = index">
+            <div ngxMasonryItem class="masonry-item grid-sizer" *ngFor="let item of portfolioItems; let i = index">
                 <img [src]="item.path" alt="">
                 <div class="masonry-item-back" (click)="showGallery(i)">
                     <div class="zoom">

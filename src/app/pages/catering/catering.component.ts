@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import AOS from 'aos';
-import { ViewportScroller } from '@angular/common';
-// import { element } from 'protractor';
 import { SwiperOptions } from 'swiper';
 @Component({
   selector: 'app-catering',
@@ -10,7 +8,7 @@ import { SwiperOptions } from 'swiper';
 })
 export class CateringComponent implements OnInit {
 
-  constructor(private viewportScroller: ViewportScroller) { }
+  constructor() { }
 
   ngOnInit(): void {
     AOS.init()
@@ -32,8 +30,16 @@ export class CateringComponent implements OnInit {
       delay: 3000,
       disableOnInteraction: true
     },
-    slidesPerView: 2,
-    spaceBetween: 30,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30
+      },
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      }
+    },
     loop: true
   };
 

@@ -392,6 +392,10 @@ p.custom__content__text {
   }
   ul.custom__content__list {
     margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
   ul.custom__content__list li {
     margin-bottom: 0;
@@ -430,6 +434,9 @@ p.custom__content__text {
   }
 }
 @media screen and (max-width: 600px) {
+  .background {
+    max-height: 500px;
+  }
   .divider {
     height: 50px;
     width: 208px;

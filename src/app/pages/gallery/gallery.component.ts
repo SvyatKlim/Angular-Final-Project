@@ -27,6 +27,7 @@ export class GalleryComponent implements OnInit {
   formHorizontal: boolean = true;
   public masonryOptions: NgxMasonryOptions = {
     itemSelector: '.masonry-item',
+    columnWidth: '.grid-sizer'
   };
   categorySelected: string;
   updateMasonryLayout: string;
@@ -79,14 +80,5 @@ export class GalleryComponent implements OnInit {
     };
     this.gallery.load(prop);
   }
-
-
-
-  // public filter(category: string) {
-  //   this.store.refined = this.store.cached
-  //     .filter(p => p.category == category || category == 'all');
-  //   this.store.stamp = new Date();
-  //   this.masonry.reloadItems();
-  // }
 
 }

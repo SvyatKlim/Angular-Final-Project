@@ -26,7 +26,7 @@
         margin-bottom: 10px;
     }
     &__container {
-        width: 400px;
+        width: 100%;
     }
 }
 .btn.loginBtn {
@@ -120,6 +120,37 @@ label {
                 -ms-transform: rotate(36deg);
                 transform: rotate(36deg);
                 animation: fade-in 0.5s;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .login__options {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        &__lostPass {
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .login__form input {
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 568px) {
+    .login {
+        padding: 0;
+        &__btn,
+        &__regBtn {
+            width: 50%;
+            margin: 0 auto;
+            padding: 0;
+        }
+        &__options {
+            label {
+                font-size: 14px;
             }
         }
     }

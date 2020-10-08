@@ -477,18 +477,22 @@ a.menu__link {
 }
 @media screen and (max-width: 568px) {
   .nav__basket {
-    position: absolute;
-    right: 15px;
     &__list {
       min-width: 275px;
       padding: 15px;
       &:before {
-        left: 260px;
+        left: 172px;
       }
       &__container {
-        left: -240px;
+        left: -150px;
       }
     }
+  }
+  .nav__menu {
+    justify-content: flex-end;
+  }
+  .nav__menu > p {
+    display: none;
   }
   .nav__left {
     padding: 15px;
@@ -502,9 +506,6 @@ a.menu__link {
   }
 }
 @media screen and (max-width: 414px) {
-  .nav__menu > p {
-    display: none;
-  }
   .nav__mobile .container {
     padding: 0px 10px;
   }

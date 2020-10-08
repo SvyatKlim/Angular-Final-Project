@@ -126,3 +126,34 @@
         }
     }
 }
+@media screen and (max-width: 768px) {
+    .profile__main.container {
+        flex-wrap: wrap;
+    }
+    .profile__content {
+        border-top: 1px solid #e3e3e3;
+        border-left: none;
+        padding-left: 0;
+        padding-top: 15px;
+        margin-top: 0;
+    }
+    .profile__nav {
+        width: 100%;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            li span {
+                font-size: 14px;
+                line-height: 1.2;
+            }
+        }
+    }
+    .limiter .container-table100 {
+        padding: 0;
+    }
+}
+@media screen and (max-width: 568px) {
+    .profile__nav ul li span {
+        display: none;
+    }
+}

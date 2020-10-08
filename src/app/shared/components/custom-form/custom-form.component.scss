@@ -105,3 +105,15 @@
         resize: none;
     }
 }
+@media screen and (max-width: 768px) {
+    .fieldset:first-child {
+        flex-wrap: wrap;
+        span {
+            width: 100%;
+        }
+    }
+    .form__custom__btn .btn {
+        width: 50%;
+        margin-top: 0;
+    }
+}

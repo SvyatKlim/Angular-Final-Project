@@ -130,16 +130,94 @@
   .catering__banner,
   .catering__banner__content {
     height: 70vh;
+    max-height: 700px;
+  }
+  .catering__intro.container {
+    padding: 50px 0;
   }
   .catering__banner__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
+  .catering__service {
+    padding-top: 80px;
+  }
+  .catering__service__item {
+    margin-bottom: 80px;
+  }
 }
 @media screen and (max-width: 1024px) {
+  .catering__intro p {
+    width: 90%;
+  }
   .catering__banner,
   .catering__banner__content {
     height: 60vh;
+    max-height: 600px;
+  }
+  .catering__service {
+    padding-top: 60px;
+  }
+  .catering__service__item {
+    margin-bottom: 60px;
+  }
+  .catering__event__slider {
+    margin: 0 auto;
+  }
+  .catering__service__item__img img {
+    object-fit: cover;
+  }
+  .catering__event__slider.container {
+    width: 100%;
+  }
+  .catering__event__reserv div:first-child {
+    margin-bottom: 30px;
+  }
+  .catering__service__item {
+    flex-wrap: wrap;
+    &__img {
+      width: 80%;
+      margin: 0 auto 20px;
+    }
+    &__content {
+      width: 100%;
+    }
+    &__title {
+      margin-bottom: 10px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .catering__intro {
+    h3.h3 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 14px;
+    }
+    li {
+      font-size: 14px;
+    }
+  }
+  .catering__service__item__content h3 {
+    font-size: 28px;
+  }
+  .catering__service__item:nth-child(2) {
+    .catering__service__item__img {
+      order: 1;
+    }
+    .catering__service__item__content {
+      order: 2;
+    }
+  }
+  .catering__event__reserv {
+    padding-top: 20px;
+    div {
+      padding: 0 5px;
+      h3 {
+        font-size: 28px;
+      }
+    }
   }
 }

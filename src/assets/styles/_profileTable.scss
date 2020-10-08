@@ -133,7 +133,7 @@ tbody tr:hover {
         padding: 15px;
     }
     table tbody tr td {
-        padding-left: 40% !important;
+        padding-left: 40%;
         margin-bottom: 24px;
     }
     table tbody tr td:last-child {
@@ -147,7 +147,7 @@ tbody tr:hover {
         position: absolute;
         width: 40%;
         left: 30px;
-        top: 0;
+        top: 10px;
     }
     table tbody tr td:nth-child(1):before {
         content: "Date";
@@ -192,5 +192,30 @@ tbody tr:hover {
     .container-table100 {
         padding-left: 15px;
         padding-right: 15px;
+    }
+}
+@media (max-width: 480px) {
+    table tbody tr td {
+        padding: 20px 10px 10px;
+        margin-bottom: 5px;
+        &:before {
+            left: 9px;
+            top: 0;
+        }
+        span {
+            font-size: 14px;
+            line-height: 18px;
+            br {
+                display: none;
+            }
+        }
+        &.column5 {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .table100 .profile__reservation__table td,
+    .table100 .profile__reservation__table th {
+        width: 100%;
     }
 }

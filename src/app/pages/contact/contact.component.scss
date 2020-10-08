@@ -47,5 +47,22 @@
 @media screen and (max-width: 1200px) {
   .contact__banner {
     height: 50vh;
+    max-height: 500px;
+  }
+  .contact__intro {
+    padding: 80px 0;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .contact__intro {
+    padding: 60px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .contact__intro {
+    padding: 40px 0;
+  }
+  .contact__reserv {
+    padding-bottom: 0;
   }
 }
