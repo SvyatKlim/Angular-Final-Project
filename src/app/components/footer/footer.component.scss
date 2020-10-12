@@ -147,18 +147,21 @@
         }
     }
     &__right {
-        width: 40%;
+        width: 45%;
         display: flex;
         align-items: center;
     }
 }
 @media screen and (max-width: 1200px) {
-    .copyright__container {
-        width: 100%;
+    .copyright {
+        &__container {
+            width: 100%;
+        }
+        &__right {
+            width: 50%;
+        }
     }
-    .copyright__right {
-        width: 50%;
-    }
+
     .footer__wrapper .container .footer__center__info {
         width: 100%;
         padding: 0;

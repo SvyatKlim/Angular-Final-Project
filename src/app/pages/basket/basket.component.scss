@@ -701,6 +701,15 @@
       }
       .btn {
         min-width: 120px;
+        width: 60%;
+        padding: 14px;
+        margin: 0 auto;
+        &.basket__order__total__checkout {
+          display: flex;
+          justify-content: center;
+          line-height: 1.2;
+          margin-top: 10px;
+        }
       }
     }
     table.basket__product thead th:nth-child(3),
@@ -712,18 +721,6 @@
       input {
         width: 100%;
         margin-bottom: 10px;
-      }
-    }
-
-    &__order .btn {
-      width: 60%;
-      padding: 14px;
-      margin: 0 auto;
-      &.basket__order__total__checkout {
-        display: flex;
-        justify-content: center;
-        line-height: 1.2;
-        margin-top: 10px;
       }
     }
     &__order__total-price {

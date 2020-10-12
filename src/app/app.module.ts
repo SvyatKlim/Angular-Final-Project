@@ -103,13 +103,13 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     Ng2SearchPipeModule,
     SwiperModule,
     IvyGalleryModule,
-    NgxMasonryModule
+    NgxMasonryModule,
   ],
   providers: [{
     provide: SWIPER_CONFIG,
     useValue: DEFAULT_SWIPER_CONFIG
   }],
   bootstrap: [AppComponent],
-  entryComponents: [BasketDialogComponent, LoginComponent,  CounterComponent,],
+  entryComponents: [BasketDialogComponent, LoginComponent, CounterComponent,],
 })
 export class AppModule { }
