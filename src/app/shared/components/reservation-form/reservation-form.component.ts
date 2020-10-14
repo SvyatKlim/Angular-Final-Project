@@ -1,13 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '@angular/router';
-import { AngularFireStorage } from '@angular/fire/storage';
 import { ReservationService } from '../../services/reservation.service';
-import { IReserv } from '../../interfaces/reservation.interface';
-import { Reservation } from '../../models/reservation.model';
 import AOS from 'aos';
-import {
-  NgForm
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
@@ -15,63 +9,87 @@ import {
 })
 export class ReservationFormComponent implements OnInit {
   @Input() statusForm: boolean;
-  public minDate: Date = new Date("09/21/2020");
-  public maxDate: Date = new Date("12/31/2020");
-  public value: Date = new Date("09/22/2020");
-  dateValue: string;
+  minDate: Date = new Date("09/21/2020");
+  maxDate: Date = new Date("12/31/2020");
+  value: Date = new Date("09/22/2020");
+  dateValue: string = "21.09.2020";
   count: string = 'Select an Option';
   name: string;
   email: string
   timeSelected: string;
-  guestCount: Array<object>;
-  time: Array<object>;
-  place: Array<object>;
+  guestCount: Array<string>;
+  time: Array<string>;
+  place: Array<string>;
   loginedUserId: string;
   dataId: string;
   editStatus: boolean = false;
   progress: string = 'booked';
   formHorizon: boolean = false;
   directions: string = 'London East';
-  constructor(private fireStorag: AngularFireStorage, private reservSerice: ReservationService) { }
+  reservationForm: FormGroup;
+  reservationFormVertical: FormGroup
+  constructor(private reservSerice: ReservationService) { }
 
   ngOnInit(): void {
     this.getDeviceWidth();
     AOS.init()
-    console.log(this.statusForm)
+    this.getLoginedUser()
+    this.reservationForm = new FormGroup({
+      user_id: new FormControl(this.loginedUserId),
+      user_name: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-z]{1,32}")]),
+      user_email: new FormControl(null, [Validators.email, Validators.required]),
+      user_dateValue: new FormControl(null, Validators.required),
+      user_timeSelected: new FormControl(null, Validators.required),
+      user_count: new FormControl(null, Validators.required),
+      user_progress: new FormControl('in process'),
+      user_directions: new FormControl(null, Validators.required),
+    })
+    this.reservationFormVertical = new FormGroup({
+      user_id: new FormControl(this.loginedUserId),
+      user_name: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-z]{1,32}")]),
+      user_email: new FormControl(null, [Validators.email, Validators.required]),
+      user_dateValue: new FormControl(null, Validators.required),
+      user_timeSelected: new FormControl(null, Validators.required),
+      user_count: new FormControl(null, Validators.required),
+      user_progress: new FormControl('in process'),
+      user_directions: new FormControl('London East', Validators.required),
+    })
     this.guestCount = [
-      { id: 0, name: '1 person' },
-      { id: 1, name: '2 people' },
-      { id: 2, name: '3 people' },
-      { id: 3, name: '4 people' },
-      { id: 4, name: '5 people' },
-      { id: 5, name: '6 people' },
-      { id: 6, name: '7 people' },
-      { id: 7, name: '8 people' },
-      { id: 8, name: '9 people' },
-      { id: 9, name: '10 people' },
-      { id: 10, name: '11 people' },
-      { id: 11, name: '12 people' },
-      { id: 12, name: '13 people' },
-      { id: 13, name: '14 people' },
-      { id: 14, name: '15 people' },
+      'Select an Option ...',
+      '1 person',
+      '2 people',
+      '3 people',
+      '4 people',
+      '5 people',
+      '6 people',
+      '7 people',
+      '8 people',
+      '9 people',
+      '10 people',
+      '11 people',
+      '12 people',
+      '13 people',
+      '14 people',
+      '15 people',
     ];
     this.time = [
-      { id: 0, name: '6:00 pm' },
-      { id: 1, name: '6:30 pm' },
-      { id: 2, name: '7:00 pm' },
-      { id: 3, name: '7:30 pm' },
-      { id: 4, name: '8:00 pm' },
-      { id: 5, name: '8:30 pm' },
-      { id: 6, name: '9:30 pm' },
-      { id: 7, name: '10:00 pm' },
-      { id: 8, name: '10:30 pm' },
+      'Select an Option ...',
+      '6:00 pm',
+      '6:30 pm',
+      '7:00 pm',
+      '7:30 pm',
+      '8:00 pm',
+      '8:30 pm',
+      '9:30 pm',
+      '10:00 pm',
+      '10:30 pm',
     ];
     this.place = [
-      { id: 0, name: 'London East' },
-      { id: 1, name: 'London Center' },
-      { id: 2, name: 'Londin West' },
+      'Choose a place ...',
+      'London East',
+      'London Center',
+      'Londin West',
     ]
-    this.getLoginedUser()
   }
   private getLoginedUser(): void {
     if (localStorage.getItem('user')) {
@@ -85,89 +103,39 @@ export class ReservationFormComponent implements OnInit {
       this.loginedUserId = 'guest'
     }
   }
-  onValueChange(args: any): void {
-    this.dateValue = args.value.toLocaleDateString();
+
+  onSubmit(form: string): void {
+    this.addReserv(form)
+    console.log(this.reservationForm)
   }
-  onTimeSelected(event: Event): void {
-    this.customFunction(event, 'time')
-  }
-  onPlaceSelected(event: Event): void {
-    this.customFunction(event, 'place')
-  }
-  customFunction(val: any, detail: string): void {
-    if (detail === 'time') { this.timeSelected = val }
-    if (detail === 'count') { this.count = val }
-    if (detail === 'place') { this.directions = val };
-  }
-  countSelected(event: Event): void {
-    this.customFunction(event, 'count')
-  }
-  addReserv(form: NgForm): void {
-    const reserv = new Reservation(
-      this.dataId,
-      this.loginedUserId,
-      this.name,
-      this.email,
-      this.dateValue,
-      this.timeSelected,
-      this.count,
-      this.progress,
-      this.directions
-    )
-    if (!this.editStatus) {
-      delete reserv.dataID;
-      delete reserv.directions;
+
+  private addReserv(formName: string): void {
+    if (formName === 'horizontal') {
       this.reservSerice
-        .postFireCloudReserv({ ...reserv })
+        .postFireCloudReserv({ ...this.reservationForm.value })
         .then(() => this.reservSerice.showSuccess())
         .catch((err) => this.reservSerice.showError(err));
-    }
-    this.resetForm();
-    console.log(reserv)
-    form.resetForm()
-  }
-  addReservHorizontal(): void {
-    const reserv = new Reservation(
-      this.dataId,
-      this.loginedUserId,
-      this.name,
-      this.email,
-      this.dateValue,
-      this.timeSelected,
-      this.count,
-      this.progress,
-      this.directions
-    )
-    if (!this.editStatus) {
-      delete reserv.dataID;
+      this.reservationForm.reset({
+        user_timeSelected: 'Select an Option ...',
+        user_count: 'Select an Option ...',
+        user_directions: 'Choose a place ...',
+      });
+    } else {
       this.reservSerice
-        .postFireCloudReserv({ ...reserv })
+        .postFireCloudReserv({ ...this.reservationFormVertical.value })
         .then(() => this.reservSerice.showSuccess())
         .catch((err) => this.reservSerice.showError(err));
+      this.reservationFormVertical.reset({
+        user_timeSelected: 'Select an Option ...',
+        user_count: 'Select an Option ...',
+        user_directions: 'Choose a place ...',
+      });
     }
-    this.resetForm();
-    console.log(reserv)
   }
   getDeviceWidth(): void {
     const width = document.body.clientWidth;
     if (width < 568) {
       this.statusForm = false
-    }
-  }
-  private resetForm(): void {
-    if (this.formHorizon) {
-      this.name = '';
-      this.email = '';
-      this.dateValue = '';
-      this.timeSelected = 'Select an option';
-      this.count = 'Select an option';
-      this.directions = 'Choose directions...';
-    } else {
-      this.name = '';
-      this.email = '';
-      this.dateValue = '';
-      this.timeSelected = 'Select an option';
-      this.count = 'Select an option';
     }
   }
 }

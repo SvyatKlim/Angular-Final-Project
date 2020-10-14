@@ -1,9 +1,9 @@
 <div class="reservation__form__container container" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="650">
-    <form #reservForm="ngForm" (ngSubmit)="addReserv(reservForm)" *ngIf="!statusForm">
-        <div class="reservation__form__input">
-            <input name="Name" class="otw-reservation-name" type="text" placeholder="Your name" [(ngModel)]="name"
-                #nameInput="ngModel" required pattern="[a-zA-Z]{2,}"
-                [ngClass]="{'is-error': nameInput.invalid && (nameInput.dirty || nameInput.touched)}">
+    <form #reservForm="ngForm" novalidate [formGroup]="reservationFormVertical" (ngSubmit)="onSubmit('vertical')"
+        *ngIf="!statusForm">
+        <div class="reservation__form__input reservation__form__input__vertical">
+            <input class="otw-reservation-name" type="text" placeholder="Your name" formControlName="user_name" required
+                [ngClass]="{'is-error':reservationFormVertical.get('user_name').invalid && (reservationFormVertical.get('user_name').dirty ||reservationFormVertical.get('user_name').touched)}">
             <div class=" reservation__form__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14pt"
                     height="20pt" viewBox="0 0 14 20" version="1.1">
@@ -14,18 +14,22 @@
                 </svg>
             </div>
 
-            <div class="reservation__form__errors" *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
-                <div class="reservation__form__error" *ngIf="nameInput.errors.required">
+            <div class="reservation__form__errors">
+                <p class="reservation__form__error"
+                    *ngIf="reservationFormVertical.get('user_name').hasError('required') && !reservationFormVertical.get('user_name').pristine">
                     Required field
-                </div>
+                </p>
+                <p class="reservation__form__error"
+                    *ngIf="reservationFormVertical.get('user_name').hasError('pattern') && !reservationFormVertical.get('user_name').pristine">
+                    Name is not correct
+                </p>
             </div>
         </div>
 
-        <div class="reservation__form__input">
-            <input name="email" class="otw-reservation-email" type="email" placeholder="Your email" [(ngModel)]="email"
-                #emailInput="ngModel" required
-                pattern="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"
-                [ngClass]="{'is-error': emailInput.invalid && (emailInput.dirty || emailInput.touched)}">
+        <div class="reservation__form__input reservation__form__input__vertical">
+            <input name="email" class="otw-reservation-email" type="email" placeholder="Your email"
+                formControlName="user_email" required
+                [ngClass]="{'is-error':reservationFormVertical.get('user_email').invalid && (reservationFormVertical.get('user_email').dirty ||reservationFormVertical.get('user_email').touched)}">
             <div class="reservation__form__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15pt"
                     height="17pt" viewBox="0 0 18 20" version="1.1">
@@ -35,48 +39,38 @@
                     </g>
                 </svg>
             </div>
-            <div class="reservation__form__errors"
-                *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
-                <div class="reservation__form__error" *ngIf="emailInput.errors.required">
+            <div class="reservation__form__errors">
+                <div class="reservation__form__error"
+                    *ngIf="reservationFormVertical.get('user_email').hasError('required') && !reservationFormVertical.get('user_email').pristine">
                     Required field
                 </div>
-                <div class="reservation__form__error" *ngIf="emailInput.errors.pattern">
+                <div class="reservation__form__error"
+                    *ngIf="reservationFormVertical.get('user_email').hasError('email') && !reservationFormVertical.get('user_email').pristine">
                     Wrong email
                 </div>
             </div>
         </div>
-        <div class="reservation__form__input reservation__form__input__calendar">
-            <input type="text" value="17/09/2016" [(ngModel)]="dateValue" name="dateValue" placeholder="22.07.2020"
-                #dateInput="ngModel" required
-                [ngClass]="{'is-error': dateInput.invalid && (dateInput.dirty || dateInput.touched)}">
+        <div class="reservation__form__input reservation__form__input__calendar reservation__form__input__vertical">
+            <input type="text" placeholder="22.07.2020" required [matDatepicker]="picker2"
+                formControlName="user_dateValue"
+                [ngClass]="{'is-error':reservationFormVertical.get('user_dateValue').invalid && (reservationFormVertical.get('user_dateValue').dirty ||reservationFormVertical.get('user_dateValue').touched)}">
             <div class="reservation__form__input__calendar__date">
-                <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'
-                    (change)="onValueChange($event)">
-                </ejs-calendar>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
             </div>
             <div class="reservation__form__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14pt"
-                    height="17pt" viewBox="0 0 16 19" version="1.1">
-                    <g id="surface1">
-                        <path style=" stroke:none;fill-rule:nonzero;fill:#b48c80;fill-opacity:1;"
-                            d="M 1.230469 16.625 L 4 16.625 L 4 13.953125 L 1.230469 13.953125 Z M 4.617188 16.625 L 7.691406 16.625 L 7.691406 13.953125 L 4.617188 13.953125 Z M 1.230469 13.359375 L 4 13.359375 L 4 10.390625 L 1.230469 10.390625 Z M 4.617188 13.359375 L 7.691406 13.359375 L 7.691406 10.390625 L 4.617188 10.390625 Z M 1.230469 9.796875 L 4 9.796875 L 4 7.125 L 1.230469 7.125 Z M 8.308594 16.625 L 11.382812 16.625 L 11.382812 13.953125 L 8.308594 13.953125 Z M 4.617188 9.796875 L 7.691406 9.796875 L 7.691406 7.125 L 4.617188 7.125 Z M 12 16.625 L 14.769531 16.625 L 14.769531 13.953125 L 12 13.953125 Z M 8.308594 13.359375 L 11.382812 13.359375 L 11.382812 10.390625 L 8.308594 10.390625 Z M 4.921875 5.34375 L 4.921875 2.671875 C 4.921875 2.589844 4.894531 2.523438 4.832031 2.464844 C 4.769531 2.40625 4.699219 2.375 4.617188 2.375 L 4 2.375 C 3.917969 2.375 3.84375 2.40625 3.785156 2.464844 C 3.722656 2.523438 3.691406 2.589844 3.691406 2.671875 L 3.691406 5.34375 C 3.691406 5.425781 3.722656 5.492188 3.785156 5.550781 C 3.84375 5.609375 3.917969 5.640625 4 5.640625 L 4.617188 5.640625 C 4.699219 5.640625 4.769531 5.609375 4.832031 5.550781 C 4.894531 5.492188 4.921875 5.425781 4.921875 5.34375 Z M 12 13.359375 L 14.769531 13.359375 L 14.769531 10.390625 L 12 10.390625 Z M 8.308594 9.796875 L 11.382812 9.796875 L 11.382812 7.125 L 8.308594 7.125 Z M 12 9.796875 L 14.769531 9.796875 L 14.769531 7.125 L 12 7.125 Z M 12.308594 5.34375 L 12.308594 2.671875 C 12.308594 2.589844 12.277344 2.523438 12.214844 2.464844 C 12.15625 2.40625 12.082031 2.375 12 2.375 L 11.382812 2.375 C 11.300781 2.375 11.230469 2.40625 11.167969 2.464844 C 11.105469 2.523438 11.078125 2.589844 11.078125 2.671875 L 11.078125 5.34375 C 11.078125 5.425781 11.105469 5.492188 11.167969 5.550781 C 11.230469 5.609375 11.300781 5.640625 11.382812 5.640625 L 12 5.640625 C 12.082031 5.640625 12.15625 5.609375 12.214844 5.550781 C 12.277344 5.492188 12.308594 5.425781 12.308594 5.34375 Z M 16 4.75 L 16 16.625 C 16 16.945312 15.878906 17.226562 15.632812 17.460938 C 15.390625 17.695312 15.101562 17.8125 14.769531 17.8125 L 1.230469 17.8125 C 0.898438 17.8125 0.609375 17.695312 0.367188 17.460938 C 0.121094 17.226562 0 16.945312 0 16.625 L 0 4.75 C 0 4.429688 0.121094 4.148438 0.367188 3.914062 C 0.609375 3.679688 0.898438 3.5625 1.230469 3.5625 L 2.460938 3.5625 L 2.460938 2.671875 C 2.460938 2.265625 2.613281 1.914062 2.914062 1.625 C 3.214844 1.332031 3.578125 1.1875 4 1.1875 L 4.617188 1.1875 C 5.039062 1.1875 5.402344 1.332031 5.703125 1.625 C 6.003906 1.914062 6.152344 2.265625 6.152344 2.671875 L 6.152344 3.5625 L 9.847656 3.5625 L 9.847656 2.671875 C 9.847656 2.265625 9.996094 1.914062 10.296875 1.625 C 10.597656 1.332031 10.960938 1.1875 11.382812 1.1875 L 12 1.1875 C 12.421875 1.1875 12.785156 1.332031 13.085938 1.625 C 13.386719 1.914062 13.539062 2.265625 13.539062 2.671875 L 13.539062 3.5625 L 14.769531 3.5625 C 15.101562 3.5625 15.390625 3.679688 15.632812 3.914062 C 15.878906 4.148438 16 4.429688 16 4.75 Z M 16 4.75 " />
-                    </g>
+                <svg class="mat-datepicker-toggle-default-icon" fill="currentColor" focusable="false" height="24px"
+                    viewBox="0 0 24 24" width="24px">
+                    <path
+                        d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z">
+                    </path>
                 </svg>
             </div>
-            <div class="reservation__form__errors" *ngIf="dateInput.invalid && (dateInput.dirty || dateInput.touched)">
-                <div class="reservation__form__error" *ngIf="dateInput.errors.required">
-                    Required field
-                </div>
-            </div>
         </div>
-        <div class="reservation__form__select">
-            <select class="otw-reservation-time selectpicker" name="timeSelected" [(ngModel)]="timeSelected"
-                (ngModelChange)="onTimeSelected($event)" #timeInput="ngModel" required
-                [ngClass]="{'is-error': timeInput.invalid && (timeInput.dirty || timeInput.touched)}">
-                <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="timeSelected === ''">Select an
-                    Option</option>
-                <option *ngFor="let hour of time" [value]="hour.name" [selected]="hour.id === 0">{{hour.name}}
+        <div class="reservation__form__select reservation__form__input__vertical">
+            <select class="otw-reservation-time selectpicker" required formControlName="user_timeSelected"
+                [ngClass]="{'is-error':reservationFormVertical.get('user_timeSelected').invalid && (reservationFormVertical.get('user_timeSelected').dirty ||reservationFormVertical.get('user_timeSelected').touched)}">
+                <option *ngFor="let hour of time">{{hour}}
                 </option>
             </select>
             <div class="reservation__form__icon">
@@ -89,21 +83,17 @@
                 </svg>
 
             </div>
-            <div class="reservation__form__errors" *ngIf="timeInput.invalid && (timeInput.dirty || timeInput.touched)">
-                <div class="reservation__form__error" *ngIf="timeInput.errors.required">
+            <div class="reservation__form__errors">
+                <div class="reservation__form__error"
+                    *ngIf="reservationFormVertical.get('user_timeSelected').hasError('required') && !reservationFormVertical.get('user_timeSelected').pristine">
                     Required field
                 </div>
             </div>
         </div>
-        <div class="reservation__form__select">
-            <select name="guestCount" class="otw-party-size-select selectpicker" [(ngModel)]="count"
-                (ngModelChange)="countSelected($event)" #peopleInput="ngModel" required
-                [ngClass]="{'is-error': peopleInput.invalid && (peopleInput.dirty || peopleInput.touched)}">
-                <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="count.name === '' ">
-                    Select an
-                    Option</option>
-                <option *ngFor="let count of guestCount" [value]="count.name">{{count.name}}
+        <div class="reservation__form__select reservation__form__input__vertical">
+            <select class="otw-party-size-select selectpicker" required formControlName="user_count"
+                [ngClass]="{'is-error':reservationFormVertical.get('user_count').invalid && (reservationFormVertical.get('user_count').dirty ||reservationFormVertical.get('user_count').touched)}">
+                <option *ngFor="let count of guestCount">{{count}}
                 </option>
             </select>
             <div class="reservation__form__icon">
@@ -115,23 +105,30 @@
                     </g>
                 </svg>
             </div>
-            <div class="reservation__form__errors"
-                *ngIf="peopleInput.invalid && (peopleInput.dirty || peopleInput.touched)">
-                <div class="reservation__form__error" *ngIf="peopleInput.errors.required">
-                    Required field
-                </div>
+            <div class="reservation__form__error"
+                *ngIf="reservationFormVertical.get('user_count').hasError('required') && !reservationFormVertical.get('user_count').pristine">
+                Required field
             </div>
         </div>
         <div class="reservation__form__btn">
-            <button type="submit" class="btn" value="Find a Table" [disabled]="reservForm.invalid">Find a Table</button>
+            <button type="submit" class="btn" value="Find a Table" [disabled]="reservationFormVertical.invalid">Find a
+                Table</button>
         </div>
     </form>
 
-    <form #reservForm="ngForm" class="formHorizontal" (ngSubmit)="addReservHorizontal()" *ngIf="statusForm">
+
+
+
+
+
+
+
+
+    <form #reservForm="ngForm" novalidate class="formHorizontal" [formGroup]="reservationForm"
+        (ngSubmit)="onSubmit('horizontal')" *ngIf="statusForm">
         <div class="reservation__form__input reservation__form__input__horizontal">
-            <input name="Name" class="otw-reservation-name" type="text" placeholder="Your name" [(ngModel)]="name"
-                #nameInput="ngModel" required pattern="[a-zA-Z]{2,}"
-                [ngClass]="{'is-error': nameInput.invalid && (nameInput.dirty || nameInput.touched)}">
+            <input class="otw-reservation-name" type="text" placeholder="Your name" formControlName="user_name" required
+                [ngClass]="{'is-error':reservationForm.get('user_name').invalid && (reservationForm.get('user_name').dirty ||reservationForm.get('user_name').touched)}">
             <div class=" reservation__form__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14pt"
                     height="20pt" viewBox="0 0 14 20" version="1.1">
@@ -142,18 +139,38 @@
                 </svg>
             </div>
 
-            <div class="reservation__form__errors" *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
-                <div class="reservation__form__error" *ngIf="nameInput.errors.required">
+            <div class="reservation__form__errors">
+                <p class="reservation__form__error"
+                    *ngIf="reservationForm.get('user_name').hasError('required') && !reservationForm.get('user_name').pristine">
                     Required field
-                </div>
+                </p>
+                <p class="reservation__form__error"
+                    *ngIf="reservationForm.get('user_name').hasError('email') && !reservationForm.get('user_name').pristine">
+                    Name is not correct
+                </p>
             </div>
         </div>
-
+        <div class="reservation__form__input reservation__form__input__horizontal reservation__form__input__calendar">
+            <input type="text" placeholder="22.07.2020" required [matDatepicker]="picker2"
+                formControlName="user_dateValue"
+                [ngClass]="{'is-error':reservationForm.get('user_dateValue').invalid && (reservationForm.get('user_dateValue').dirty ||reservationForm.get('user_dateValue').touched)}">
+            <div class="reservation__form__input__calendar__date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </div>
+            <div class="reservation__form__icon">
+                <svg class="mat-datepicker-toggle-default-icon" fill="currentColor" focusable="false" height="24px"
+                    viewBox="0 0 24 24" width="24px">
+                    <path
+                        d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z">
+                    </path>
+                </svg>
+            </div>
+        </div>
         <div class="reservation__form__input reservation__form__input__horizontal">
-            <input name="email" class="otw-reservation-email" type="email" placeholder="Your email" [(ngModel)]="email"
-                #emailInput="ngModel" required
-                pattern="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"
-                [ngClass]="{'is-error': emailInput.invalid && (emailInput.dirty || emailInput.touched)}">
+            <input name="email" class="otw-reservation-email" type="email" placeholder="Your email"
+                formControlName="user_email" required
+                [ngClass]="{'is-error':reservationForm.get('user_email').invalid && (reservationForm.get('user_email').dirty ||reservationForm.get('user_email').touched)}">
             <div class="reservation__form__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15pt"
                     height="17pt" viewBox="0 0 18 20" version="1.1">
@@ -163,48 +180,21 @@
                     </g>
                 </svg>
             </div>
-            <div class="reservation__form__errors"
-                *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
-                <div class="reservation__form__error" *ngIf="emailInput.errors.required">
+            <div class="reservation__form__errors">
+                <div class="reservation__form__error"
+                    *ngIf="reservationForm.get('user_email').hasError('required') && !reservationForm.get('user_email').pristine">
                     Required field
                 </div>
-                <div class="reservation__form__error" *ngIf="emailInput.errors.pattern">
+                <div class="reservation__form__error"
+                    *ngIf="reservationForm.get('user_email').hasError('pattern') && !reservationForm.get('user_email').pristine">
                     Wrong email
                 </div>
             </div>
         </div>
-        <div class="reservation__form__input reservation__form__input__horizontal reservation__form__input__calendar">
-            <input type="text" value="17/09/2016" [(ngModel)]="dateValue" name="dateValue" placeholder="22.07.2020"
-                #dateInput="ngModel" required
-                [ngClass]="{'is-error': dateInput.invalid && (dateInput.dirty || dateInput.touched)}">
-            <div class="reservation__form__input__calendar__date">
-                <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'
-                    (change)="onValueChange($event)">
-                </ejs-calendar>
-            </div>
-            <div class="reservation__form__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14pt"
-                    height="17pt" viewBox="0 0 16 19" version="1.1">
-                    <g id="surface1">
-                        <path style=" stroke:none;fill-rule:nonzero;fill:#b48c80;fill-opacity:1;"
-                            d="M 1.230469 16.625 L 4 16.625 L 4 13.953125 L 1.230469 13.953125 Z M 4.617188 16.625 L 7.691406 16.625 L 7.691406 13.953125 L 4.617188 13.953125 Z M 1.230469 13.359375 L 4 13.359375 L 4 10.390625 L 1.230469 10.390625 Z M 4.617188 13.359375 L 7.691406 13.359375 L 7.691406 10.390625 L 4.617188 10.390625 Z M 1.230469 9.796875 L 4 9.796875 L 4 7.125 L 1.230469 7.125 Z M 8.308594 16.625 L 11.382812 16.625 L 11.382812 13.953125 L 8.308594 13.953125 Z M 4.617188 9.796875 L 7.691406 9.796875 L 7.691406 7.125 L 4.617188 7.125 Z M 12 16.625 L 14.769531 16.625 L 14.769531 13.953125 L 12 13.953125 Z M 8.308594 13.359375 L 11.382812 13.359375 L 11.382812 10.390625 L 8.308594 10.390625 Z M 4.921875 5.34375 L 4.921875 2.671875 C 4.921875 2.589844 4.894531 2.523438 4.832031 2.464844 C 4.769531 2.40625 4.699219 2.375 4.617188 2.375 L 4 2.375 C 3.917969 2.375 3.84375 2.40625 3.785156 2.464844 C 3.722656 2.523438 3.691406 2.589844 3.691406 2.671875 L 3.691406 5.34375 C 3.691406 5.425781 3.722656 5.492188 3.785156 5.550781 C 3.84375 5.609375 3.917969 5.640625 4 5.640625 L 4.617188 5.640625 C 4.699219 5.640625 4.769531 5.609375 4.832031 5.550781 C 4.894531 5.492188 4.921875 5.425781 4.921875 5.34375 Z M 12 13.359375 L 14.769531 13.359375 L 14.769531 10.390625 L 12 10.390625 Z M 8.308594 9.796875 L 11.382812 9.796875 L 11.382812 7.125 L 8.308594 7.125 Z M 12 9.796875 L 14.769531 9.796875 L 14.769531 7.125 L 12 7.125 Z M 12.308594 5.34375 L 12.308594 2.671875 C 12.308594 2.589844 12.277344 2.523438 12.214844 2.464844 C 12.15625 2.40625 12.082031 2.375 12 2.375 L 11.382812 2.375 C 11.300781 2.375 11.230469 2.40625 11.167969 2.464844 C 11.105469 2.523438 11.078125 2.589844 11.078125 2.671875 L 11.078125 5.34375 C 11.078125 5.425781 11.105469 5.492188 11.167969 5.550781 C 11.230469 5.609375 11.300781 5.640625 11.382812 5.640625 L 12 5.640625 C 12.082031 5.640625 12.15625 5.609375 12.214844 5.550781 C 12.277344 5.492188 12.308594 5.425781 12.308594 5.34375 Z M 16 4.75 L 16 16.625 C 16 16.945312 15.878906 17.226562 15.632812 17.460938 C 15.390625 17.695312 15.101562 17.8125 14.769531 17.8125 L 1.230469 17.8125 C 0.898438 17.8125 0.609375 17.695312 0.367188 17.460938 C 0.121094 17.226562 0 16.945312 0 16.625 L 0 4.75 C 0 4.429688 0.121094 4.148438 0.367188 3.914062 C 0.609375 3.679688 0.898438 3.5625 1.230469 3.5625 L 2.460938 3.5625 L 2.460938 2.671875 C 2.460938 2.265625 2.613281 1.914062 2.914062 1.625 C 3.214844 1.332031 3.578125 1.1875 4 1.1875 L 4.617188 1.1875 C 5.039062 1.1875 5.402344 1.332031 5.703125 1.625 C 6.003906 1.914062 6.152344 2.265625 6.152344 2.671875 L 6.152344 3.5625 L 9.847656 3.5625 L 9.847656 2.671875 C 9.847656 2.265625 9.996094 1.914062 10.296875 1.625 C 10.597656 1.332031 10.960938 1.1875 11.382812 1.1875 L 12 1.1875 C 12.421875 1.1875 12.785156 1.332031 13.085938 1.625 C 13.386719 1.914062 13.539062 2.265625 13.539062 2.671875 L 13.539062 3.5625 L 14.769531 3.5625 C 15.101562 3.5625 15.390625 3.679688 15.632812 3.914062 C 15.878906 4.148438 16 4.429688 16 4.75 Z M 16 4.75 " />
-                    </g>
-                </svg>
-            </div>
-            <div class="reservation__form__errors" *ngIf="dateInput.invalid && (dateInput.dirty || dateInput.touched)">
-                <div class="reservation__form__error" *ngIf="dateInput.errors.required">
-                    Required field
-                </div>
-            </div>
-        </div>
         <div class="reservation__form__select reservation__form__input__horizontal">
-            <select class="otw-reservation-time selectpicker" name="timeSelected" [(ngModel)]="timeSelected"
-                (ngModelChange)="onTimeSelected($event)" #timeInput="ngModel" required
-                [ngClass]="{'is-error': timeInput.invalid && (timeInput.dirty || timeInput.touched)}">
-                <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="timeSelected === ''">Select an
-                    Option</option>
-                <option *ngFor="let hour of time" [value]="hour.name" [selected]="hour.id === 0">{{hour.name}}
+            <select class="otw-reservation-time selectpicker" required formControlName="user_timeSelected"
+                [ngClass]="{'is-error':reservationForm.get('user_timeSelected').invalid && (reservationForm.get('user_timeSelected').dirty ||reservationForm.get('user_timeSelected').touched)}">
+                <option *ngFor="let hour of time">{{hour}}
                 </option>
             </select>
             <div class="reservation__form__icon">
@@ -217,21 +207,17 @@
                 </svg>
 
             </div>
-            <div class="reservation__form__errors" *ngIf="timeInput.invalid && (timeInput.dirty || timeInput.touched)">
-                <div class="reservation__form__error" *ngIf="timeInput.errors.required">
+            <div class="reservation__form__errors">
+                <div class="reservation__form__error"
+                    *ngIf="reservationForm.get('user_timeSelected').hasError('required') && !reservationForm.get('user_timeSelected').pristine">
                     Required field
                 </div>
             </div>
         </div>
         <div class="reservation__form__select reservation__form__input__horizontal">
-            <select name="guestCount" class="otw-party-size-select selectpicker" [(ngModel)]="count"
-                (ngModelChange)="countSelected($event)" #peopleInput="ngModel" required
-                [ngClass]="{'is-error': peopleInput.invalid && (peopleInput.dirty || peopleInput.touched)}">
-                <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="count.name === '' ">
-                    Select an
-                    Option</option>
-                <option *ngFor="let count of guestCount" [value]="count.name">{{count.name}}
+            <select class="otw-party-size-select selectpicker" required formControlName="user_count"
+                [ngClass]="{'is-error':reservationForm.get('user_count').invalid && (reservationForm.get('user_count').dirty ||reservationForm.get('user_count').touched)}">
+                <option *ngFor="let count of guestCount">{{count}}
                 </option>
             </select>
             <div class="reservation__form__icon">
@@ -243,21 +229,16 @@
                     </g>
                 </svg>
             </div>
-            <div class="reservation__form__errors"
-                *ngIf="peopleInput.invalid && (peopleInput.dirty || peopleInput.touched)">
-                <div class="reservation__form__error" *ngIf="peopleInput.errors.required">
-                    Required field
-                </div>
+            <div class="reservation__form__error"
+                *ngIf="reservationForm.get('user_count').hasError('required') && !reservationForm.get('user_count').pristine">
+                Required field
             </div>
         </div>
         <div class="reservation__form__select reservation__form__input__horizontal">
-            <select name="guestCount" class="otw-party-size-select selectpicker" [(ngModel)]="directions"
-                (ngModelChange)="countSelected($event)" #placeInput="ngModel" required
-                [ngClass]="{'is-error': placeInput.invalid && (placeInput.dirty || peopleInput.touched)}">
-                <option class="dropdown-item" disabled selected value="undefined">Choose a place ...</option>
-                <option class="dropdown-item" disabled selected value="undefined" *ngIf="direction === ''">Choose a
-                    place ...</option>
-                <option *ngFor="let direction of place" [value]="direction.name">{{direction.name}}
+            <select name="guestCount" class="otw-party-size-select selectpicker" required
+                formControlName="user_directions"
+                [ngClass]="{'is-error':reservationForm.get('user_directions').invalid && (reservationForm.get('user_directions').dirty ||reservationForm.get('user_directions').touched)}">
+                <option *ngFor="let direction of place">{{direction}}
                 </option>
             </select>
             <div class="reservation__form__icon">
@@ -269,15 +250,15 @@
                     </g>
                 </svg>
             </div>
-            <div class="reservation__form__errors"
-                *ngIf="placeInput.invalid && (placeInput.dirty || placeInput.touched)">
-                <div class="reservation__form__error" *ngIf="placeInput.errors.required">
-                    Required field
-                </div>
+            <div class="reservation__form__error"
+                *ngIf="reservationForm.get('user_directions').hasError('required') && !reservationForm.get('user_directions').pristine">
+                Required field
             </div>
+
         </div>
         <div class="reservation__form__btn horizontalBtn">
-            <button type="submit" class="btn horizontal" value="Find a Table" [disabled]="reservForm.invalid"> Find a
+            <button type="submit" class="btn horizontal" [disabled]="reservationForm.invalid" value="Find a Table"> Find
+                a
                 Table</button>
         </div>
 

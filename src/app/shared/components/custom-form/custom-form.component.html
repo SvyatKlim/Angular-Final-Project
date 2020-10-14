@@ -1,5 +1,5 @@
 <div class="form__custom" *ngIf="!statusForm">
-    <form class="container__large container" [formGroup]="cateringForm" (ngSubmit)="onSubmit()">
+    <form class="container__large container" novalidate [formGroup]="cateringForm" (ngSubmit)="onSubmit('catering')">
         <div class="fieldset">
             <span class="form__custom__name">
                 <input type="text" class="form__custom__text" placeholder="Your name..." formControlName="user_name"
@@ -27,7 +27,8 @@
                 </p>
             </span>
             <span class="form__custom__phone">
-                <input type="text" class="form__custom__text" placeholder="Phone: 0971234567" formControlName="user_phone"
+                <input type="text" class="form__custom__text" placeholder="Phone: 0971234567"
+                    formControlName="user_phone"
                     [ngClass]="{'is-error': cateringForm.get('user_phone').invalid && (cateringForm.get('user_phone').dirty || cateringForm.get('user_phone').touched)}">
                 <p class="form__custom__error"
                     *ngIf="cateringForm.get('user_phone').hasError('required') && !cateringForm.get('user_phone').pristine">
@@ -58,25 +59,48 @@
 </div>
 
 <div class="form__custom" *ngIf="statusForm">
-    <form class="container__large container" #cateringForm="ngForm" (ngSubmit)="addContact(cateringForm)">
+    <form class="container__large container" novalidate [formGroup]="contactFormTemplate"
+        (ngSubmit)="onSubmit('contact')">
         <div class="fieldset">
             <span class="form__custom__name contact">
-                <input type="text" class="form__custom__text" id="contact-name" placeholder="Your name..."
-                    [(ngModel)]="contactName">
+                <input type="text" class="form__custom__text" placeholder="Your name..." formControlName="user_name"
+                    [ngClass]="{'is-error': contactFormTemplate.get('user_name').invalid && (contactFormTemplate.get('user_name').dirty || contactFormTemplate.get('user_name').touched)}">
+                <p class="form__custom__error"
+                    *ngIf="contactFormTemplate.get('user_name').hasError('required') && !contactFormTemplate.get('user_name').pristine">
+                    Name is Required
+                </p>
+                <p class="form__custom__error"
+                    *ngIf="contactFormTemplate.get('user_name').hasError('pattern') && !contactFormTemplate.get('user_name').pristine">
+                    Name is not correct
+                </p>
             </span>
             <span class="form__custom__email contact">
-                <input type="email" name="email" class="form__custom__text" id="contact-email" placeholder="Email..."
-                    [(ngModel)]="contactEmail">
+                <input type="email" name="email" class="form__custom__text" placeholder="Email..."
+                    formControlName="user_email"
+                    [ngClass]="{'is-error': contactFormTemplate.get('user_email').invalid && (contactFormTemplate.get('user_email').dirty || contactFormTemplate.get('user_email').touched)}">
+                <p class="form__custom__error"
+                    *ngIf="contactFormTemplate.get('user_email').hasError('required') && !contactFormTemplate.get('user_email').pristine">
+                    Please provide your E-mail
+                </p>
+                <p class="form__custom__error"
+                    *ngIf="contactFormTemplate.get('user_email').hasError('email') && !contactFormTemplate.get('user_email').pristine">
+                    Email is not correct
+                </p>
             </span>
         </div>
 
         <div class="fieldset">
             <span class="form__custom__message">
-                <textarea rows="8" class="form__custom__textarea" id="contact-message" placeholder="Message..."
-                    [(ngModel)]="contactMessage"></textarea>
+                <textarea rows="8" class="form__custom__textarea" formControlName="user_message"
+                    placeholder="Message..."
+                    [ngClass]="{'is-error': contactFormTemplate.get('user_message').invalid && (contactFormTemplate.get('user_message').dirty || contactFormTemplate.get('user_message').touched)}"></textarea>
+                <p class="form__custom__error"
+                    *ngIf="contactFormTemplate.get('user_message').hasError('required') && !contactFormTemplate.get('user_message').pristine">
+                    Message is Required
+                </p>
             </span>
         </div>
         <div class="form__custom__btn">
-            <input type="submit" class="btn" value="Send"></div>
+            <input type="submit" class="btn" [disabled]="contactFormTemplate.invalid" value="Send"></div>
     </form>
 </div>

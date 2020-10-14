@@ -1,5 +1,5 @@
 export interface IReserv {
-    dataID: string
+    dataID?: string
     userID: string;
     name: string;
     email: string;

@@ -32,10 +32,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasketComponent } from './pages/basket/basket.component';
 import { BasketDialogComponent } from './shared/components/basket-dialog/basket-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReservationFormComponent } from './shared/components/reservation-form/reservation-form.component';
-import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {
   SwiperModule, SwiperConfigInterface,
@@ -99,11 +99,11 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ReactiveFormsModule,
     MatDialogModule,
     ToastrModule.forRoot(),
-    CalendarModule,
     Ng2SearchPipeModule,
     SwiperModule,
     IvyGalleryModule,
     NgxMasonryModule,
+    MatDatepickerModule
   ],
   providers: [{
     provide: SWIPER_CONFIG,

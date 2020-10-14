@@ -20,8 +20,21 @@
         transition: cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     &__input {
+        &__vertical {
+            padding-bottom: 25px;
+            margin: 0;
+            .reservation__form__errors {
+                position: absolute;
+                bottom: 0;
+                left: 8px;
+                p {
+                    margin: 0;
+                }
+            }
+        }
         &__horizontal {
             width: calc(33.3% - 40px);
+            margin-bottom: 12px;
         }
         &__calendar {
             position: relative;
@@ -29,9 +42,10 @@
                 position: absolute;
                 display: none;
                 transition: all 0.4s;
-                top: -259px;
-                right: -255px;
+                top: -1px;
+                left: -9px;
                 padding-left: 11px;
+                z-index: 20;
             }
             &:hover {
                 .reservation__form__input__calendar__date {
@@ -79,8 +93,14 @@
     &__error {
         color: #e62625;
         font-weight: 600;
-        margin-left: 9px;
-        margin-top: 5px;
+        padding: 0;
+        font-size: 13px;
+        margin-left: 2px;
+    }
+    &__errors {
+        position: absolute;
+        bottom: -22px;
+        left: 8px;
     }
 }
 .formHorizontal {
@@ -109,7 +129,6 @@ select {
     }
     &.is-error {
         border: 1px solid #dc3545;
-        padding-right: calc(1.5em + 0.75rem);
         background-image: url("../../../../assets/images/icons/error.svg");
         background-repeat: no-repeat;
         background-position: right calc(0.375em + 0.1875rem) center;
@@ -133,7 +152,14 @@ select {
     .reservation__form__error {
         margin-top: 2px;
         font-size: 12px;
-        margin-bottom: -10px;
+    }
+}
+@media screen and (max-width: 568px) {
+    .reservation__form {
+        &__input,
+        &__select {
+            margin-top: 22px;
+        }
     }
 }
 @media screen and (max-width: 414px) {

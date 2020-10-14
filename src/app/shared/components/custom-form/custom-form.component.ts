@@ -11,6 +11,7 @@ export class CustomFormComponent implements OnInit {
   @Input() statusForm: boolean;
   contactForm: boolean = false;
   cateringForm: FormGroup;
+  contactFormTemplate: FormGroup;
   constructor(private toastr: ToastrService, private cateringService: CatContactService) { }
 
   ngOnInit(): void {
@@ -21,15 +22,33 @@ export class CustomFormComponent implements OnInit {
       user_message: new FormControl(null, Validators.required),
       user_phone: new FormControl(null, [Validators.required, Validators.pattern("[0-9]{10}")]),
     })
+    this.contactFormTemplate = new FormGroup({
+      user_name: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-z]{1,32}")]),
+      user_email: new FormControl(null, [Validators.email, Validators.required]),
+      user_message: new FormControl(null, Validators.required),
+    })
   }
 
-  onSubmit() {
-    this.addRequest()
-    this.cateringForm.reset()
+  onSubmit(value: string) {
+    if (value === 'catering') {
+      this.addRequestCatering()
+      this.cateringForm.reset()
+    }
+    if (value === 'contact') {
+      this.addRequestContact()
+      this.contactFormTemplate.reset()
+    }
   }
-  private addRequest(): void {
+  private addRequestCatering(): void {
     if (this.cateringForm.status === "VALID") {
       this.cateringService.postFireCloudCateringOrder(this.cateringForm.value)
+        .then(() => this.showSuccess())
+        .catch((err) => this.showError(err));
+    }
+  }
+  private addRequestContact(): void {
+    if (this.contactFormTemplate.status === "VALID") {
+      this.cateringService.postFireCloudContactOrder(this.contactFormTemplate.value)
         .then(() => this.showSuccess())
         .catch((err) => this.showError(err));
     }
@@ -40,29 +59,4 @@ export class CustomFormComponent implements OnInit {
   private showError(error: string): any {
     this.toastr.error(`Error: ${error}`);
   }
-  // addReserv(form: NgForm): void {
-  //   const reserv = new Reservation(
-  //     this.dataId,
-  //     this.loginedUserId,
-  //     this.name,
-  //     this.email,
-  //     this.dateValue,
-  //     this.timeSelected,
-  //     this.count,
-  //     this.progress,
-  //     this.directions
-  //   )
-  //   if (!this.editStatus) {
-  //     delete reserv.dataID;
-  //     delete reserv.directions;
-  //     this.reservSerice
-  //       .postFireCloudReserv({ ...reserv })
-  //       .then(() => this.reservSerice.showSuccess())
-  //       .catch((err) => this.reservSerice.showError(err));
-  //   }
-  //   this.resetForm();
-  //   console.log(reserv)
-  //   form.resetForm()
-  // }
-
 }

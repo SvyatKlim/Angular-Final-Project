@@ -7,14 +7,6 @@
 @import "~ngx-toastr/toastr";
 @import "~@angular/material/theming";
 @import url("https://unpkg.com/aos@2.3.1/dist/aos.css");
-@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-lists/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css";
 * {
   $custom-typography: mat-typography-config(
     $font-family: '"Suranna", sans-serif;',
@@ -295,6 +287,9 @@ p.custom__content__text {
   background-color: #383848;
   color: #fff;
   box-shadow: 0 0 12px #383848;
+}
+.mat-datepicker-toggle-default-icon {
+  fill: $hr;
 }
 @media screen and (max-width: 1920px) {
   .container {

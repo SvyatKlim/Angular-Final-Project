@@ -24,4 +24,21 @@ export class CatContactService {
   deleteFireCloudCateringOrder(id: string): Promise<void> {
     return this.firecloud.collection('catering').doc(id).delete();
   }
+
+  // Contact Order
+  postFireCloudContactOrder(contOrder: ICatCont): Promise<DocumentReference> {
+    return this.firecloud.collection('contact').add(contOrder);
+  }
+  getFireCloudContactOrder(): Observable<DocumentChangeAction<unknown>[]> {
+    return this.firecloud.collection('contact').snapshotChanges();
+  }
+  updateFireCloudContactOrder(reservOrder: ICatCont, newValue: string): Promise<void> {
+    return this.firecloud
+      .collection('contact')
+      .doc(reservOrder.dataID)
+      .update({ progress: newValue });
+  }
+  deleteFireCloudContactOrder(id: string): Promise<void> {
+    return this.firecloud.collection('contact').doc(id).delete();
+  }
 }
