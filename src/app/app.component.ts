@@ -13,7 +13,7 @@ export class AppComponent {
     0: '/admin',
     1: '/admin/admin-category',
     2: '/admin/admin-product',
-    3: '/admin/admin-discount',
+    3: '/admin/admin-helper',
     4: '/admin/admin-order',
     5: '/admin/admin-reserv',
   };
@@ -30,7 +30,6 @@ export class AppComponent {
           urlName === this.adminPages[5]
         ) {
           this.isAdmin = true;
-          console.log('Welcome Admin');
         } else {
           this.isAdmin = false;
         }

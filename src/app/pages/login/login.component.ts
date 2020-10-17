@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   toggleVisibility(e) {
-    console.log(e.target.checked)
     this.marked = e.target.checked;
   }
   login(): void {

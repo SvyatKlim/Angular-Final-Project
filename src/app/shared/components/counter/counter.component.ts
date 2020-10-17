@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IProduct } from '../../shared/interfaces/product.interface';
+import { IProduct } from '../../../shared/interfaces/product.interface';
 
 @Component({
   selector: 'app-counter',

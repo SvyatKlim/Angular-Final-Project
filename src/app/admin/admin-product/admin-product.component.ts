@@ -88,7 +88,6 @@ export class AdminProductComponent implements OnInit, AfterViewInit {
         return { id, ...data };
       });
       this.dataSource.data = this.products
-      console.log(this.products)
     });
   }
   setCategory(): void {

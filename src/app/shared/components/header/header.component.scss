@@ -1,5 +1,5 @@
-@import "../../../assets/styles/variables";
-@import "../../../assets/styles/mixin";
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixin";
 .header {
   display: flex;
   justify-content: center;
@@ -233,9 +233,9 @@
           }
         }
         &-view {
-          background: url(../../../assets/images/header/btn1-bg.jpg) repeat-y 0 0;
+          background: url(../../../../assets/images/header/btn1-bg.jpg) repeat-y 0 0;
           &:hover {
-            background: url(../../../assets/images/header/btn2-bg.jpg) repeat-y 0 0;
+            background: url(../../../../assets/images/header/btn2-bg.jpg) repeat-y 0 0;
             color: #ffffff !important;
           }
         }
@@ -293,6 +293,9 @@ a.menu__link {
 }
 .nav__mobile {
   display: none;
+}
+.nav__login {
+  cursor: pointer;
 }
 @media screen and (max-width: 1200px) {
   .nav {
@@ -490,19 +493,19 @@ a.menu__link {
   }
   .nav__menu {
     justify-content: flex-end;
+    &__dropdown {
+      left: 50px;
+      width: 300px;
+      &.active__dropdown {
+        transform: translate(-17%, 0);
+      }
+    }
   }
   .nav__menu > p {
     display: none;
   }
   .nav__left {
     padding: 15px;
-  }
-  .nav__menu__dropdown {
-    left: 50px;
-    width: 300px;
-  }
-  .nav__menu__dropdown.active__dropdown {
-    transform: translate(-17%, 0);
   }
 }
 @media screen and (max-width: 414px) {

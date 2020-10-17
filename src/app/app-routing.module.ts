@@ -15,17 +15,14 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
 import { AdminReservComponent } from './admin/admin-reserv/admin-reserv.component';
-import { UserComponent } from './user/user.component';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import { UserOrdersComponent } from './user/user-orders/user-orders.component';
 import { RestaurantComponent } from './pages/menu/restaurant/restaurant.component';
 import { DeliveryComponent } from './pages/menu/delivery/delivery.component';
 import { BasketComponent } from './pages/basket/basket.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileGuard } from './shared/guards/profile.guard';
+import { AdminHelperComponent } from './admin/admin-helper/admin-helper.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -59,7 +56,7 @@ const routes: Routes = [
       { path: 'admin-category', component: AdminCategoryComponent },
       { path: 'admin-product', component: AdminProductComponent },
       { path: 'admin-order', component: AdminOrderComponent },
-      { path: 'admin-discount', component: AdminDiscountComponent },
+      { path: 'admin-helper', component: AdminHelperComponent },
       { path: 'admin-reserv', component: AdminReservComponent },
     ],
   },

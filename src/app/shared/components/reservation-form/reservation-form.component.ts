@@ -41,7 +41,7 @@ export class ReservationFormComponent implements OnInit {
       user_dateValue: new FormControl(null, Validators.required),
       user_timeSelected: new FormControl(null, Validators.required),
       user_count: new FormControl(null, Validators.required),
-      user_progress: new FormControl('in process'),
+      progress: new FormControl('in processing'),
       user_directions: new FormControl(null, Validators.required),
     })
     this.reservationFormVertical = new FormGroup({
@@ -51,7 +51,7 @@ export class ReservationFormComponent implements OnInit {
       user_dateValue: new FormControl(null, Validators.required),
       user_timeSelected: new FormControl(null, Validators.required),
       user_count: new FormControl(null, Validators.required),
-      user_progress: new FormControl('in process'),
+      progress: new FormControl('in processing'),
       user_directions: new FormControl('London East', Validators.required),
     })
     this.guestCount = [
@@ -106,7 +106,6 @@ export class ReservationFormComponent implements OnInit {
 
   onSubmit(form: string): void {
     this.addReserv(form)
-    console.log(this.reservationForm)
   }
 
   private addReserv(formName: string): void {

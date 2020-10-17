@@ -46,7 +46,6 @@ export class ProductComponent implements OnInit {
           this.products.push({ id, ...data });
         });
         this.category = categoryName;
-        console.log(this.category)
       });
   }
 }

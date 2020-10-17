@@ -15,7 +15,6 @@ export class CustomFormComponent implements OnInit {
   constructor(private toastr: ToastrService, private cateringService: CatContactService) { }
 
   ngOnInit(): void {
-    console.log(this.statusForm)
     this.cateringForm = new FormGroup({
       user_name: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-z]{1,32}")]),
       user_email: new FormControl(null, [Validators.email, Validators.required]),

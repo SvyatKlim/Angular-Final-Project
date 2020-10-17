@@ -46,7 +46,6 @@ export class BasketComponent implements OnInit {
     AOS.init()
   }
   toggleVisibility(e) {
-    console.log(e.target.checked)
     this.marked = e.target.checked;
   }
   private checkBasket(): void {
@@ -85,7 +84,7 @@ export class BasketComponent implements OnInit {
   private updateBasket(): void {
     localStorage.setItem('myOrder', JSON.stringify(this.basket));
     this.getTotal();
-    this.orderService.basket.next('go');
+    this.orderService.basket.next('delete product');
   }
   openDialog(product: IProduct): void {
     const dialogRef = this.dialog.open(BasketDialogComponent, {
@@ -133,9 +132,9 @@ export class BasketComponent implements OnInit {
 
     delete order.dataID;
     this.orderService.postFireCloudOrder({ ...order })
-      .then(() => this.resetForm())
+      .then(() => this.updateBasket())
       .catch(err => console.log(err));
-    console.log(order)
+    this.resetForm()
     this.orderComplete = true;
     this.checkout = false
   }

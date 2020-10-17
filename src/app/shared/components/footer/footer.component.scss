@@ -1,9 +1,10 @@
-@import "../../../assets/styles/variables";
-@import "../../../assets/styles/typography";
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/typography";
 .footer__wrapper {
     position: relative;
     background-color: #0b0e13;
-    background-image: url(../../../assets/images/footer/footer_l.png), url(../../../assets/images/footer/footer_r.png);
+    background-image: url(../../../../assets/images/footer/footer_l.png),
+        url(../../../../assets/images/footer/footer_r.png);
     background-position: left 60px, right 60px;
     background-repeat: no-repeat;
     width: 100%;

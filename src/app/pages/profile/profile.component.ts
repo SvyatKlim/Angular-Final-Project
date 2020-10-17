@@ -74,7 +74,6 @@ export class ProfileComponent implements OnInit {
           const data = doc.data();
           this.userReserv.push(data);
         });
-        console.log(this.userReserv)
       })
 
   }

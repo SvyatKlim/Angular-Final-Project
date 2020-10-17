@@ -15,7 +15,7 @@ import { ReservationService } from '../../shared/services/reservation.service';
 })
 export class AdminReservComponent implements OnInit {
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'date', 'email', 'name', 'people', 'time', 'status']
+  displayedColumns: string[] = ['id', 'date', 'email', 'name', 'people', 'time', 'location', 'status','delete']
   reservArr: IReserv[] = [];
   modeselect: string;
   status: Array<object> = [
@@ -24,8 +24,7 @@ export class AdminReservComponent implements OnInit {
     { value: '2', viewValue: 'canceled' },
     { value: '3', viewValue: 'done' }
   ];
-  constructor(private fireStorag: AngularFireStorage,
-    public dialog: MatDialog, private reservService: ReservationService,) { }
+  constructor(public dialog: MatDialog, private reservService: ReservationService,) { }
 
   ngOnInit(): void {
     this.adminFireCloudReserv()
@@ -36,21 +35,6 @@ export class AdminReservComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CatImgDeleteComponent, {
-      width: '250px',
-      data: {},
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === true) {
-        // this.fireStorag.storage.refFromURL(this.productImg).delete();
-        // this.imageStatus = false;
-      } else {
-        console.log(`sorry you get ${result}`);
-      }
-    });
   }
 
   applyFilter(event: Event) {
@@ -83,6 +67,7 @@ export class AdminReservComponent implements OnInit {
         return { dataID, ...data };
       });
       this.dataSource.data = this.reservArr
+      console.log(this.dataSource.data)
     });
   }
   changeSelected(eventValue: string, reservOrder: IReserv): void {

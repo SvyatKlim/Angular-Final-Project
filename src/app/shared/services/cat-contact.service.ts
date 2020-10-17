@@ -15,12 +15,6 @@ export class CatContactService {
   getFireCloudCateringOrder(): Observable<DocumentChangeAction<unknown>[]> {
     return this.firecloud.collection('catering').snapshotChanges();
   }
-  updateFireCloudCateringOrder(reservOrder: ICatCont, newValue: string): Promise<void> {
-    return this.firecloud
-      .collection('catering')
-      .doc(reservOrder.dataID)
-      .update({ progress: newValue });
-  }
   deleteFireCloudCateringOrder(id: string): Promise<void> {
     return this.firecloud.collection('catering').doc(id).delete();
   }
@@ -31,12 +25,6 @@ export class CatContactService {
   }
   getFireCloudContactOrder(): Observable<DocumentChangeAction<unknown>[]> {
     return this.firecloud.collection('contact').snapshotChanges();
-  }
-  updateFireCloudContactOrder(reservOrder: ICatCont, newValue: string): Promise<void> {
-    return this.firecloud
-      .collection('contact')
-      .doc(reservOrder.dataID)
-      .update({ progress: newValue });
   }
   deleteFireCloudContactOrder(id: string): Promise<void> {
     return this.firecloud.collection('contact').doc(id).delete();

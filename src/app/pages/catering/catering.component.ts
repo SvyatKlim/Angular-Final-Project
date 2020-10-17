@@ -14,7 +14,6 @@ export class CateringComponent implements OnInit {
     AOS.init()
   }
   scrollTo(id: string): void {
-    console.log(id)
     const elmnt = document.getElementById(id);
     elmnt.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
   }

@@ -4,10 +4,10 @@ import {
   HostListener,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IProduct } from '../../shared/interfaces/product.interface';
-import { OrderService } from '../../shared/services/order.service';
-import { LoginComponent } from '../../pages/login/login.component';
-import { AuthService } from '../../shared/services/auth.service';
+import { IProduct } from '../../../shared/interfaces/product.interface';
+import { OrderService } from '../../../shared/services/order.service';
+import { LoginComponent } from '../../../pages/login/login.component';
+import { AuthService } from '../../../shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -43,7 +43,6 @@ export class HeaderComponent implements OnInit {
     this.checkLogin();
     this.updateCheckLogin()
     this.handleScroll()
-    console.log(this.breakpoint)
   }
   openSelect(): void {
     this.menuChecked = !this.menuChecked;
@@ -57,8 +56,6 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
-
-    console.log(document.body.clientWidth)
     if (document.body.clientWidth > 1199) {
       this.breakpoint = false
     } if (document.body.clientWidth < 1200) {
@@ -125,7 +122,7 @@ export class HeaderComponent implements OnInit {
   private updateBasket(): void {
     localStorage.setItem('myOrder', JSON.stringify(this.basket));
     this.getlocalProducts();
-    this.orderService.basket.next('go');
+    this.orderService.basket.next('delete product');
   }
   isShowMenu(): void {
     this.showMenu = !this.showMenu

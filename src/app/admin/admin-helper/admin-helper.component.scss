@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+td,
+th {
+    width: 12.5%;
+}
+td.static {
+    padding: 20px 24px !important;
+}
+td.select {
+    padding: 20px 15px 0 !important;
+}
+th {
+    padding: 10px 24px !important;
+}
+h2 {
+    font-size: 36px;
+    text-align: center;
+    margin: 20px auto;
+}
+.section {
+    margin: 50px auto;
+    max-width: 1200px;
+}
+

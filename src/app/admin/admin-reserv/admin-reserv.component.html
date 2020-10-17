@@ -9,7 +9,7 @@
                 User ID
             </th>
             <td class="reserv__id static" mat-cell *matCellDef="let element">
-                {{ element.userID }}
+                {{ element.user_id }}
             </td>
         </ng-container>
 
@@ -18,7 +18,7 @@
                 Date
             </th>
             <td class="reserv__date static" mat-cell *matCellDef="let element">
-                {{ element.date }}
+                {{ element.user_dateValue.toDate() | date }}
             </td>
         </ng-container>
 
@@ -27,7 +27,7 @@
                 Email
             </th>
             <td class="reserv__email static" mat-cell *matCellDef="let element">
-                {{ element.email }}
+                {{ element.user_email}}
             </td>
         </ng-container>
 
@@ -36,7 +36,7 @@
                 Name
             </th>
             <td class="reserv__name static" mat-cell *matCellDef="let element">
-                {{ element.name }}
+                {{ element.user_name}}
             </td>
         </ng-container>
         <ng-container matColumnDef="people">
@@ -44,7 +44,7 @@
                 People
             </th>
             <td class="reserv__people static" mat-cell *matCellDef="let element">
-                {{ element.people }}
+                {{ element.user_count}}
             </td>
         </ng-container>
         <ng-container matColumnDef="time">
@@ -52,22 +52,21 @@
                 Time
             </th>
             <td class="reserv__time static " mat-cell *matCellDef="let element">
-                {{ element.time  }}
+                {{ element.user_timeSelected}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="location">
+            <th class="reserv__location " mat-header-cell *matHeaderCellDef mat-sort-header>
+                Location
+            </th>
+            <td class="reserv__time static " mat-cell *matCellDef="let element">
+                {{ element.user_directions}}
             </td>
         </ng-container>
         <ng-container matColumnDef="status">
             <th class="reserv__status" mat-header-cell *matHeaderCellDef mat-sort-header>
                 Status Booking
             </th>
-            <!-- <td class="reserv__status" mat-cell *matCellDef="let element">
-                <mat-form-field appearance="legacy">
-                    <mat-select [(value)]="modeselect">
-                        <mat-option *ngFor="let option of status" [value]="option.value">
-                            {{option.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </td> -->
             <td class="reserv__status select" mat-cell *matCellDef="let element">
                 <mat-form-field>
                     <mat-select value="{{element.progress}}" (selectionChange)="changeSelected($event.value, element)">
@@ -85,7 +84,7 @@
                 Delete
             </th>
 
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let element" class="static">
                 <svg (click)="deleteReserv(element)" class="trash" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24" fill="#dc3545" width="18px" height="18px">
                     <path d="M0 0h24v24H0V0z" fill="none" />
