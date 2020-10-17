@@ -4,7 +4,6 @@ import { AdminComponent } from '../admin/admin.component';
 import { AdminCategoryComponent } from '../admin/admin-category/admin-category.component';
 import { AdminProductComponent } from '../admin/admin-product/admin-product.component';
 import { AdminOrderComponent } from '../admin/admin-order/admin-order.component';
-import { AdminDiscountComponent } from '../admin/admin-discount/admin-discount.component';
 import { AdminReservComponent } from '../admin/admin-reserv/admin-reserv.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
@@ -44,20 +43,21 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatIconModule } from '@angular/material/icon';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AdminHelperComponent } from './admin-helper/admin-helper.component'
 @NgModule({
   declarations: [
     AdminComponent,
     AdminCategoryComponent,
     AdminProductComponent,
     AdminOrderComponent,
-    AdminDiscountComponent,
     AdminReservComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
     AdminSidebarComponent,
     CatImgDeleteComponent,
     FdAdminComponent,
+    AdminHelperComponent,
   ],
   entryComponents: [CatImgDeleteComponent],
   providers: [

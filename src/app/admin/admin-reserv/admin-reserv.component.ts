@@ -94,6 +94,5 @@ export class AdminReservComponent implements OnInit {
       .updateFireCloudReserv(order, newValue)
       .then((message) => console.log(message))
       .catch((err) => console.log(err));
-    console.log(order)
   }
 }

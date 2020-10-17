@@ -72,8 +72,11 @@
     </div>
 
     <div class="product__button">
-      <button mat-raised-button color="accent" (click)="addProduct()">
+      <button mat-raised-button color="accent" (click)="addProduct()" *ngIf="!editStatus">
         Create
+      </button>
+      <button mat-raised-button color="accent" (click)="addProduct()" *ngIf="editStatus">
+        Edit
       </button>
     </div>
   </div>
@@ -155,7 +158,15 @@
           <img [src]="element.img" alt="" />
         </td>
       </ng-container>
+      <ng-container matColumnDef="edit">
+        <th class="product__edit" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Edit
+        </th>
+        <td class="product__edit" mat-cell *matCellDef="let element">
+          <button mat-flat-button color="primary" (click)="editProduct(element)">Edit</button>
+        </td>
 
+      </ng-container>
       <ng-container matColumnDef="delete">
         <th class="product__delete" mat-header-cell *matHeaderCellDef mat-sort-header>
           Delete

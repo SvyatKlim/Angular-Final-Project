@@ -44,6 +44,7 @@ export class AdminProductComponent implements OnInit, AfterViewInit {
     'urlName',
     'description',
     'img',
+    'edit',
     'delete',
   ];
   items: any;
@@ -87,6 +88,7 @@ export class AdminProductComponent implements OnInit, AfterViewInit {
         return { id, ...data };
       });
       this.dataSource.data = this.products
+      console.log(this.products)
     });
   }
   setCategory(): void {
@@ -99,9 +101,9 @@ export class AdminProductComponent implements OnInit, AfterViewInit {
     const newProd = new Product(
       this.productID,
       this.productCat,
-      this.productName.toLowerCase(),
+      this.productName,
       this.productVegetarian,
-      this.productIngridients.toLowerCase().split(''),
+      this.productIngridients.split(''),
       this.productWeight,
       this.productPrice,
       this.productDesc,
@@ -121,15 +123,13 @@ export class AdminProductComponent implements OnInit, AfterViewInit {
       this.editStatus = false;
     }
     this.resetForm();
-    console.log(newProd);
   }
   private resetForm(): void {
     this.imageStatus = false;
-    this.productID = '';
     this.productCat = '';
     this.productName = '';
     this.productIngridients = '';
-    this.productWeight = '';
+    this.productWeight = null
     this.productDesc = '';
     this.productPrice = null;
     this.productVegetarian = false;
@@ -168,6 +168,17 @@ export class AdminProductComponent implements OnInit, AfterViewInit {
     });
   }
 
+  editProduct(product: IProduct): void {
+    this.productCat = product.category,
+      this.productName = product.name,
+      this.productVegetarian = product.vegetarian,
+      this.productIngridients = product.ingridients.join(),
+      this.productWeight = product.weight,
+      this.productPrice = product.price,
+      this.productDesc = product.description,
+      this.productImg = product.img,
+      this.editStatus = true; this.imageStatus = true;
+  }
   // Modal Window
   openDialog(): void {
     const dialogRef = this.dialog.open(CatImgDeleteComponent, {

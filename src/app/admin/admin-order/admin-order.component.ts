@@ -54,7 +54,6 @@ export class AdminOrderComponent implements OnInit, AfterViewInit {
                     return { id, ...data };
                 });
                 this.dataSource.data = this.adminOrders
-                console.log(this.dataSource.data);
             }
         );
     }
